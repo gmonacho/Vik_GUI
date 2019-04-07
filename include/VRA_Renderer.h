@@ -12,12 +12,13 @@ class VRA_Renderer
 {
 public:
 	VRA_Renderer();
-
 	VRA_Renderer(const VRA_Window& window,
 	             bool         auto_choice,
 	             Uint32      sdl_flags);
 	virtual ~VRA_Renderer();
-
+	void    setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+	void    clear();
+	void    display();
 private:
 	SDL_Renderer    *m_ptr;
 
