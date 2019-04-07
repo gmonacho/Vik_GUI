@@ -1,29 +1,26 @@
 //
-// Created by gal on 29/03/19.
+// Created by gal on 07/04/19.
 //
 
-#include "SDL2/SDL.h"
 #include "VRA_Window.h"
 
 
-VRA_Window::VRA_Window() {}
 
-VRA_Window::VRA_Window(const char* title,
-                       int         x,
-                       int         y,
-                       int         w,
-                       int         h,
-                       Uint32      flags) :
-                       a_title(title),
-                       a_x(x),
-                       a_y(y),
-                       a_w(w),
-                       a_h(h)
+VRA_Window::VRA_Window() : m_ptr(nullptr) {}
+
+VRA_Window::VRA_Window(const std::string &title, int x, int y, int w, int h, Uint32 sdl_flags)
 {
-    a_ptr = SDL_CreateWindow(title, x, y, w, h, flags);
+	if (!(m_ptr = SDL_CreateWindow(title.c_str(), x, y, w, h, sdl_flags)))
+			throw std::bad_alloc();
 }
 
 VRA_Window::~VRA_Window()
 {
-    SDL_DestroyWindow(a_ptr);
+	if (m_ptr)
+		SDL_DestroyWindow(m_ptr);
+}
+
+SDL_Window *VRA_Window::get_ptr() const
+{
+	return m_ptr;
 }

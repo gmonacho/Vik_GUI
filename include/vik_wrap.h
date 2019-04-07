@@ -5,6 +5,6 @@
 #ifndef VIK_WRAP_VIK_WRAP_H
 #define VIK_WRAP_VIK_WRAP_H
 
-int     vra_init(Uint32 flags);
+int     VRA_init(Uint32 flags);
 
 #endif //VIK_WRAP_VIK_WRAP_H

@@ -5,13 +5,13 @@
 
 int     main()
 {
-    SDL_Event   event;
-    VRA_Window  window;
-    int         loop;
+    SDL_Event       event;
+    int             loop;
+    VRA_Window      win;
 
-    if (!(vra_init(SDL_INIT_VIDEO)))
+    if (!(VRA_init(SDL_INIT_VIDEO)))
         std::cout << "vra_init failed\n";
-    window = VRA_Window("Vik_Wrap", 100, 100, 500, 500, SDL_WINDOW_SHOWN);
+    win = VRA_Window("VRA_Test", 100, 100, 600, 600, SDL_WINDOW_SHOWN);
     loop = SDL_TRUE;
     while (loop)
     {

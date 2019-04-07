@@ -1,34 +1,24 @@
 //
-// Created by gal on 29/03/19.
+// Created by gal on 07/04/19.
 //
 
 #ifndef VIK_WRAP_VRA_WINDOW_H
 #define VIK_WRAP_VRA_WINDOW_H
 
+#include <SDL_video.h>
 #include <string>
 
 class VRA_Window
 {
 
 public:
-    VRA_Window();
-    VRA_Window(const char* title,
-               int         x,
-               int         y,
-               int         w,
-               int         h,
-               Uint32      flags);
-
-    virtual ~VRA_Window();
+	VRA_Window();
+	VRA_Window(const std::string &title, int x, int y, int w, int h, Uint32 sdl_flags);
+	virtual ~VRA_Window();
+	SDL_Window *get_ptr() const;
 
 private:
-    SDL_Window      *a_ptr;
-    std::string     a_title;
-    int             a_x;
-    int             a_y;
-    int             a_w;
-    int             a_h;
-
+	SDL_Window  *m_ptr;
 
 };
 
