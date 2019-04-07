@@ -20,41 +20,28 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include "VRA_Window.h"
-#include "VRA_Renderer.h"
+#include <SDL_keyboard.h>
+#include <new>
+#include <SDL_events.h>
+#include "VRA_Event.h"
 
-VRA_Renderer::VRA_Renderer() : m_ptr(nullptr) {}
-
-VRA_Renderer::VRA_Renderer(const VRA_Window& window,
-                           bool         auto_choice,
-                           Uint32      sdl_flags)
+VRA_Event::VRA_Event()
 {
-	int     index = 0;
-
-	if (auto_choice)
-		index = -1;
-	if ((m_ptr = SDL_CreateRenderer(window.getPtr(), index, sdl_flags)) == nullptr)
+	m_keyboardSize = 0;
+	if ((m_keyboard = SDL_GetKeyboardState(&m_keyboardSize)) == nullptr)
 		throw std::bad_alloc();
 }
 
-VRA_Renderer::~VRA_Renderer()
+VRA_Event::~VRA_Event() = default;
+
+void VRA_Event::update()
 {
-	if (m_ptr)
-		SDL_DestroyRenderer(m_ptr);
+	SDL_PumpEvents();
 }
 
-void VRA_Renderer::setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+bool VRA_Event::isKeyPressed(int sdl_code)
 {
-	SDL_SetRenderDrawColor(m_ptr, r, g, b, a);
+	if (sdl_code >= m_keyboardSize)
+		return (false);
+	return (m_keyboard[sdl_code] != 0);
 }
-
-void VRA_Renderer::clear()
-{
-	SDL_RenderClear(m_ptr);
-}
-
-void VRA_Renderer::display()
-{
-	SDL_RenderPresent(m_ptr);
-}
-

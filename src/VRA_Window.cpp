@@ -1,6 +1,24 @@
-//
-// Created by gal on 07/04/19.
-//
+/*
+Copyright (c) 2019 Gael Monachon
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+		of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+		copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+		copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
 
 #include "VRA_Window.h"
 
@@ -47,4 +65,40 @@ float VRA_Window::getBrightness()
 void VRA_Window::setBordered(bool bordered)
 {
 	SDL_SetWindowBordered(m_ptr, static_cast<SDL_bool>(bordered));
+}
+
+void VRA_Window::setFullscreen(Uint32 flags)
+{
+	SDL_SetWindowFullscreen(m_ptr, flags);
+}
+
+void VRA_Window::setSize(int width, int height)
+{
+	if (width > 0 && height > 0)
+		SDL_SetWindowSize(m_ptr, width, height);
+}
+
+void VRA_Window::getSize(int &width, int &height)
+{
+	SDL_GetWindowSize(m_ptr, &width, &height);
+}
+
+void VRA_Window::setResizable(bool resizable)
+{
+	SDL_SetWindowResizable(m_ptr, static_cast<SDL_bool>(resizable));
+}
+
+void VRA_Window::show()
+{
+	SDL_ShowWindow(m_ptr);
+}
+
+void VRA_Window::hide()
+{
+	SDL_HideWindow(m_ptr);
+}
+
+void VRA_Window::raise()
+{
+	SDL_RaiseWindow(m_ptr);
 }

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <VRA_Window.h>
 #include <VRA_Renderer.h>
+#include <VRA_Event.h>
 
 using namespace std;
 
@@ -12,18 +13,18 @@ int     main()
 		cout << "vra_init failed\n";
     VRA_Window      win("VRA_Test", 100, 100, 600, 600, SDL_WINDOW_SHOWN);
 	VRA_Renderer    rend(win, true, SDL_RENDERER_ACCELERATED);
-	SDL_Event       event;
-	int             loop;
+	SDL_Event       sdl_event;
+	VRA_Event       event;
+	bool             loop{true};
 
-    rend.setDrawColor(0, 255, 255, 255);
+	rend.setDrawColor(0, 255, 255, 255);
     rend.clear();
-    loop = SDL_TRUE;
     while (loop)
     {
-        SDL_PumpEvents();
-        SDL_WaitEvent(&event);
-        if(event.type == SDL_QUIT)
-            loop = SDL_FALSE;
+        event.update();
+        SDL_WaitEvent(&sdl_event);
+        if(sdl_event.type == SDL_QUIT || event.isKeyPressed(SDL_SCANCODE_ESCAPE))
+            loop = false;
         rend.display();
     }
     return (1);
