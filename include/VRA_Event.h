@@ -25,18 +25,31 @@ SOFTWARE.
 
 
 #include <SDL_quit.h>
+#include <SDL_events.h>
+#include <string>
 
 class VRA_Event
 {
 public:
 	VRA_Event();
-	virtual ~VRA_Event() = default;
-	void    update();
-	bool    isKeyPressed(int sdl_code);
+	virtual ~VRA_Event();
+	void                update();
+	const SDL_Event    &getEvent() const;
+	const SDL_Event    &waitEvent();
+	bool                isKeyPressed(int sdl_code);
+	void                startTextInput();
+	void                stopTextInput();
+	const std::string   getLastTextInput() const;
+	bool                isTextInputActive();
+	SDL_Keymod          getModState();
+	//  getKeyboardFocus?
+	//  setTextInputRect();
+	//  Edition de texte
 
 private:
-	const Uint8     *m_keyboard;
-	int             m_keyboardSize;
+	const Uint8        *m_keyboard;
+	int                 m_keyboardSize;
+	SDL_Event           m_event;
 
 };
 

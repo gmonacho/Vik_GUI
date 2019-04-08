@@ -37,6 +37,18 @@ VRA_Event::~VRA_Event() = default;
 void VRA_Event::update()
 {
 	SDL_PumpEvents();
+	SDL_PollEvent(&m_event);
+}
+
+const SDL_Event &VRA_Event::getEvent() const
+{
+	return (m_event);
+}
+
+const SDL_Event &VRA_Event::waitEvent()
+{
+	SDL_WaitEvent(&m_event);
+	return (m_event);
 }
 
 bool VRA_Event::isKeyPressed(int sdl_code)
@@ -45,3 +57,32 @@ bool VRA_Event::isKeyPressed(int sdl_code)
 		return (false);
 	return (m_keyboard[sdl_code] != 0);
 }
+
+void VRA_Event::startTextInput()
+{
+	SDL_StartTextInput();
+}
+
+void VRA_Event::stopTextInput()
+{
+	SDL_StopTextInput();
+}
+
+const std::string VRA_Event::getLastTextInput() const
+{
+	std::string lastTextInput{};
+	if (m_event.type == SDL_TEXTINPUT)
+		lastTextInput = m_event.text.text;
+	return (lastTextInput);
+}
+
+bool VRA_Event::isTextInputActive()
+{
+	return (SDL_IsTextInputActive());
+}
+
+SDL_Keymod VRA_Event::getModState()
+{
+	return (SDL_GetModState());
+}
+

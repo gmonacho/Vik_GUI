@@ -15,6 +15,7 @@ int     main()
 	VRA_Renderer    rend(win, true, SDL_RENDERER_ACCELERATED);
 	SDL_Event       sdl_event;
 	VRA_Event       event;
+	string          textInput;
 	bool             loop{true};
 
 	rend.setDrawColor(0, 255, 255, 255);
@@ -22,10 +23,11 @@ int     main()
     while (loop)
     {
         event.update();
-        SDL_WaitEvent(&sdl_event);
+        textInput += event.getLastTextInput();
         if(sdl_event.type == SDL_QUIT || event.isKeyPressed(SDL_SCANCODE_ESCAPE))
             loop = false;
         rend.display();
     }
+	cout << "text = " << textInput << endl;
     return (1);
 }
