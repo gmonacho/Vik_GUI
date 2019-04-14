@@ -30,6 +30,7 @@ VRA_Event::VRA_Event()
 	m_keyboardSize = 0;
 	if ((m_keyboard = SDL_GetKeyboardState(&m_keyboardSize)) == nullptr)
 		throw std::bad_alloc();
+	SDL_GetMouseState(&m_mouseY, &m_mouseX);
 }
 
 VRA_Event::~VRA_Event() = default;
@@ -38,6 +39,7 @@ void VRA_Event::update()
 {
 	SDL_PumpEvents();
 	SDL_PollEvent(&m_event);
+	SDL_GetMouseState(&m_mouseY, &m_mouseX);
 }
 
 const SDL_Event &VRA_Event::getEvent() const
@@ -84,5 +86,20 @@ bool VRA_Event::isTextInputActive()
 SDL_Keymod VRA_Event::getModState()
 {
 	return (SDL_GetModState());
+}
+
+bool VRA_Event::isMousePressed(Uint32 sdl_button)
+{
+	return (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(sdl_button));
+}
+
+int VRA_Event::getMouseX() const
+{
+	return m_mouseX;
+}
+
+int VRA_Event::getMouseY() const
+{
+	return m_mouseY;
 }
 

@@ -20,43 +20,51 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef VIK_WRAP_VRA_EVENT_H
-#define VIK_WRAP_VRA_EVENT_H
-
-
-#include <SDL_quit.h>
-#include <SDL_events.h>
 #include <string>
+#include <SDL_image.h>
+#include <iostream>
+#include "VRA_Texture.h"
+#include "VRA_Renderer.h"
 
-class VRA_Event
+
+VRA_Texture::VRA_Texture() : m_ptr(nullptr) {}
+
+VRA_Texture::VRA_Texture(const VRA_Renderer &rend, const std::string &file)
 {
-public:
-	explicit            VRA_Event();
-	virtual             ~VRA_Event();
-	void                update();
-	const SDL_Event    &getEvent() const;
-	const SDL_Event    &waitEvent();
-	bool                isKeyPressed(int sdl_code);
-	bool                isMousePressed(Uint32 sdl_button);
-	void                startTextInput();
-	void                stopTextInput();
-	const std::string   getLastTextInput() const;
-	bool                isTextInputActive();
-	SDL_Keymod          getModState();
-	//  getKeyboardFocus?
-	//  setTextInputRect();
-	//  Edition de texte
-	int                 getMouseX() const;
-	int getMouseY() const;
+	SDL_Surface     *tmp;
+	const char      *tmpStr;
 
-private:
-	const Uint8        *m_keyboard;
-	int                 m_keyboardSize;
-	SDL_Event           m_event;
-	int                 m_mouseX;
-	int                 m_mouseY;
+	tmpStr = file.c_str();
+	tmp = IMG_Load(tmpStr);
+	if (!tmp)
+	{
+		std::cout << SDL_GetError() << std::endl;
+		throw (std::bad_alloc());
+	}
+	if (!(m_ptr = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
+	{
+		std::cout << SDL_GetError() << std::endl;
+		throw (std::bad_alloc());
+	}
+}
 
-};
+VRA_Texture::VRA_Texture(const VRA_Renderer &rend, Uint32 format, int access, int w, int h)
+{
+	m_ptr = SDL_CreateTexture(rend.getPtr(), format,access, w, h);
+	if (!m_ptr)
+		throw (std::bad_alloc());
+}
 
+SDL_Texture *VRA_Texture::getPtr() const
+{
+	return m_ptr;
+}
 
-#endif //VIK_WRAP_VRA_EVENT_H
+SDL_Rect VRA_Texture::getSdlRect() const
+{
+	int     w;
+	int     h;
+
+	SDL_QueryTexture(nullptr, nullptr, nullptr, &w, &h);
+	return ((SDL_Rect){0, 0, w, h});
+}

@@ -4,30 +4,35 @@
 #include <VRA_Window.h>
 #include <VRA_Renderer.h>
 #include <VRA_Event.h>
+#include <SDL_image.h>
+#include <VRA_Texture.h>
 
 using namespace std;
 
 int     main()
 {
-	if (!(VRA_init(SDL_INIT_VIDEO)))
+	if (!(VRA_init(SDL_INIT_VIDEO, IMG_INIT_PNG)))
 		cout << "vra_init failed\n";
-    VRA_Window      win("VRA_Test", 100, 100, 600, 600, SDL_WINDOW_SHOWN);
-	VRA_Renderer    rend(win, true, SDL_RENDERER_ACCELERATED);
+    VRA_Window      win{"VRA_Test", 100, 100, 600, 600, SDL_WINDOW_SHOWN};
+	VRA_Renderer    rend{win, true, SDL_RENDERER_ACCELERATED};
+	VRA_Texture     testTexture{rend, "/home/gal/ViKoDe/Vik_Wrap/test.png"};
+	VRA_Rect        rect{10, 10, 30, 30};
+	VRA_Rect        testRect{50, 50, 100, 100};
 	SDL_Event       sdl_event;
 	VRA_Event       event;
-	string          textInput;
-	bool             loop{true};
+	bool            loop{true};
 
-	rend.setDrawColor(0, 255, 255, 255);
-    rend.clear();
     while (loop)
     {
-        event.update();
-        textInput += event.getLastTextInput();
+	    rend.setDrawColor(0, 255, 255, 255);
+	    rend.clear();
+    	event.update();
+    	rend.setDrawColor(0, 0, 0, 255);
+    	rend.drawRect(rect);
+    	rend.drawTexture(testTexture, nullopt, nullopt);
         if(sdl_event.type == SDL_QUIT || event.isKeyPressed(SDL_SCANCODE_ESCAPE))
             loop = false;
         rend.display();
     }
-	cout << "text = " << textInput << endl;
     return (1);
 }

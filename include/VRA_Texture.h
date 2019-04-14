@@ -20,43 +20,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef VIK_WRAP_VRA_EVENT_H
-#define VIK_WRAP_VRA_EVENT_H
+#ifndef VIK_WRAP_VRA_TEXTURE_H
+#define VIK_WRAP_VRA_TEXTURE_H
 
+class VRA_Renderer;
 
-#include <SDL_quit.h>
-#include <SDL_events.h>
-#include <string>
-
-class VRA_Event
+class VRA_Texture
 {
 public:
-	explicit            VRA_Event();
-	virtual             ~VRA_Event();
-	void                update();
-	const SDL_Event    &getEvent() const;
-	const SDL_Event    &waitEvent();
-	bool                isKeyPressed(int sdl_code);
-	bool                isMousePressed(Uint32 sdl_button);
-	void                startTextInput();
-	void                stopTextInput();
-	const std::string   getLastTextInput() const;
-	bool                isTextInputActive();
-	SDL_Keymod          getModState();
-	//  getKeyboardFocus?
-	//  setTextInputRect();
-	//  Edition de texte
-	int                 getMouseX() const;
-	int getMouseY() const;
+	explicit        VRA_Texture();
+	explicit        VRA_Texture(const VRA_Renderer &rend, const std::string &file);
+	explicit        VRA_Texture(const VRA_Renderer &rend, Uint32 format, int access, int w, int h);
+	SDL_Texture     *getPtr() const;
+	SDL_Rect getSdlRect() const;
 
 private:
-	const Uint8        *m_keyboard;
-	int                 m_keyboardSize;
-	SDL_Event           m_event;
-	int                 m_mouseX;
-	int                 m_mouseY;
+	SDL_Texture     *m_ptr;
 
 };
 
 
-#endif //VIK_WRAP_VRA_EVENT_H
+#endif //VIK_WRAP_VRA_TEXTURE_H

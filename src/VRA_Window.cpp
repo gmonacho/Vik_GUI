@@ -102,3 +102,17 @@ void VRA_Window::raise()
 {
 	SDL_RaiseWindow(m_ptr);
 }
+
+VRA_Window::VRA_Window(VRA_Window &&win) noexcept : m_ptr(win.m_ptr)
+{
+	win.m_ptr = nullptr;
+}
+
+VRA_Window& VRA_Window::operator=(VRA_Window &&win) noexcept
+{
+	if (m_ptr)
+		SDL_DestroyWindow(m_ptr);
+	m_ptr = win.m_ptr;
+	win.m_ptr = nullptr;
+	return (*this);
+}

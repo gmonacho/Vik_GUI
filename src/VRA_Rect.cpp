@@ -20,43 +20,40 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef VIK_WRAP_VRA_EVENT_H
-#define VIK_WRAP_VRA_EVENT_H
+#include "VRA_Rect.h"
 
 
-#include <SDL_quit.h>
-#include <SDL_events.h>
-#include <string>
+VRA_Rect::VRA_Rect() : m_x(0), m_y(0), m_w(0), m_h(0) {}
 
-class VRA_Event
+VRA_Rect::VRA_Rect(int x, int y, int w, int h) : m_x(x), m_y(y), m_w(w), m_h(h) {}
+
+SDL_Rect    VRA_Rect::getSdlRect() const
 {
-public:
-	explicit            VRA_Event();
-	virtual             ~VRA_Event();
-	void                update();
-	const SDL_Event    &getEvent() const;
-	const SDL_Event    &waitEvent();
-	bool                isKeyPressed(int sdl_code);
-	bool                isMousePressed(Uint32 sdl_button);
-	void                startTextInput();
-	void                stopTextInput();
-	const std::string   getLastTextInput() const;
-	bool                isTextInputActive();
-	SDL_Keymod          getModState();
-	//  getKeyboardFocus?
-	//  setTextInputRect();
-	//  Edition de texte
-	int                 getMouseX() const;
-	int getMouseY() const;
+	return ((SDL_Rect){m_x, m_y, m_w, m_h});
+}
 
-private:
-	const Uint8        *m_keyboard;
-	int                 m_keyboardSize;
-	SDL_Event           m_event;
-	int                 m_mouseX;
-	int                 m_mouseY;
+const int   &VRA_Rect::getLeft() const
+{
+	return (m_x);
+}
 
-};
+int         VRA_Rect::getRight() const
+{
+	return (m_x + m_w);
+}
 
+const int   &VRA_Rect::getTop() const
+{
+	return (m_y);
+}
 
-#endif //VIK_WRAP_VRA_EVENT_H
+int         VRA_Rect::getBot() const
+{
+	return (m_y + m_h);
+}
+
+bool        VRA_Rect::hasRectIntersection(const VRA_Rect &rect)
+{
+	return (rect.getLeft() > m_x && rect.getRight() < m_x + m_w && rect.getTop() > m_y && rect.getBot() < m_y + m_h);
+}
+

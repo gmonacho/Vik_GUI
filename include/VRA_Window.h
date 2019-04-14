@@ -30,25 +30,31 @@ class VRA_Window
 {
 
 public:
+	explicit    VRA_Window(const std::string &title, int x, int y, int w, int h, Uint32 sdl_flags);
 
-	VRA_Window(const std::string &title, int x, int y, int w, int h, Uint32 sdl_flags);
-	virtual ~VRA_Window();
-	SDL_Window *getPtr() const;
-	void    setOpacity(float opacity);
-	float   getOpacity();
-	void    setBrightness(float brightness);
-	float   getBrightness();
-	void    setBordered(bool bordered);
-	void    setFullscreen(Uint32 flags);
-	void    setSize(int width, int height);
-	void    getSize(int &width, int &height);
-	void    setResizable(bool resizable);
-	void    show();
-	void    hide();
-	void    raise();
+	VRA_Window(VRA_Window&& win) noexcept;
+	VRA_Window& operator=(VRA_Window &&win) noexcept;
+
+	VRA_Window(const VRA_Window& win) = delete;
+	VRA_Window& operator=(const VRA_Window& win) = delete;
+
+	virtual     ~VRA_Window();
+
+	SDL_Window  *getPtr() const;
+	void        setOpacity(float opacity);
+	float       getOpacity();
+	void        setBrightness(float brightness);
+	float       getBrightness();
+	void        setBordered(bool bordered);
+	void        setFullscreen(Uint32 flags);
+	void        setSize(int width, int height);
+	void        getSize(int &width, int &height);
+	void        setResizable(bool resizable);
+	void        show();
+	void        hide();
+	void        raise();
 
 private:
-
 	SDL_Window  *m_ptr;
 
 };

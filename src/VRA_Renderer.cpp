@@ -20,10 +20,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+#include <iostream>
 #include "VRA_Window.h"
 #include "VRA_Renderer.h"
-
-VRA_Renderer::VRA_Renderer() : m_ptr(nullptr) {}
+#include "VRA_Texture.h"
 
 VRA_Renderer::VRA_Renderer(const VRA_Window& window,
                            bool         auto_choice,
@@ -57,4 +57,63 @@ void VRA_Renderer::display()
 {
 	SDL_RenderPresent(m_ptr);
 }
+
+void VRA_Renderer::drawRect(const VRA_Rect &rect)
+{
+	SDL_Rect    sdlRect = rect.getSdlRect();
+	SDL_RenderDrawRect(m_ptr, &sdlRect);
+}
+
+void VRA_Renderer::drawTexture(const VRA_Texture &texture, const std::optional<VRA_Rect> &srcRect, const std::optional<VRA_Rect> &dstRect)
+{
+	SDL_Rect sdlSrcRect;
+	SDL_Rect sdlDstRect;
+	SDL_Rect *sdlSrcRectPtr;
+	SDL_Rect *sdlDstRectPtr;
+
+	if (srcRect)
+	{
+		sdlSrcRect = srcRect->getSdlRect();
+		sdlSrcRectPtr = &sdlSrcRect;
+	}
+	else
+		sdlSrcRectPtr = nullptr;
+	if (dstRect)
+	{
+		sdlDstRect = dstRect->getSdlRect();
+		sdlDstRectPtr = &sdlDstRect;
+	}
+	else
+		sdlDstRectPtr = nullptr;
+	SDL_RenderCopy(m_ptr, texture.getPtr(), sdlSrcRectPtr, sdlDstRectPtr);
+}
+
+SDL_Renderer *VRA_Renderer::getPtr() const
+{
+	return m_ptr;
+}
+
+VRA_Renderer::VRA_Renderer(VRA_Renderer &&rend) noexcept : m_ptr(rend.m_ptr)
+{
+	rend.m_ptr = nullptr;
+}
+
+VRA_Renderer &VRA_Renderer::operator=(VRA_Renderer &&rend) noexcept
+{
+	if (m_ptr)
+		SDL_DestroyRenderer(m_ptr);
+	m_ptr = rend.m_ptr;
+	rend.m_ptr = nullptr;
+	return (*this);
+}
+
+SDL_Rect VRA_Renderer::getSdlRect() const
+{
+	int     w;
+	int     h;
+
+	SDL_GetRendererOutputSize(m_ptr, &w, &h);
+	return ((SDL_Rect){0, 0, w, h});
+}
+
 
