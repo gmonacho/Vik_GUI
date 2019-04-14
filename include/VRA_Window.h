@@ -26,6 +26,8 @@ SOFTWARE.
 #include <SDL_video.h>
 #include <string>
 
+class VRA_Renderer;
+
 class VRA_Window
 {
 
@@ -41,21 +43,30 @@ public:
 	virtual     ~VRA_Window();
 
 	SDL_Window  *getPtr() const;
-	void        setOpacity(float opacity);
-	float       getOpacity();
-	void        setBrightness(float brightness);
-	float       getBrightness();
-	void        setBordered(bool bordered);
-	void        setFullscreen(Uint32 flags);
-	void        setSize(int width, int height);
-	void        getSize(int &width, int &height);
-	void        setResizable(bool resizable);
-	void        show();
-	void        hide();
-	void        raise();
+
+	void            setRend(VRA_Renderer *rend);
+	VRA_Renderer    *getRend() const;
+
+	void            setOpacity(float opacity);
+	float           getOpacity() const;
+
+	void            setBrightness(float brightness);
+	float           getBrightness() const;
+
+	void            setSize(int width, int height);
+	void            getSize(int &width, int &height) const;
+
+	void            setBordered(bool bordered);
+	void            setFullscreen(Uint32 flags);
+
+	void            setResizable(bool resizable);
+	void            show();
+	void            hide();
+	void            raise();
 
 private:
-	SDL_Window  *m_ptr;
+	SDL_Window      *m_ptr;
+	VRA_Renderer    *m_rend;
 
 };
 

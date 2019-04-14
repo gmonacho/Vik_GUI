@@ -29,7 +29,7 @@ int     main()
     	event.update();
     	rend.setDrawColor(0, 0, 0, 255);
     	rend.drawRect(rect);
-    	rend.drawTexture(testTexture, nullopt, nullopt);
+    	rend.drawTexture(testTexture, nullopt, testRect);
         if(sdl_event.type == SDL_QUIT || event.isKeyPressed(SDL_SCANCODE_ESCAPE))
             loop = false;
         rend.display();

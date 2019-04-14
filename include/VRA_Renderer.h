@@ -23,8 +23,8 @@ SOFTWARE.
 #ifndef VIK_WRAP_VRA_RENDERER_H
 #define VIK_WRAP_VRA_RENDERER_H
 
-#include <optional>
 #include <SDL_render.h>
+#include <optional>
 #include "VRA_Window.h"
 #include "VRA_Rect.h"
 
@@ -34,7 +34,7 @@ class VRA_Renderer
 {
 public:
 	explicit        VRA_Renderer(const VRA_Window   &window,
-			                     bool               auto_choice,
+			                     bool               autoChoice,
 			                     Uint32             sdl_flags);
 
 	VRA_Renderer(VRA_Renderer&& rend) noexcept;
@@ -43,16 +43,36 @@ public:
 	VRA_Renderer(const VRA_Renderer& rend) = delete;
 	VRA_Renderer&   operator=(const VRA_Renderer& rend) = delete;
 
-	virtual         ~VRA_Renderer();
+	virtual             ~VRA_Renderer();
 
-	void            setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
-	void            clear();
-	void            display();
-	void            drawRect(const VRA_Rect &rect);
-	void            drawTexture(const VRA_Texture &texture, const std::optional<VRA_Rect> &srcRect = std::nullopt,
-	                            const std::optional<VRA_Rect> &dstRect = std::nullopt);
-	SDL_Renderer    *getPtr() const;
-	SDL_Rect        getSdlRect() const;
+	SDL_Renderer        *getPtr() const;
+
+	SDL_RendererInfo    getInfo() const;
+
+	SDL_Rect            getSdlRect() const;
+
+	void                setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+	SDL_Color           getDrawColor();
+
+	void                setTarget(const std::optional<VRA_Texture> &texture);
+
+	void                setDrawBlendMode(SDL_BlendMode sdlBlendMode);
+	SDL_BlendMode       getDrawBlendMode();
+
+	void                drawRect(const VRA_Rect &rect);
+	void                fillRect(const VRA_Rect &rect);
+
+	void                clear();
+
+	void                display();
+
+	void                drawTextureSdl(const VRA_Texture &texture,
+									const std::optional<SDL_Rect> &srcRect,
+		                            const std::optional<SDL_Rect> &dstRect);
+
+	void                drawTexture(const VRA_Texture &texture,
+									const std::optional<VRA_Rect> &srcRect,
+		                            const std::optional<VRA_Rect> &dstRect);
 
 private:
 	SDL_Renderer    *m_ptr; 

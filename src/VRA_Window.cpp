@@ -22,7 +22,7 @@ SOFTWARE.
 
 #include "VRA_Window.h"
 
-VRA_Window::VRA_Window(const std::string &title, int x, int y, int w, int h, Uint32 sdl_flags)
+VRA_Window::VRA_Window(const std::string &title, int x, int y, int w, int h, Uint32 sdl_flags) : m_rend(nullptr)
 {
 	if ((m_ptr = SDL_CreateWindow(title.c_str(), x, y, w, h, sdl_flags)) == nullptr)
 			throw std::bad_alloc();
@@ -39,12 +39,22 @@ SDL_Window *VRA_Window::getPtr() const
 	return m_ptr;
 }
 
+void VRA_Window::setRend(VRA_Renderer *rend)
+{
+	m_rend = rend;
+}
+
+VRA_Renderer *VRA_Window::getRend() const
+{
+	return (m_rend);
+}
+
 void VRA_Window::setOpacity(float opacity)
 {
 	SDL_SetWindowOpacity(m_ptr, opacity);
 }
 
-float VRA_Window::getOpacity()
+float VRA_Window::getOpacity() const
 {
 	float   opacity;
 
@@ -57,7 +67,7 @@ void VRA_Window::setBrightness(float brightness)
 	SDL_SetWindowBrightness(m_ptr, brightness);
 }
 
-float VRA_Window::getBrightness()
+float VRA_Window::getBrightness() const
 {
 	return (SDL_GetWindowBrightness(m_ptr));
 }
@@ -78,7 +88,7 @@ void VRA_Window::setSize(int width, int height)
 		SDL_SetWindowSize(m_ptr, width, height);
 }
 
-void VRA_Window::getSize(int &width, int &height)
+void VRA_Window::getSize(int &width, int &height) const
 {
 	SDL_GetWindowSize(m_ptr, &width, &height);
 }
@@ -116,3 +126,5 @@ VRA_Window& VRA_Window::operator=(VRA_Window &&win) noexcept
 	win.m_ptr = nullptr;
 	return (*this);
 }
+
+

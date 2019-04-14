@@ -29,22 +29,18 @@ SOFTWARE.
 class VRA_Rect
 {
 public:
-	explicit    VRA_Rect();
-	explicit    VRA_Rect(int x, int y, int w, int h);
-	SDL_Rect    getSdlRect() const;
-	const int   &getLeft() const;
-	int         getRight() const;
-	const int   &getTop() const;
-	int         getBot() const;
-	bool        hasRectIntersection(const VRA_Rect &rect);
+	explicit        VRA_Rect(int x = 0, int y = 0, int w = 0, int h = 0);
+	virtual         ~VRA_Rect();
+
+	const SDL_Rect  &getSdlRect() const;
+	const int       &getLeft() const;
+	int             getRight() const;
+	const int       &getTop() const;
+	int             getBot() const;
+	bool            hasRectIntersection(const VRA_Rect &rect);
 
 private:
-	int     m_x;
-	int     m_y;
-	int     m_w;
-	int     m_h;
-
+	SDL_Rect    m_sdlRect;
 };
-
 
 #endif //VIK_WRAP_VRA_RECT_H

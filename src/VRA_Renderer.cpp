@@ -21,76 +21,19 @@ SOFTWARE.
 */
 
 #include <iostream>
+#include <optional>
 #include "VRA_Window.h"
 #include "VRA_Renderer.h"
 #include "VRA_Texture.h"
 
 VRA_Renderer::VRA_Renderer(const VRA_Window& window,
-                           bool         auto_choice,
+                           bool         autoChoice,
                            Uint32      sdl_flags)
 {
-	int     index = 0;
+	int     index = (autoChoice) ? -1 : 0;
 
-	if (auto_choice)
-		index = -1;
 	if ((m_ptr = SDL_CreateRenderer(window.getPtr(), index, sdl_flags)) == nullptr)
 		throw std::bad_alloc();
-}
-
-VRA_Renderer::~VRA_Renderer()
-{
-	if (m_ptr)
-		SDL_DestroyRenderer(m_ptr);
-}
-
-void VRA_Renderer::setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
-{
-	SDL_SetRenderDrawColor(m_ptr, r, g, b, a);
-}
-
-void VRA_Renderer::clear()
-{
-	SDL_RenderClear(m_ptr);
-}
-
-void VRA_Renderer::display()
-{
-	SDL_RenderPresent(m_ptr);
-}
-
-void VRA_Renderer::drawRect(const VRA_Rect &rect)
-{
-	SDL_Rect    sdlRect = rect.getSdlRect();
-	SDL_RenderDrawRect(m_ptr, &sdlRect);
-}
-
-void VRA_Renderer::drawTexture(const VRA_Texture &texture, const std::optional<VRA_Rect> &srcRect, const std::optional<VRA_Rect> &dstRect)
-{
-	SDL_Rect sdlSrcRect;
-	SDL_Rect sdlDstRect;
-	SDL_Rect *sdlSrcRectPtr;
-	SDL_Rect *sdlDstRectPtr;
-
-	if (srcRect)
-	{
-		sdlSrcRect = srcRect->getSdlRect();
-		sdlSrcRectPtr = &sdlSrcRect;
-	}
-	else
-		sdlSrcRectPtr = nullptr;
-	if (dstRect)
-	{
-		sdlDstRect = dstRect->getSdlRect();
-		sdlDstRectPtr = &sdlDstRect;
-	}
-	else
-		sdlDstRectPtr = nullptr;
-	SDL_RenderCopy(m_ptr, texture.getPtr(), sdlSrcRectPtr, sdlDstRectPtr);
-}
-
-SDL_Renderer *VRA_Renderer::getPtr() const
-{
-	return m_ptr;
 }
 
 VRA_Renderer::VRA_Renderer(VRA_Renderer &&rend) noexcept : m_ptr(rend.m_ptr)
@@ -107,6 +50,25 @@ VRA_Renderer &VRA_Renderer::operator=(VRA_Renderer &&rend) noexcept
 	return (*this);
 }
 
+VRA_Renderer::~VRA_Renderer()
+{
+	if (m_ptr)
+		SDL_DestroyRenderer(m_ptr);
+}
+
+SDL_Renderer *VRA_Renderer::getPtr() const
+{
+	return m_ptr;
+}
+
+SDL_RendererInfo VRA_Renderer::getInfo() const
+{
+	SDL_RendererInfo    renderInfo;
+
+	SDL_GetRendererInfo(m_ptr, &renderInfo);
+	return (renderInfo);
+}
+
 SDL_Rect VRA_Renderer::getSdlRect() const
 {
 	int     w;
@@ -115,5 +77,80 @@ SDL_Rect VRA_Renderer::getSdlRect() const
 	SDL_GetRendererOutputSize(m_ptr, &w, &h);
 	return ((SDL_Rect){0, 0, w, h});
 }
+
+void VRA_Renderer::setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+{
+	SDL_SetRenderDrawColor(m_ptr, r, g, b, a);
+}
+
+SDL_Color VRA_Renderer::getDrawColor()
+{
+	SDL_Color   drawColor;
+
+	SDL_GetRenderDrawColor(m_ptr, &drawColor.r, &drawColor.g, &drawColor.b, &drawColor.a);
+	return (drawColor);
+}
+
+void VRA_Renderer::setTarget(const std::optional<VRA_Texture> &texture)
+{
+	SDL_SetRenderTarget(m_ptr, texture ? texture->getPtr() : nullptr);
+}
+
+void VRA_Renderer::setDrawBlendMode(SDL_BlendMode sdlBlendMode)
+{
+	SDL_SetRenderDrawBlendMode(m_ptr, sdlBlendMode);
+}
+
+SDL_BlendMode VRA_Renderer::getDrawBlendMode()
+{
+	SDL_BlendMode   sdlBlendMode;
+
+	SDL_GetRenderDrawBlendMode(m_ptr, &sdlBlendMode);
+	return (sdlBlendMode);
+}
+
+void VRA_Renderer::drawRect(const VRA_Rect &rect)
+{
+	SDL_RenderDrawRect(m_ptr, &rect.getSdlRect());
+}
+
+void VRA_Renderer::fillRect(const VRA_Rect &rect)
+{
+	SDL_RenderFillRect(m_ptr, &rect.getSdlRect());
+}
+
+void VRA_Renderer::clear()
+{
+	SDL_RenderClear(m_ptr);
+}
+
+void VRA_Renderer::display()
+{
+	SDL_RenderPresent(m_ptr);
+}
+
+void VRA_Renderer::drawTextureSdl(const VRA_Texture &texture,
+                               const std::optional<SDL_Rect> &srcRect,
+                               const std::optional<SDL_Rect> &dstRect)
+{
+	SDL_RenderCopy(m_ptr, texture.getPtr(),
+	               srcRect ? &*srcRect : nullptr,
+	               dstRect ? &*dstRect : nullptr);
+}
+
+void VRA_Renderer::drawTexture(const VRA_Texture &texture,
+							   const std::optional<VRA_Rect> &srcRect,
+							   const std::optional<VRA_Rect> &dstRect)
+{
+	SDL_RenderCopy(m_ptr, texture.getPtr(),
+				   srcRect ? &srcRect->getSdlRect() : nullptr,
+				   dstRect ? &dstRect->getSdlRect() : nullptr);
+}
+
+
+
+
+
+
 
 

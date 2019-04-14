@@ -22,38 +22,42 @@ SOFTWARE.
 
 #include "VRA_Rect.h"
 
+VRA_Rect::VRA_Rect(int x, int y, int w, int h) : m_sdlRect((SDL_Rect){x, y, w, h}) {}
 
-VRA_Rect::VRA_Rect() : m_x(0), m_y(0), m_w(0), m_h(0) {}
+VRA_Rect::~VRA_Rect() {}
 
-VRA_Rect::VRA_Rect(int x, int y, int w, int h) : m_x(x), m_y(y), m_w(w), m_h(h) {}
-
-SDL_Rect    VRA_Rect::getSdlRect() const
+const SDL_Rect &VRA_Rect::getSdlRect() const
 {
-	return ((SDL_Rect){m_x, m_y, m_w, m_h});
+	return (m_sdlRect);
 }
 
 const int   &VRA_Rect::getLeft() const
 {
-	return (m_x);
+	return (m_sdlRect.x);
 }
 
 int         VRA_Rect::getRight() const
 {
-	return (m_x + m_w);
+	return (m_sdlRect.x + m_sdlRect.w);
 }
 
 const int   &VRA_Rect::getTop() const
 {
-	return (m_y);
+	return (m_sdlRect.y);
 }
 
 int         VRA_Rect::getBot() const
 {
-	return (m_y + m_h);
+	return (m_sdlRect.y + m_sdlRect.h);
 }
 
 bool        VRA_Rect::hasRectIntersection(const VRA_Rect &rect)
 {
-	return (rect.getLeft() > m_x && rect.getRight() < m_x + m_w && rect.getTop() > m_y && rect.getBot() < m_y + m_h);
+	return (rect.getLeft() > m_sdlRect.x &&
+			rect.getRight() < m_sdlRect.x + m_sdlRect.w &&
+			rect.getTop() > m_sdlRect.y &&
+			rect.getBot() < m_sdlRect.y + m_sdlRect.h);
 }
+
+
 
