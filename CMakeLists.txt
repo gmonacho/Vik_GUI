@@ -17,5 +17,5 @@ add_executable(${PROJECT_NAME}  main.cpp
                                 include/VRA_Window.h
                                 include/VRA_Renderer.h
                                 include/VRA_Event.h
-                                include/VRA_Rect.h src/VRA_Texture.cpp include/VRA_Texture.h)
+                                include/VRA_Rect.h src/VRA_Texture.cpp include/VRA_Texture.h src/VRA_Point.cpp include/VRA_Point.h include/VRA_Line.cpp include/VRA_Line.h)
 target_link_libraries(${PROJECT_NAME} SDL2::Main SDL2::Image)

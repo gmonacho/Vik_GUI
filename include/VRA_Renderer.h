@@ -27,6 +27,8 @@ SOFTWARE.
 #include <optional>
 #include "VRA_Window.h"
 #include "VRA_Rect.h"
+#include "VRA_Point.h"
+#include "VRA_Line.h"
 
 class VRA_Texture;
 
@@ -59,9 +61,6 @@ public:
 	void                setDrawBlendMode(SDL_BlendMode sdlBlendMode);
 	SDL_BlendMode       getDrawBlendMode();
 
-	void                drawRect(const VRA_Rect &rect);
-	void                fillRect(const VRA_Rect &rect);
-
 	void                clear();
 
 	void                display();
@@ -73,6 +72,13 @@ public:
 	void                drawTexture(const VRA_Texture &texture,
 									const std::optional<VRA_Rect> &srcRect,
 		                            const std::optional<VRA_Rect> &dstRect);
+
+	void                drawPoint(const VRA_Point &point);
+
+	void                drawLine(const VRA_Line &line);
+
+	void                drawRect(const VRA_Rect &rect);
+	void                fillRect(const VRA_Rect &rect);
 
 private:
 	SDL_Renderer    *m_ptr; 

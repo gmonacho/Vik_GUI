@@ -48,6 +48,7 @@ public:
 	VRA_Renderer    *getRend() const;
 
 	void            setOpacity(float opacity);
+
 	float           getOpacity() const;
 
 	void            setBrightness(float brightness);

@@ -26,6 +26,20 @@ VRA_Rect::VRA_Rect(int x, int y, int w, int h) : m_sdlRect((SDL_Rect){x, y, w, h
 
 VRA_Rect::~VRA_Rect() {}
 
+VRA_Rect &VRA_Rect::operator+=(const VRA_Point &point)
+{
+	m_sdlRect.x += point.getX();
+	m_sdlRect.y += point.getY();
+	return (*this);
+}
+
+VRA_Rect &VRA_Rect::operator-=(const VRA_Point &point)
+{
+	m_sdlRect.x -= point.getX();
+	m_sdlRect.y -= point.getY();
+	return (*this);
+}
+
 const SDL_Rect &VRA_Rect::getSdlRect() const
 {
 	return (m_sdlRect);
@@ -51,6 +65,24 @@ int         VRA_Rect::getBot() const
 	return (m_sdlRect.y + m_sdlRect.h);
 }
 
+const int &VRA_Rect::getX() const
+{
+	return (m_sdlRect.x);
+}
+
+const int &VRA_Rect::getY() const
+{
+	return (m_sdlRect.y);
+}
+const int &VRA_Rect::getW() const
+{
+	return (m_sdlRect.w);
+}
+const int &VRA_Rect::getH() const
+{
+	return (m_sdlRect.h);
+}
+
 bool        VRA_Rect::hasRectIntersection(const VRA_Rect &rect)
 {
 	return (rect.getLeft() > m_sdlRect.x &&
@@ -59,5 +91,47 @@ bool        VRA_Rect::hasRectIntersection(const VRA_Rect &rect)
 			rect.getBot() < m_sdlRect.y + m_sdlRect.h);
 }
 
+bool operator==(const VRA_Rect &firstRect, const VRA_Rect &secondRect)
+{
+	return (firstRect.getX() == secondRect.getX() &&
+			firstRect.getY() == secondRect.getY() &&
+			firstRect.getW() == secondRect.getW() &&
+			firstRect.getH() == secondRect.getH());
+}
 
+VRA_Rect operator+(const VRA_Rect &firstRect, const VRA_Rect &secondRect)
+{
+	VRA_Rect    newRect{firstRect.getX() + secondRect.getX(),
+					    firstRect.getY() + secondRect.getY(),
+					    firstRect.getW() + secondRect.getW(),
+					    firstRect.getH() + secondRect.getH()};
+	return (newRect);
+}
+
+VRA_Rect operator-(const VRA_Rect &firstRect, const VRA_Rect &secondRect)
+{
+	VRA_Rect    newRect{firstRect.getX() - secondRect.getX(),
+	                    firstRect.getY() - secondRect.getY(),
+	                    firstRect.getW() - secondRect.getW(),
+	                    firstRect.getH() - secondRect.getH()};
+	return (newRect);
+}
+
+VRA_Rect operator+(const VRA_Rect &rect, const VRA_Point &point)
+{
+	VRA_Rect    newRect{rect.getX() + point.getX(),
+						rect.getY() + point.getY(),
+						rect.getW(),
+						rect.getH()};
+	return (newRect);
+}
+
+VRA_Rect operator-(const VRA_Rect &rect, const VRA_Point &point)
+{
+	VRA_Rect    newRect{rect.getX() - point.getX(),
+	                    rect.getY() - point.getY(),
+	                    rect.getW(),
+	                    rect.getH()};
+	return (newRect);
+}
 

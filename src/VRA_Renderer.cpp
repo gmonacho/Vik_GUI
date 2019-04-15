@@ -109,16 +109,6 @@ SDL_BlendMode VRA_Renderer::getDrawBlendMode()
 	return (sdlBlendMode);
 }
 
-void VRA_Renderer::drawRect(const VRA_Rect &rect)
-{
-	SDL_RenderDrawRect(m_ptr, &rect.getSdlRect());
-}
-
-void VRA_Renderer::fillRect(const VRA_Rect &rect)
-{
-	SDL_RenderFillRect(m_ptr, &rect.getSdlRect());
-}
-
 void VRA_Renderer::clear()
 {
 	SDL_RenderClear(m_ptr);
@@ -127,6 +117,26 @@ void VRA_Renderer::clear()
 void VRA_Renderer::display()
 {
 	SDL_RenderPresent(m_ptr);
+}
+
+void VRA_Renderer::drawPoint(const VRA_Point &point)
+{
+	SDL_RenderDrawPoint(m_ptr, point.getX(), point.getY());
+}
+
+void VRA_Renderer::drawLine(const VRA_Line &line)
+{
+	SDL_RenderDrawLine(m_ptr, line.getX1(), line.getY1(), line.getX2(), line.getY2());
+}
+
+void VRA_Renderer::drawRect(const VRA_Rect &rect)
+{
+	SDL_RenderDrawRect(m_ptr, &rect.getSdlRect());
+}
+
+void VRA_Renderer::fillRect(const VRA_Rect &rect)
+{
+	SDL_RenderFillRect(m_ptr, &rect.getSdlRect());
 }
 
 void VRA_Renderer::drawTextureSdl(const VRA_Texture &texture,
@@ -146,6 +156,8 @@ void VRA_Renderer::drawTexture(const VRA_Texture &texture,
 				   srcRect ? &srcRect->getSdlRect() : nullptr,
 				   dstRect ? &dstRect->getSdlRect() : nullptr);
 }
+
+
 
 
 

@@ -25,6 +25,7 @@ SOFTWARE.
 
 
 #include <SDL_rect.h>
+#include "VRA_Point.h"
 
 class VRA_Rect
 {
@@ -32,15 +33,31 @@ public:
 	explicit        VRA_Rect(int x = 0, int y = 0, int w = 0, int h = 0);
 	virtual         ~VRA_Rect();
 
+	VRA_Rect        &operator+=(const VRA_Point &point);
+	VRA_Rect        &operator-=(const VRA_Point &point);
+
 	const SDL_Rect  &getSdlRect() const;
 	const int       &getLeft() const;
 	int             getRight() const;
 	const int       &getTop() const;
 	int             getBot() const;
+	const int       &getX() const;
+	const int       &getY() const;
+	const int       &getW() const;
+	const int       &getH() const;
 	bool            hasRectIntersection(const VRA_Rect &rect);
 
 private:
 	SDL_Rect    m_sdlRect;
 };
+
+bool       operator==(const VRA_Rect &firstRect, const VRA_Rect &secondRect);
+
+VRA_Rect   operator+(const VRA_Rect &firstRect, const VRA_Rect &secondRect);
+VRA_Rect   operator-(const VRA_Rect &firstRect, const VRA_Rect &secondRect);
+
+
+VRA_Rect   operator+(const VRA_Rect &rect, const VRA_Point &point);
+VRA_Rect   operator-(const VRA_Rect &rect, const VRA_Point &point);
 
 #endif //VIK_WRAP_VRA_RECT_H
