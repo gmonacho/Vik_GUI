@@ -24,7 +24,7 @@ SOFTWARE.
 
 VRA_Rect::VRA_Rect(int x, int y, int w, int h) : m_sdlRect((SDL_Rect){x, y, w, h}) {}
 
-VRA_Rect::~VRA_Rect() {}
+VRA_Rect::~VRA_Rect() = default;
 
 VRA_Rect &VRA_Rect::operator+=(const VRA_Point &point)
 {
@@ -89,6 +89,11 @@ bool        VRA_Rect::hasRectIntersection(const VRA_Rect &rect)
 			rect.getRight() < m_sdlRect.x + m_sdlRect.w &&
 			rect.getTop() > m_sdlRect.y &&
 			rect.getBot() < m_sdlRect.y + m_sdlRect.h);
+}
+
+void VRA_Rect::setSdlRect(const SDL_Rect &rect)
+{
+	m_sdlRect = rect;
 }
 
 bool operator==(const VRA_Rect &firstRect, const VRA_Rect &secondRect)

@@ -61,6 +61,9 @@ public:
 	void                setDrawBlendMode(SDL_BlendMode sdlBlendMode);
 	SDL_BlendMode       getDrawBlendMode();
 
+	void                setViewport(const VRA_Rect &rect);
+	VRA_Rect            getViewport() const;
+
 	void                clear();
 
 	void                display();

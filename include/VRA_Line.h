@@ -15,8 +15,13 @@ public:
 
 	VRA_Line(const VRA_Point &p1, const VRA_Point &p2);
 
+	VRA_Line    &operator+=(const VRA_Point &point);
+
 	VRA_Point   getP1() const;
+	void        setP1(const int &x, const int &y);
+
 	VRA_Point   getP2() const;
+	void        setP2(const int &x, const int &y);
 
 	const int   &getX1() const;
 	const int   &getY1() const;

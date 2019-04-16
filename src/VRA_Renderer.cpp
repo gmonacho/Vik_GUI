@@ -109,6 +109,21 @@ SDL_BlendMode VRA_Renderer::getDrawBlendMode()
 	return (sdlBlendMode);
 }
 
+void VRA_Renderer::setViewport(const VRA_Rect &rect)
+{
+	SDL_RenderSetViewport(m_ptr, &rect.getSdlRect());
+}
+
+VRA_Rect VRA_Renderer::getViewport() const
+{
+	VRA_Rect    rect{};
+	SDL_Rect    sdlRect;
+
+	SDL_RenderGetViewport(m_ptr, &sdlRect);
+	rect.setSdlRect(sdlRect);
+	return (rect);
+}
+
 void VRA_Renderer::clear()
 {
 	SDL_RenderClear(m_ptr);
@@ -156,6 +171,8 @@ void VRA_Renderer::drawTexture(const VRA_Texture &texture,
 				   srcRect ? &srcRect->getSdlRect() : nullptr,
 				   dstRect ? &dstRect->getSdlRect() : nullptr);
 }
+
+
 
 
 

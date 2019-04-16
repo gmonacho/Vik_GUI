@@ -37,6 +37,8 @@ public:
 	VRA_Rect        &operator-=(const VRA_Point &point);
 
 	const SDL_Rect  &getSdlRect() const;
+	void            setSdlRect(const SDL_Rect &rect);
+
 	const int       &getLeft() const;
 	int             getRight() const;
 	const int       &getTop() const;
