@@ -42,25 +42,24 @@ public:
 
 	virtual     ~VRA_Window();
 
-	SDL_Window  *getPtr() const;
+	SDL_Window      *getPtr() const;
 
 	void            setRend(VRA_Renderer *rend);
 	VRA_Renderer    *getRend() const;
 
-	void            setOpacity(float opacity);
-
+	void            setOpacity(const float &opacity);
 	float           getOpacity() const;
 
-	void            setBrightness(float brightness);
+	void            setBrightness(const float &brightness);
 	float           getBrightness() const;
 
 	void            setSize(int width, int height);
-	void            getSize(int &width, int &height) const;
+	void            getSize(int *width, int *height) const;
 
-	void            setBordered(bool bordered);
-	void            setFullscreen(Uint32 flags);
+	void            setBordered(const bool &bordered);
+	void            setFullscreen(const Uint32 &flags);
 
-	void            setResizable(bool resizable);
+	void            setResizable(const bool &resizable);
 	void            show();
 	void            hide();
 	void            raise();
@@ -68,7 +67,6 @@ public:
 private:
 	SDL_Window      *m_ptr;
 	VRA_Renderer    *m_rend;
-
 };
 
 

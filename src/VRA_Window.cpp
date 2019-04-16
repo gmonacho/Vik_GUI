@@ -49,7 +49,7 @@ VRA_Renderer *VRA_Window::getRend() const
 	return (m_rend);
 }
 
-void VRA_Window::setOpacity(float opacity)
+void VRA_Window::setOpacity(const float &opacity)
 {
 	SDL_SetWindowOpacity(m_ptr, opacity);
 }
@@ -62,7 +62,7 @@ float VRA_Window::getOpacity() const
 	return (opacity);
 }
 
-void VRA_Window::setBrightness(float brightness)
+void VRA_Window::setBrightness(const float &brightness)
 {
 	SDL_SetWindowBrightness(m_ptr, brightness);
 }
@@ -72,12 +72,12 @@ float VRA_Window::getBrightness() const
 	return (SDL_GetWindowBrightness(m_ptr));
 }
 
-void VRA_Window::setBordered(bool bordered)
+void VRA_Window::setBordered(const bool &bordered)
 {
 	SDL_SetWindowBordered(m_ptr, static_cast<SDL_bool>(bordered));
 }
 
-void VRA_Window::setFullscreen(Uint32 flags)
+void VRA_Window::setFullscreen(const Uint32 &flags)
 {
 	SDL_SetWindowFullscreen(m_ptr, flags);
 }
@@ -88,12 +88,12 @@ void VRA_Window::setSize(int width, int height)
 		SDL_SetWindowSize(m_ptr, width, height);
 }
 
-void VRA_Window::getSize(int &width, int &height) const
+void VRA_Window::getSize(int *width, int *height) const
 {
-	SDL_GetWindowSize(m_ptr, &width, &height);
+	SDL_GetWindowSize(m_ptr, width, height);
 }
 
-void VRA_Window::setResizable(bool resizable)
+void VRA_Window::setResizable(const bool &resizable)
 {
 	SDL_SetWindowResizable(m_ptr, static_cast<SDL_bool>(resizable));
 }
@@ -113,9 +113,10 @@ void VRA_Window::raise()
 	SDL_RaiseWindow(m_ptr);
 }
 
-VRA_Window::VRA_Window(VRA_Window &&win) noexcept : m_ptr(win.m_ptr)
+VRA_Window::VRA_Window(VRA_Window &&win) noexcept : m_ptr(win.m_ptr), m_rend(win.m_rend)
 {
 	win.m_ptr = nullptr;
+	win.m_rend = nullptr;
 }
 
 VRA_Window& VRA_Window::operator=(VRA_Window &&win) noexcept

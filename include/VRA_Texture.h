@@ -23,6 +23,9 @@ SOFTWARE.
 #ifndef VIK_WRAP_VRA_TEXTURE_H
 #define VIK_WRAP_VRA_TEXTURE_H
 
+#include <optional>
+#include "VRA_Rect.h"
+
 class VRA_Renderer;
 
 class VRA_Texture
@@ -31,8 +34,23 @@ public:
 	explicit        VRA_Texture();
 	explicit        VRA_Texture(const VRA_Renderer &rend, const std::string &file);
 	explicit        VRA_Texture(const VRA_Renderer &rend, Uint32 format, int access, int w, int h);
+
+	VRA_Texture&    operator=(VRA_Texture&& texture) noexcept;
+	virtual ~VRA_Texture();
+
+	VRA_Texture     &update(const std::optional<VRA_Rect> &rect, const void *pixels, const int &pitch);
+
 	SDL_Texture     *getPtr() const;
-	SDL_Rect getSdlRect() const;
+	SDL_Rect        getSdlRect() const;
+
+	void            setBlendMode(const SDL_BlendMode &blendMode);
+	SDL_BlendMode   getBlendMode();
+
+	void            setColorMod(const Uint8 &r, const Uint8 &g, const Uint8 &b);
+	SDL_Color       getColorMod();
+
+	void            setAlphaMod(const Uint8 &alpha);
+	Uint8           GetAlphaMod();
 
 private:
 	SDL_Texture     *m_ptr;

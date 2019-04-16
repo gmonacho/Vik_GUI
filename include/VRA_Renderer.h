@@ -29,21 +29,20 @@ SOFTWARE.
 #include "VRA_Rect.h"
 #include "VRA_Point.h"
 #include "VRA_Line.h"
+#include "VRA_Texture.h"
 
-class VRA_Texture;
+class VRA_Window;
 
 class VRA_Renderer
 {
 public:
+
 	explicit        VRA_Renderer(const VRA_Window   &window,
 			                     bool               autoChoice,
 			                     Uint32             sdl_flags);
 
 	VRA_Renderer(VRA_Renderer&& rend) noexcept;
 	VRA_Renderer&   operator=(VRA_Renderer&& rend) noexcept;
-
-	VRA_Renderer(const VRA_Renderer& rend) = delete;
-	VRA_Renderer&   operator=(const VRA_Renderer& rend) = delete;
 
 	virtual             ~VRA_Renderer();
 
@@ -63,6 +62,8 @@ public:
 
 	void                setViewport(const VRA_Rect &rect);
 	VRA_Rect            getViewport() const;
+
+//	void                *readPixels(const VRA_Rect &rect, Uint32 sdlFormat, const int &pitch);
 
 	void                clear();
 

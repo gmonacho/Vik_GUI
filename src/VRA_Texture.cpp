@@ -27,6 +27,7 @@ SOFTWARE.
 #include "VRA_Renderer.h"
 
 
+
 VRA_Texture::VRA_Texture() : m_ptr(nullptr) {}
 
 VRA_Texture::VRA_Texture(const VRA_Renderer &rend, const std::string &file)
@@ -55,6 +56,27 @@ VRA_Texture::VRA_Texture(const VRA_Renderer &rend, Uint32 format, int access, in
 		throw (std::bad_alloc());
 }
 
+VRA_Texture &VRA_Texture::operator=(VRA_Texture &&texture) noexcept
+{
+	if (m_ptr)
+		SDL_DestroyTexture(m_ptr);
+	m_ptr = texture.m_ptr;
+	texture.m_ptr = nullptr;
+	return (*this);
+}
+
+
+VRA_Texture::~VRA_Texture()
+{
+	SDL_DestroyTexture(m_ptr);
+}
+
+VRA_Texture &VRA_Texture::update(const std::optional<VRA_Rect> &rect, const void *pixels, const int &pitch)
+{
+	SDL_UpdateTexture(m_ptr, rect ? &rect->getSdlRect() : nullptr, pixels, pitch);
+	return (*this);
+}
+
 SDL_Texture *VRA_Texture::getPtr() const
 {
 	return m_ptr;
@@ -68,3 +90,47 @@ SDL_Rect VRA_Texture::getSdlRect() const
 	SDL_QueryTexture(nullptr, nullptr, nullptr, &w, &h);
 	return ((SDL_Rect){0, 0, w, h});
 }
+
+void VRA_Texture::setBlendMode(const SDL_BlendMode &blendMode)
+{
+	SDL_SetTextureBlendMode(m_ptr, blendMode);
+}
+
+void VRA_Texture::setColorMod(const Uint8 &r, const Uint8 &g, const Uint8 &b)
+{
+	SDL_SetTextureColorMod(m_ptr, r, g, b);
+}
+
+SDL_BlendMode VRA_Texture::getBlendMode()
+{
+	SDL_BlendMode   blendMode;
+
+	SDL_GetTextureBlendMode(m_ptr, &blendMode);
+	return (blendMode);
+}
+
+SDL_Color VRA_Texture::getColorMod()
+{
+	SDL_Color   colorMod;
+
+	SDL_GetTextureColorMod(m_ptr, &colorMod.r, &colorMod.g, &colorMod.b);
+	return  (colorMod);
+}
+
+void VRA_Texture::setAlphaMod(const Uint8 &alpha)
+{
+	SDL_SetTextureAlphaMod(m_ptr, alpha);
+}
+
+Uint8 VRA_Texture::GetAlphaMod()
+{
+	Uint8   alpha;
+
+	SDL_GetTextureAlphaMod(m_ptr, &alpha);
+	return 0;
+}
+
+
+
+
+

@@ -28,6 +28,7 @@ int     main()
 	bool            loop{true};
 
 	thirdPoint = firstPoint + secondPoint;
+	win.setOpacity(0.5);
 	rect = rect + thirdPoint;
     while (loop)
     {
