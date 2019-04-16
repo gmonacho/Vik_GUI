@@ -154,24 +154,26 @@ void VRA_Renderer::fillRect(const VRA_Rect &rect)
 	SDL_RenderFillRect(m_ptr, &rect.getSdlRect());
 }
 
-void VRA_Renderer::drawTextureSdl(const VRA_Texture &texture,
-                               const std::optional<SDL_Rect> &srcRect,
-                               const std::optional<SDL_Rect> &dstRect)
-{
-	SDL_RenderCopy(m_ptr, texture.getPtr(),
-	               srcRect ? &*srcRect : nullptr,
-	               dstRect ? &*dstRect : nullptr);
-}
-
 void VRA_Renderer::drawTexture(const VRA_Texture &texture,
 							   const std::optional<VRA_Rect> &srcRect,
 							   const std::optional<VRA_Rect> &dstRect)
 {
-	SDL_RenderCopy(m_ptr, texture.getPtr(),
-				   srcRect ? &srcRect->getSdlRect() : nullptr,
-				   dstRect ? &dstRect->getSdlRect() : nullptr);
+	if (texture.getFlip() == SDL_FLIP_NONE && texture.getAngle() == 0)
+		SDL_RenderCopy(m_ptr, texture.getPtr(),
+					   srcRect ? &srcRect->getSdlRect() : nullptr,
+					   dstRect ? &dstRect->getSdlRect() : nullptr);
+	else
+	{
+		std::cout  << texture.getFlip();
+		SDL_RenderCopyEx(m_ptr,
+				         texture.getPtr(),
+				         srcRect ? &srcRect->getSdlRect() : nullptr,
+		                 dstRect ? &dstRect->getSdlRect() : nullptr,
+		                 texture.getAngle(),
+		                 &texture.getCenter().getSdlPoint(),
+		                 texture.getFlip());
+	}
 }
-
 
 
 

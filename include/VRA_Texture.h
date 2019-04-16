@@ -25,35 +25,48 @@ SOFTWARE.
 
 #include <optional>
 #include "VRA_Rect.h"
+#include "VRA_Point.h"
 
 class VRA_Renderer;
 
 class VRA_Texture
 {
 public:
-	explicit        VRA_Texture();
-	explicit        VRA_Texture(const VRA_Renderer &rend, const std::string &file);
-	explicit        VRA_Texture(const VRA_Renderer &rend, Uint32 format, int access, int w, int h);
+	explicit                    VRA_Texture();
+	explicit                    VRA_Texture(const VRA_Renderer &rend, const std::string &file);
+	explicit                    VRA_Texture(const VRA_Renderer &rend, Uint32 format, int access, int w, int h);
 
-	VRA_Texture&    operator=(VRA_Texture&& texture) noexcept;
-	virtual ~VRA_Texture();
+	VRA_Texture&                operator=(VRA_Texture&& texture) noexcept;
+	virtual                     ~VRA_Texture();
 
-	VRA_Texture     &update(const std::optional<VRA_Rect> &rect, const void *pixels, const int &pitch);
+	VRA_Texture                 &update(const std::optional<VRA_Rect> &rect, const void *pixels, const int &pitch);
 
-	SDL_Texture     *getPtr() const;
-	SDL_Rect        getSdlRect() const;
+	SDL_Texture                 *getPtr() const;
+	SDL_Rect                    getSdlRect() const;
 
-	void            setBlendMode(const SDL_BlendMode &blendMode);
-	SDL_BlendMode   getBlendMode();
+	const SDL_RendererFlip      &getFlip() const;
+	void                        setFlip(const SDL_RendererFlip &flip);
 
-	void            setColorMod(const Uint8 &r, const Uint8 &g, const Uint8 &b);
-	SDL_Color       getColorMod();
+	const double                &getAngle() const;
+	void                        rotate(const double &angle);
 
-	void            setAlphaMod(const Uint8 &alpha);
-	Uint8           GetAlphaMod();
+	const VRA_Point             &getCenter() const;
+	void                        setCenter(const VRA_Point &center);
+
+	void                        setBlendMode(const SDL_BlendMode &blendMode);
+	SDL_BlendMode               getBlendMode();
+
+	void                        setColorMod(const Uint8 &r, const Uint8 &g, const Uint8 &b);
+	SDL_Color                   getColorMod();
+
+	void                        setAlphaMod(const Uint8 &alpha);
+	Uint8                       GetAlphaMod();
 
 private:
-	SDL_Texture     *m_ptr;
+	SDL_Texture         *m_ptr;
+	SDL_RendererFlip    m_flip;
+	VRA_Point           m_center;
+	double              m_angle;
 
 };
 

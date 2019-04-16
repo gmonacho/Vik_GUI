@@ -19,6 +19,7 @@ int     main()
 	VRA_Texture     testTexture{rend, "/home/gal/ViKoDe/Vik_Wrap/test.png"};
 	VRA_Rect        rect{10, 10, 30, 30};
 	VRA_Rect        testRect{50, 50, 100, 100};
+	VRA_Rect        testRect2{200, 200, 100, 100};
 	SDL_Event       sdl_event;
 	VRA_Event       event;
 	VRA_Point       firstPoint{10, 10};
@@ -41,7 +42,10 @@ int     main()
     	rend.drawPoint(secondPoint);
     	rend.drawPoint(thirdPoint);
     	rend.drawRect(rect);
+    	testTexture.setFlip(SDL_FLIP_NONE);
     	rend.drawTexture(testTexture, nullopt, testRect);
+    	testTexture.setFlip(SDL_FLIP_HORIZONTAL);
+    	rend.drawTexture(testTexture, nullopt, testRect2);
         if(sdl_event.type == SDL_QUIT || event.isKeyPressed(SDL_SCANCODE_ESCAPE))
             loop = false;
         rend.display();

@@ -28,12 +28,14 @@ SOFTWARE.
 
 
 
-VRA_Texture::VRA_Texture() : m_ptr(nullptr) {}
+VRA_Texture::VRA_Texture() : m_ptr(nullptr), m_flip(SDL_FLIP_NONE), m_center(VRA_Point{}), m_angle(0){}
 
-VRA_Texture::VRA_Texture(const VRA_Renderer &rend, const std::string &file)
+VRA_Texture::VRA_Texture(const VRA_Renderer &rend, const std::string &file) : m_flip(SDL_FLIP_NONE), m_angle(0)
 {
 	SDL_Surface     *tmp;
 	const char      *tmpStr;
+	int             w;
+	int             h;
 
 	tmpStr = file.c_str();
 	tmp = IMG_Load(tmpStr);
@@ -47,9 +49,11 @@ VRA_Texture::VRA_Texture(const VRA_Renderer &rend, const std::string &file)
 		std::cout << SDL_GetError() << std::endl;
 		throw (std::bad_alloc());
 	}
+	SDL_QueryTexture(m_ptr, nullptr, nullptr, &w, &h);
+	m_center = VRA_Point{w / 2, h / 2};
 }
 
-VRA_Texture::VRA_Texture(const VRA_Renderer &rend, Uint32 format, int access, int w, int h)
+VRA_Texture::VRA_Texture(const VRA_Renderer &rend, Uint32 format, int access, int w, int h) : m_flip(SDL_FLIP_NONE), m_center(VRA_Point{w / 2, h / 2}), m_angle(0)
 {
 	m_ptr = SDL_CreateTexture(rend.getPtr(), format,access, w, h);
 	if (!m_ptr)
@@ -91,6 +95,37 @@ SDL_Rect VRA_Texture::getSdlRect() const
 	return ((SDL_Rect){0, 0, w, h});
 }
 
+
+const SDL_RendererFlip &VRA_Texture::getFlip() const
+{
+	return (m_flip);
+}
+
+void VRA_Texture::setFlip(const SDL_RendererFlip &flip)
+{
+	m_flip = flip;
+}
+
+const double &VRA_Texture::getAngle() const
+{
+	return (m_angle);
+}
+
+void VRA_Texture::rotate(const double &angle)
+{
+	m_angle += angle;
+}
+
+const VRA_Point& VRA_Texture::getCenter() const
+{
+	return (m_center);
+}
+
+void VRA_Texture::setCenter(const VRA_Point& center)
+{
+	m_center = center;
+}
+
 void VRA_Texture::setBlendMode(const SDL_BlendMode &blendMode)
 {
 	SDL_SetTextureBlendMode(m_ptr, blendMode);
@@ -129,6 +164,9 @@ Uint8 VRA_Texture::GetAlphaMod()
 	SDL_GetTextureAlphaMod(m_ptr, &alpha);
 	return 0;
 }
+
+
+
 
 
 

@@ -69,10 +69,6 @@ public:
 
 	void                display();
 
-	void                drawTextureSdl(const VRA_Texture &texture,
-									const std::optional<SDL_Rect> &srcRect,
-		                            const std::optional<SDL_Rect> &dstRect);
-
 	void                drawTexture(const VRA_Texture &texture,
 									const std::optional<VRA_Rect> &srcRect,
 		                            const std::optional<VRA_Rect> &dstRect);
@@ -85,7 +81,7 @@ public:
 	void                fillRect(const VRA_Rect &rect);
 
 private:
-	SDL_Renderer    *m_ptr; 
+	SDL_Renderer        *m_ptr;
 
 };
 
