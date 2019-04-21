@@ -30,7 +30,11 @@ SOFTWARE.
 
 VRA_Texture::VRA_Texture() : m_ptr(nullptr), m_flip(SDL_FLIP_NONE), m_center(VRA_Point{}), m_angle(0){}
 
-VRA_Texture::VRA_Texture(const VRA_Renderer &rend, const std::string &file) : m_flip(SDL_FLIP_NONE), m_angle(0)
+VRA_Texture::VRA_Texture(SDL_Texture *sdlTexture) : m_ptr(sdlTexture), m_flip(SDL_FLIP_NONE), m_center(VRA_Point{}), m_angle(0){}
+
+VRA_Texture::VRA_Texture(const VRA_Renderer &rend, const std::string &file) : m_flip(SDL_FLIP_NONE),
+																			  m_center(VRA_Point{}),
+																			  m_angle(0)
 {
 	SDL_Surface     *tmp;
 	const char      *tmpStr;
@@ -50,7 +54,6 @@ VRA_Texture::VRA_Texture(const VRA_Renderer &rend, const std::string &file) : m_
 		throw (std::bad_alloc());
 	}
 	SDL_QueryTexture(m_ptr, nullptr, nullptr, &w, &h);
-	m_center = VRA_Point{w / 2, h / 2};
 }
 
 VRA_Texture::VRA_Texture(const VRA_Renderer &rend, Uint32 format, int access, int w, int h) : m_flip(SDL_FLIP_NONE), m_center(VRA_Point{w / 2, h / 2}), m_angle(0)
@@ -60,19 +63,10 @@ VRA_Texture::VRA_Texture(const VRA_Renderer &rend, Uint32 format, int access, in
 		throw (std::bad_alloc());
 }
 
-VRA_Texture &VRA_Texture::operator=(VRA_Texture &&texture) noexcept
+VRA_Texture::~VRA_Texture()
 {
 	if (m_ptr)
 		SDL_DestroyTexture(m_ptr);
-	m_ptr = texture.m_ptr;
-	texture.m_ptr = nullptr;
-	return (*this);
-}
-
-
-VRA_Texture::~VRA_Texture()
-{
-	SDL_DestroyTexture(m_ptr);
 }
 
 VRA_Texture &VRA_Texture::update(const std::optional<VRA_Rect> &rect, const void *pixels, const int &pitch)
@@ -136,7 +130,7 @@ void VRA_Texture::setColorMod(const Uint8 &r, const Uint8 &g, const Uint8 &b)
 	SDL_SetTextureColorMod(m_ptr, r, g, b);
 }
 
-SDL_BlendMode VRA_Texture::getBlendMode()
+SDL_BlendMode VRA_Texture::getBlendMode() const
 {
 	SDL_BlendMode   blendMode;
 
@@ -144,7 +138,7 @@ SDL_BlendMode VRA_Texture::getBlendMode()
 	return (blendMode);
 }
 
-SDL_Color VRA_Texture::getColorMod()
+SDL_Color VRA_Texture::getColorMod() const
 {
 	SDL_Color   colorMod;
 
@@ -157,17 +151,13 @@ void VRA_Texture::setAlphaMod(const Uint8 &alpha)
 	SDL_SetTextureAlphaMod(m_ptr, alpha);
 }
 
-Uint8 VRA_Texture::GetAlphaMod()
+Uint8 VRA_Texture::GetAlphaMod() const
 {
 	Uint8   alpha;
 
 	SDL_GetTextureAlphaMod(m_ptr, &alpha);
 	return 0;
 }
-
-
-
-
 
 
 

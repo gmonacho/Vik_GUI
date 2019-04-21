@@ -22,6 +22,9 @@ SOFTWARE.
 
 #include "VRA_Line.h"
 
+
+VRA_Line::VRA_Line() : m_x1(0), m_y1(0), m_x2(0), m_y2(0) {}
+
 VRA_Line::VRA_Line(int x1, int y1, int x2, int y2) : m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2) {}
 
 VRA_Line::VRA_Line(const VRA_Point &p1, const VRA_Point &p2) : m_x1(p1.getX()),
@@ -92,6 +95,7 @@ const int &VRA_Line::getY2() const
 {
 	return (m_y2);
 }
+
 
 
 

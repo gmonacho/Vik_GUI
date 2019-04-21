@@ -164,7 +164,6 @@ void VRA_Renderer::drawTexture(const VRA_Texture &texture,
 					   dstRect ? &dstRect->getSdlRect() : nullptr);
 	else
 	{
-		std::cout  << texture.getFlip();
 		SDL_RenderCopyEx(m_ptr,
 				         texture.getPtr(),
 				         srcRect ? &srcRect->getSdlRect() : nullptr,

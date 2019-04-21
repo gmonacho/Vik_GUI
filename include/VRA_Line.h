@@ -29,6 +29,8 @@ SOFTWARE.
 class VRA_Line
 {
 public:
+	VRA_Line();
+
 	VRA_Line(int x1, int y1, int x2, int y2);
 
 	VRA_Line(const VRA_Point &p1, const VRA_Point &p2);

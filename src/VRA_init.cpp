@@ -21,6 +21,7 @@ SOFTWARE.
 */
 
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 #include "SDL2/SDL.h"
 #include "vik_wrap.h"
 
@@ -30,5 +31,7 @@ int     VRA_init(Uint32 flags, int imgFlags)
         return (0);
     if (imgFlags != IMG_Init(imgFlags))
     	return (0);
+	if (TTF_Init() < 0)
+		return (0);
     return (1);
 }
