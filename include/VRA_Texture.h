@@ -38,6 +38,10 @@ public:
 	explicit                    VRA_Texture(const VRA_Renderer &rend, const std::string &file);
 	explicit                    VRA_Texture(const VRA_Renderer &rend, Uint32 format, int access, int w, int h);
 
+
+	VRA_Texture                 &operator=(VRA_Texture &&texture) noexcept;
+//	VRA_Texture(const Texture& other) = delete;
+	VRA_Texture                 &operator=(const VRA_Texture &texture) = delete;
 	virtual                     ~VRA_Texture();
 
 

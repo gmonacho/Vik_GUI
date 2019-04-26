@@ -158,6 +158,7 @@ void VRA_Renderer::drawTexture(const VRA_Texture &texture,
 							   const std::optional<VRA_Rect> &srcRect,
 							   const std::optional<VRA_Rect> &dstRect)
 {
+	//std::cout << "texture in fn ptr " << texture.getPtr() << std::endl;
 	if (texture.getFlip() == SDL_FLIP_NONE && texture.getAngle() == 0)
 		SDL_RenderCopy(m_ptr, texture.getPtr(),
 					   srcRect ? &srcRect->getSdlRect() : nullptr,
@@ -172,6 +173,7 @@ void VRA_Renderer::drawTexture(const VRA_Texture &texture,
 		                 &texture.getCenter().getSdlPoint(),
 		                 texture.getFlip());
 	}
+	std::cout << SDL_GetError() << std::endl;
 }
 
 

@@ -23,6 +23,7 @@ SOFTWARE.
 #include <string>
 #include <SDL_image.h>
 #include <iostream>
+#include <cassert>
 #include "VRA_Texture.h"
 #include "VRA_Renderer.h"
 
@@ -38,9 +39,6 @@ VRA_Texture::VRA_Texture(const VRA_Renderer &rend, const std::string &file) : m_
 {
 	SDL_Surface     *tmp;
 	const char      *tmpStr;
-	int             w;
-	int             h;
-
 	tmpStr = file.c_str();
 	tmp = IMG_Load(tmpStr);
 	if (!tmp)
@@ -53,7 +51,18 @@ VRA_Texture::VRA_Texture(const VRA_Renderer &rend, const std::string &file) : m_
 		std::cout << SDL_GetError() << std::endl;
 		throw (std::bad_alloc());
 	}
-	SDL_QueryTexture(m_ptr, nullptr, nullptr, &w, &h);
+}
+
+
+VRA_Texture &VRA_Texture::operator=(VRA_Texture &&texture) noexcept
+{
+	if (&texture == this)
+		return (*this);
+	if (m_ptr)
+		SDL_DestroyTexture(m_ptr);
+	m_ptr = texture.m_ptr;
+	texture.m_ptr = nullptr;
+	return (*this);
 }
 
 VRA_Texture::VRA_Texture(const VRA_Renderer &rend, Uint32 format, int access, int w, int h) : m_flip(SDL_FLIP_NONE), m_center(VRA_Point{w / 2, h / 2}), m_angle(0)
@@ -156,8 +165,15 @@ Uint8 VRA_Texture::GetAlphaMod() const
 	Uint8   alpha;
 
 	SDL_GetTextureAlphaMod(m_ptr, &alpha);
-	return 0;
+	return (alpha);
 }
+
+//
+//VRA_Texture &VRA_Texture::operator=(const VRA_Texture &texture)
+//{
+//	m_ptr = texture.getPtr();
+//	return (*this);
+//}
 
 
 

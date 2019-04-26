@@ -191,8 +191,7 @@ VRA_Point VRA_Font::getSizeUNICODE(const Uint16 *text) const
 VRA_Texture VRA_Font::renderText(const VRA_Renderer &rend, const std::string &text, SDL_Color color)
 {
 	SDL_Surface     *tmp;
-	SDL_Texture     *sdlTexture;
-	VRA_Texture     texture;
+	SDL_Texture     *sdlTexture{nullptr};
 
 	if (m_font)
 	{
@@ -201,16 +200,14 @@ VRA_Texture VRA_Font::renderText(const VRA_Renderer &rend, const std::string &te
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
 			throw (std::bad_alloc());
 		SDL_FreeSurface(tmp);
-		texture = VRA_Texture{sdlTexture};
 	}
-	return (texture);
+	return (VRA_Texture{sdlTexture});
 }
 
 VRA_Texture VRA_Font::renderTextUTF8(const VRA_Renderer &rend, const std::string &text, SDL_Color color)
 {
 	SDL_Surface     *tmp;
-	SDL_Texture     *sdlTexture;
-	VRA_Texture     texture;
+	SDL_Texture     *sdlTexture{nullptr};
 
 	if (m_font)
 	{
@@ -219,16 +216,14 @@ VRA_Texture VRA_Font::renderTextUTF8(const VRA_Renderer &rend, const std::string
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
 			throw (std::bad_alloc());
 		SDL_FreeSurface(tmp);
-		texture = VRA_Texture(sdlTexture);
 	}
-	return (texture);
+	return (VRA_Texture(sdlTexture));
 }
 
 VRA_Texture VRA_Font::renderTextUNICODE(const VRA_Renderer &rend, const Uint16 *text, SDL_Color color)
 {
 	SDL_Surface     *tmp;
-	SDL_Texture     *sdlTexture;
-	VRA_Texture     texture;
+	SDL_Texture     *sdlTexture{nullptr};
 
 	if (m_font && text)
 	{
@@ -237,16 +232,14 @@ VRA_Texture VRA_Font::renderTextUNICODE(const VRA_Renderer &rend, const Uint16 *
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
 			throw (std::bad_alloc());
 		SDL_FreeSurface(tmp);
-		texture = VRA_Texture(sdlTexture);
 	}
-	return (texture);
+	return (VRA_Texture(sdlTexture));
 }
 
 VRA_Texture VRA_Font::renderTextGlyph(const VRA_Renderer &rend, Uint16 ch, SDL_Color color)
 {
 	SDL_Surface     *tmp;
-	SDL_Texture     *sdlTexture;
-	VRA_Texture     texture;
+	SDL_Texture     *sdlTexture{nullptr};
 
 	if (m_font && ch)
 	{
@@ -255,16 +248,14 @@ VRA_Texture VRA_Font::renderTextGlyph(const VRA_Renderer &rend, Uint16 ch, SDL_C
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
 			throw (std::bad_alloc());
 		SDL_FreeSurface(tmp);
-		texture = VRA_Texture(sdlTexture);
 	}
-	return (texture);
+	return (VRA_Texture(sdlTexture));
 }
 
 VRA_Texture VRA_Font::renderTextShaded(const VRA_Renderer &rend, const std::string &text, SDL_Color fg, SDL_Color bg)
 {
 	SDL_Surface     *tmp;
-	SDL_Texture     *sdlTexture;
-	VRA_Texture     texture;
+	SDL_Texture     *sdlTexture{nullptr};
 
 	if (m_font)
 	{
@@ -273,16 +264,14 @@ VRA_Texture VRA_Font::renderTextShaded(const VRA_Renderer &rend, const std::stri
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
 			throw (std::bad_alloc());
 		SDL_FreeSurface(tmp);
-		texture = VRA_Texture(sdlTexture);
 	}
-	return (texture);
+	return (VRA_Texture(sdlTexture));
 }
 
 VRA_Texture VRA_Font::renderTextUTF8Shaded(const VRA_Renderer &rend, const std::string &text, SDL_Color fg, SDL_Color bg)
 {
 	SDL_Surface     *tmp;
-	SDL_Texture     *sdlTexture;
-	VRA_Texture     texture;
+	SDL_Texture     *sdlTexture{nullptr};
 
 	if (m_font)
 	{
@@ -291,17 +280,14 @@ VRA_Texture VRA_Font::renderTextUTF8Shaded(const VRA_Renderer &rend, const std::
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
 			throw (std::bad_alloc());
 		SDL_FreeSurface(tmp);
-		texture = VRA_Texture(sdlTexture);
 	}
-	return (texture);
+	return (VRA_Texture(sdlTexture));
 }
 
 VRA_Texture VRA_Font::renderTextUNICODEShaded(const VRA_Renderer &rend, const Uint16 *text, SDL_Color fg, SDL_Color bg)
 {
 	SDL_Surface     *tmp;
-	SDL_Texture     *sdlTexture;
-	VRA_Texture     texture;
-
+	SDL_Texture     *sdlTexture{nullptr};
 	if (m_font && text)
 	{
 		if (!(tmp = TTF_RenderUNICODE_Shaded(m_font, text, fg , bg)))
@@ -309,16 +295,14 @@ VRA_Texture VRA_Font::renderTextUNICODEShaded(const VRA_Renderer &rend, const Ui
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
 			throw (std::bad_alloc());
 		SDL_FreeSurface(tmp);
-		texture = VRA_Texture(sdlTexture);
 	}
-	return (texture);
+	return (VRA_Texture(sdlTexture));
 }
 
 VRA_Texture VRA_Font::renderTextGlyphShaded(const VRA_Renderer &rend, Uint16 ch, SDL_Color fd, SDL_Color bg)
 {
 	SDL_Surface     *tmp;
-	SDL_Texture     *sdlTexture;
-	VRA_Texture     texture;
+	SDL_Texture     *sdlTexture{nullptr};
 
 	if (m_font && ch)
 	{
@@ -327,16 +311,14 @@ VRA_Texture VRA_Font::renderTextGlyphShaded(const VRA_Renderer &rend, Uint16 ch,
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
 			throw (std::bad_alloc());
 		SDL_FreeSurface(tmp);
-		texture = VRA_Texture(sdlTexture);
 	}
-	return (texture);
+	return (VRA_Texture(sdlTexture));
 }
 
 VRA_Texture VRA_Font::renderTextBlended(const VRA_Renderer &rend, const std::string &text, SDL_Color color)
 {
 	SDL_Surface     *tmp;
-	SDL_Texture     *sdlTexture;
-	VRA_Texture     texture;
+	SDL_Texture     *sdlTexture{nullptr};
 
 	if (m_font)
 	{
@@ -345,16 +327,14 @@ VRA_Texture VRA_Font::renderTextBlended(const VRA_Renderer &rend, const std::str
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
 			throw (std::bad_alloc());
 		SDL_FreeSurface(tmp);
-		texture = VRA_Texture(sdlTexture);
 	}
-	return (texture);
+	return (VRA_Texture(sdlTexture));
 }
 
 VRA_Texture VRA_Font::renderTextUTF8Blended(const VRA_Renderer &rend, const std::string &text, SDL_Color color)
 {
 	SDL_Surface     *tmp;
-	SDL_Texture     *sdlTexture;
-	VRA_Texture     texture;
+	SDL_Texture     *sdlTexture{nullptr};
 
 	if (m_font)
 	{
@@ -363,16 +343,14 @@ VRA_Texture VRA_Font::renderTextUTF8Blended(const VRA_Renderer &rend, const std:
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
 			throw (std::bad_alloc());
 		SDL_FreeSurface(tmp);
-		texture = VRA_Texture(sdlTexture);
 	}
-	return (texture);
+	return (VRA_Texture(sdlTexture));
 }
 
 VRA_Texture VRA_Font::renderTextUNICODEBlended(const VRA_Renderer &rend, const Uint16 *text, SDL_Color color)
 {
 	SDL_Surface     *tmp;
-	SDL_Texture     *sdlTexture;
-	VRA_Texture     texture;
+	SDL_Texture     *sdlTexture{nullptr};
 
 	if (m_font && text)
 	{
@@ -381,16 +359,14 @@ VRA_Texture VRA_Font::renderTextUNICODEBlended(const VRA_Renderer &rend, const U
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
 			throw (std::bad_alloc());
 		SDL_FreeSurface(tmp);
-		texture = VRA_Texture(sdlTexture);
 	}
-	return (texture);
+	return (VRA_Texture(sdlTexture));
 }
 
 VRA_Texture VRA_Font::renderTextGlyphBlended(const VRA_Renderer &rend, Uint16 ch, SDL_Color color)
 {
 	SDL_Surface     *tmp;
-	SDL_Texture     *sdlTexture;
-	VRA_Texture     texture;
+	SDL_Texture     *sdlTexture{nullptr};
 
 	if (m_font && ch)
 	{
@@ -399,9 +375,8 @@ VRA_Texture VRA_Font::renderTextGlyphBlended(const VRA_Renderer &rend, Uint16 ch
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
 			throw (std::bad_alloc());
 		SDL_FreeSurface(tmp);
-		texture = VRA_Texture(sdlTexture);
 	}
-	return (texture);
+	return (VRA_Texture(sdlTexture));
 }
 
 
