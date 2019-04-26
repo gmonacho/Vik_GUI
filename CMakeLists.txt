@@ -23,5 +23,5 @@ add_executable(${PROJECT_NAME}  main.cpp
                                 include/VRA_Rect.h src/VRA_Texture.cpp
                                 include/VRA_Texture.h
                                 include/VRA_Point.h
-                                include/VRA_Line.h src/VRA_Font.cpp include/VRA_Font.h)
+                                include/VRA_Line.h src/VRA_Font.cpp include/VRA_Font.h src/VRA_Thread.cpp include/VRA_Thread.h)
 target_link_libraries(${PROJECT_NAME} SDL2::Main SDL2::Image SDL2::TTF)
