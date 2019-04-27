@@ -11,7 +11,7 @@
 
 using namespace std;
 
-int     main()
+int     main(int ac, char **av)
 {
 	if (!(VRA_init(SDL_INIT_VIDEO, IMG_INIT_PNG)))
 		cout << "vra_init failed\n";
@@ -22,12 +22,12 @@ int     main()
 	VRA_Rect        testRect2{200, 200, 100, 100};
 	VRA_Event       event;
 	bool            loop{true};
-	VRA_Font        font{"/home/gal/ViKoDe/Vik_Wrap/04B_30__.TTF", 20};
+	VRA_Font        font{R"(C:\Users\Shadow\Documents\ViKoDe\Vik_Wrap\fast99.ttf)", 100};
 	SDL_Color       color = (SDL_Color){255, 255, 255, 255};
-	VRA_Texture     testTexture{rend, "/home/gal/ViKoDe/Vik_Wrap/test.png"};
+	VRA_Texture     testTexture{rend, R"(C:\Users\Shadow\Documents\ViKoDe\Vik_Wrap\banana.png)"};
 	VRA_Texture     text;
 
-	text = font.renderText(rend, "MaBite", color);
+	text = font.renderText(rend, "MaBite", (SDL_Color){40, 40, 40, 250});
     while (loop)
     {
 	    rend.setDrawColor(30, 30, 30, 255);
