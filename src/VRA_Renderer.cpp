@@ -22,6 +22,7 @@ SOFTWARE.
 
 #include <iostream>
 #include <optional>
+#include <VRA_Exception.h>
 #include "VRA_Window.h"
 #include "VRA_Renderer.h"
 #include "VRA_Texture.h"
@@ -33,7 +34,7 @@ VRA_Renderer::VRA_Renderer(const VRA_Window& window,
 	int     index = (autoChoice) ? -1 : 0;
 
 	if ((m_ptr = SDL_CreateRenderer(window.getPtr(), index, sdl_flags)) == nullptr)
-		throw std::bad_alloc();
+		throw (VRA_Exception("SDL_CreateRenderer"));
 }
 
 VRA_Renderer::VRA_Renderer(VRA_Renderer &&rend) noexcept : m_ptr(rend.m_ptr)

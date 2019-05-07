@@ -1,5 +1,5 @@
 #include "SDL2/SDL.h"
-#include "vik_wrap.h"
+#include "VRA_Init.h"
 #include <iostream>
 #include <VRA_Window.h>
 #include <VRA_Renderer.h>
@@ -8,13 +8,20 @@
 #include <VRA_Texture.h>
 #include <VRA_Point.h>
 #include <VRA_Font.h>
+#include <VRA_Exception.h>
 
 using namespace std;
 
 int     main(int ac, char **av)
 {
-	if (!(VRA_init(SDL_INIT_VIDEO, IMG_INIT_PNG)))
-		cout << "vra_init failed\n";
+//	try
+//	{
+//		VRA_Init(SDL_INIT_VIDEO, IMG_INIT_PNG);
+//	}
+//	catch (VRA_Exception)
+//	{
+//		cout << VRA_Exception.get
+//	}
     VRA_Window      win{"VRA_Test", 100, 100, 600, 600, SDL_WINDOW_SHOWN};
 	VRA_Renderer    rend{win, true, SDL_RENDERER_ACCELERATED};
 	VRA_Rect        rect{10, 10, 30, 30};

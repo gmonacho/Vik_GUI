@@ -23,13 +23,14 @@ SOFTWARE.
 #include <SDL_keyboard.h>
 #include <new>
 #include <SDL_events.h>
+#include <VRA_Exception.h>
 #include "VRA_Event.h"
 
 VRA_Event::VRA_Event()
 {
 	m_keyboardSize = 0;
 	if ((m_keyboard = SDL_GetKeyboardState(&m_keyboardSize)) == nullptr)
-		throw std::bad_alloc();
+		throw (VRA_Exception("SDL_GetKeyboardState"));
 	SDL_GetMouseState(&m_mouseY, &m_mouseX);
 }
 

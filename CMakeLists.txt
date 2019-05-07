@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.14)
 project(Vik_Wrap)
 
 if (UNIX)
@@ -22,20 +22,38 @@ find_package(SDL2_ttf REQUIRED)
 #${CMAKE_CURRENT_SOURCE_DIR}/SDL2/lib/x86/SDL2_image.lib")
 
 include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/SDL2/include)
+#add_library(${PROJECT_NAME} SHARED
+#        src/VRA_Init.cpp
+#        src/VRA_Window.cpp
+#        src/VRA_Renderer.cpp
+#        src/VRA_Event.cpp
+#        src/VRA_Rect.cpp
+#        src/VRA_Point.cpp
+#        src/VRA_Line.cpp
+#        src/VRA_Font.cpp
+#        include/VRA_Window.h
+#        include/VRA_Renderer.h
+#        include/VRA_Event.h
+#        include/VRA_Rect.h src/VRA_Texture.cpp
+#        include/VRA_Texture.h
+#        include/VRA_Point.h
+#        include/VRA_Line.h
+#        include/VRA_Font.h)
 add_executable(${PROJECT_NAME}  main.cpp
-                                src/VRA_init.cpp
+                                src/VRA_Init.cpp
                                 src/VRA_Window.cpp
                                 src/VRA_Renderer.cpp
                                 src/VRA_Event.cpp
                                 src/VRA_Rect.cpp
                                 src/VRA_Point.cpp
                                 src/VRA_Line.cpp
+                                src/VRA_Font.cpp
                                 include/VRA_Window.h
                                 include/VRA_Renderer.h
                                 include/VRA_Event.h
                                 include/VRA_Rect.h src/VRA_Texture.cpp
                                 include/VRA_Texture.h
                                 include/VRA_Point.h
-                                include/VRA_Line.h src/VRA_Font.cpp include/VRA_Font.h)
-
+                                include/VRA_Line.h
+                                include/VRA_Font.h src/VRA_Exception.cpp include/VRA_Exception.h)
 target_link_libraries(${PROJECT_NAME} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf)

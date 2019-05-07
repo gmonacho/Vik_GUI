@@ -21,6 +21,7 @@ SOFTWARE.
 */
 
 #include <iostream>
+#include <VRA_Exception.h>
 #include "VRA_Font.h"
 #include "VRA_Renderer.h"
 
@@ -35,7 +36,7 @@ VRA_Font::VRA_Font(const std::string &fontPath, const int &pixelHeight)
 		if (!(m_font = TTF_OpenFont(fontPath.c_str(), pixelHeight)))
 		{
 			std::cout << SDL_GetError() << std::endl;
-			throw (std::bad_alloc());
+			throw (VRA_Exception("TTF_OpenFont"));
 		}
 	}
 	else
@@ -51,7 +52,7 @@ VRA_Font::~VRA_Font()
 
 TTF_Font *VRA_Font::getPtr() const
 {
-	return m_font;
+	return (m_font);
 }
 
 
@@ -196,9 +197,9 @@ VRA_Texture VRA_Font::renderText(const VRA_Renderer &rend, const std::string &te
 	if (m_font)
 	{
 		if (!(tmp = TTF_RenderText_Solid(m_font, text.c_str(), color)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("TTF_RenderText_Solid"));
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("SDL_CreateTextureFromSurface"));
 		SDL_FreeSurface(tmp);
 	}
 	return (VRA_Texture{sdlTexture});
@@ -212,9 +213,9 @@ VRA_Texture VRA_Font::renderTextUTF8(const VRA_Renderer &rend, const std::string
 	if (m_font)
 	{
 		if (!(tmp = TTF_RenderUTF8_Solid(m_font, text.c_str(), color)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("TTF_RenderUTF8_Solid"));
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("SDL_CreateTextureFromSurface"));
 		SDL_FreeSurface(tmp);
 	}
 	return (VRA_Texture(sdlTexture));
@@ -228,9 +229,9 @@ VRA_Texture VRA_Font::renderTextUNICODE(const VRA_Renderer &rend, const Uint16 *
 	if (m_font && text)
 	{
 		if (!(tmp = TTF_RenderUNICODE_Solid(m_font, text, color)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("TTF_RenderUNICODE_Solid"));
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("SDL_CreateTextureFromSurface"));
 		SDL_FreeSurface(tmp);
 	}
 	return (VRA_Texture(sdlTexture));
@@ -244,9 +245,9 @@ VRA_Texture VRA_Font::renderTextGlyph(const VRA_Renderer &rend, Uint16 ch, SDL_C
 	if (m_font && ch)
 	{
 		if (!(tmp = TTF_RenderGlyph_Solid(m_font, ch, color)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("TTF_RenderGlyph_Solid"));
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("SDL_CreateTextureFromSurface"));
 		SDL_FreeSurface(tmp);
 	}
 	return (VRA_Texture(sdlTexture));
@@ -260,9 +261,9 @@ VRA_Texture VRA_Font::renderTextShaded(const VRA_Renderer &rend, const std::stri
 	if (m_font)
 	{
 		if (!(tmp = TTF_RenderText_Shaded(m_font, text.c_str(), fg, bg)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("TTF_RenderText_Shaded"));
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("SDL_CreateTextureFromSurface"));
 		SDL_FreeSurface(tmp);
 	}
 	return (VRA_Texture(sdlTexture));
@@ -276,9 +277,9 @@ VRA_Texture VRA_Font::renderTextUTF8Shaded(const VRA_Renderer &rend, const std::
 	if (m_font)
 	{
 		if (!(tmp = TTF_RenderUTF8_Shaded(m_font, text.c_str(), fg, bg)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("TTF_RenderUTF8_Shaded"));
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("SDL_CreateTextureFromSurface"));
 		SDL_FreeSurface(tmp);
 	}
 	return (VRA_Texture(sdlTexture));
@@ -291,9 +292,9 @@ VRA_Texture VRA_Font::renderTextUNICODEShaded(const VRA_Renderer &rend, const Ui
 	if (m_font && text)
 	{
 		if (!(tmp = TTF_RenderUNICODE_Shaded(m_font, text, fg , bg)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("TTF_RenderUNICODE_Shaded"));
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("SDL_CreateTextureFromSurface"));
 		SDL_FreeSurface(tmp);
 	}
 	return (VRA_Texture(sdlTexture));
@@ -307,9 +308,9 @@ VRA_Texture VRA_Font::renderTextGlyphShaded(const VRA_Renderer &rend, Uint16 ch,
 	if (m_font && ch)
 	{
 		if (!(tmp = TTF_RenderGlyph_Shaded(m_font, ch, fd, bg)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("TTF_RenderGlyph_Shaded"));
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("SDL_CreateTextureFromSurface"));
 		SDL_FreeSurface(tmp);
 	}
 	return (VRA_Texture(sdlTexture));
@@ -323,9 +324,9 @@ VRA_Texture VRA_Font::renderTextBlended(const VRA_Renderer &rend, const std::str
 	if (m_font)
 	{
 		if (!(tmp = TTF_RenderText_Blended(m_font, text.c_str(), color)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("TTF_RenderText_Blended"));
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("SDL_CreateTextureFromSurface"));
 		SDL_FreeSurface(tmp);
 	}
 	return (VRA_Texture(sdlTexture));
@@ -339,9 +340,9 @@ VRA_Texture VRA_Font::renderTextUTF8Blended(const VRA_Renderer &rend, const std:
 	if (m_font)
 	{
 		if (!(tmp = TTF_RenderUTF8_Blended(m_font, text.c_str(), color)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("TTF_RenderUTF8_Blended"));
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("SDL_CreateTextureFromSurface"));
 		SDL_FreeSurface(tmp);
 	}
 	return (VRA_Texture(sdlTexture));
@@ -355,9 +356,9 @@ VRA_Texture VRA_Font::renderTextUNICODEBlended(const VRA_Renderer &rend, const U
 	if (m_font && text)
 	{
 		if (!(tmp = TTF_RenderUNICODE_Blended(m_font, text, color)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("TTF_RenderUNICODE_Blended"));
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("SDL_CreateTextureFromSurface"));
 		SDL_FreeSurface(tmp);
 	}
 	return (VRA_Texture(sdlTexture));
@@ -371,9 +372,9 @@ VRA_Texture VRA_Font::renderTextGlyphBlended(const VRA_Renderer &rend, Uint16 ch
 	if (m_font && ch)
 	{
 		if (!(tmp = TTF_RenderGlyph_Blended(m_font, ch, color)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("TTF_RenderGlyph_Blended"));
 		if (!(sdlTexture = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
-			throw (std::bad_alloc());
+			throw (VRA_Exception("SDL_CreateTextureFromSurface"));
 		SDL_FreeSurface(tmp);
 	}
 	return (VRA_Texture(sdlTexture));

@@ -33,21 +33,81 @@ class VRA_Event
 public:
 	explicit            VRA_Event();
 	virtual             ~VRA_Event();
+
+	/**
+	 * 	update/refresh sdl's events and the Event object
+	 */
 	void                update();
+
+	/**
+	 * get the sdl's structure SDL_Event
+	 * @return SDL_Event structure
+	 */
 	const SDL_Event    &getEvent() const;
+
+	/**
+	 * wait for an sdl's event
+	 * @return the SDL_Event structure
+	 */
 	const SDL_Event    &waitEvent();
+
+	/**
+	 * ask if the key is pressed
+	 * @param sdl_code
+	 * @return true if the key is pressed or false if it is not
+	 */
 	bool                isKeyPressed(int sdl_code);
+
+	/**
+	 * ask if the mouse button is pressed
+	 * @param sdl_button
+	 * @return true if the button is pressed or false if it is not
+	 */
 	bool                isMousePressed(Uint32 sdl_button);
+
+	/**
+	 * This function will start accepting Unicode text input events in the focused SDL window,
+	 * and start emitting SDL_TEXTINPUT and SDL_TEXTEDITING events.
+	 * Please use this function in pair with stopTextInput().
+	 */
 	void                startTextInput();
+
+	/**
+	 * stop text input reception
+	 */
 	void                stopTextInput();
+
+	/**
+	 * get the last text input (text input reception must be started with startTextInput())
+	 * @return textInput
+	 */
 	const std::string   getLastTextInput() const;
+
+	/**
+	 * aks if the text input is active
+	 * @return true if the text input is active or false if it is not
+	 */
 	bool                isTextInputActive();
+
+	/**
+	 * @return an OR'd combination of the modifier keys for the keyboard
+	 */
 	SDL_Keymod          getModState();
 	//  getKeyboardFocus?
 	//  setTextInputRect();
 	//  Edition de texte
+
+	/**
+	 *
+	 * @return the mouse's x position
+	 */
 	int                 getMouseX() const;
-	int getMouseY() const;
+
+	/**
+	 *
+	 * @return the mouse's y position
+	 */
+	int                 getMouseY() const;
 
 private:
 	const Uint8        *m_keyboard;

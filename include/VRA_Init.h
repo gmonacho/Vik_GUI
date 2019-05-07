@@ -20,18 +20,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+#ifndef VIK_WRAP_VRA_INIT_H
+#define VIK_WRAP_VRA_INIT_H
+
 #include <SDL_image.h>
 #include <SDL_ttf.h>
-#include "SDL2/SDL.h"
-#include "vik_wrap.h"
+#include <SDL.h>
 
-int     VRA_init(Uint32 flags, int imgFlags)
-{
-    if (SDL_Init(flags) < 0)
-        return (0);
-    if (imgFlags != IMG_Init(imgFlags))
-    	return (0);
-	if (TTF_Init() < 0)
-		return (0);
-    return (1);
-}
+void VRA_Init(Uint32 flags, int imgFlags);
+
+#endif //VIK_WRAP_VRA_INIT_H

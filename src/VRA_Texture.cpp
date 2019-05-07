@@ -24,6 +24,7 @@ SOFTWARE.
 #include <SDL_image.h>
 #include <iostream>
 #include <cassert>
+#include <VRA_Exception.h>
 #include "VRA_Texture.h"
 #include "VRA_Renderer.h"
 
@@ -42,15 +43,9 @@ VRA_Texture::VRA_Texture(const VRA_Renderer &rend, const std::string &file) : m_
 	tmpStr = file.c_str();
 	tmp = IMG_Load(tmpStr);
 	if (!tmp)
-	{
-		std::cout << SDL_GetError() << std::endl;
-		throw (std::bad_alloc());
-	}
+		throw (VRA_Exception("IMG_Load"));
 	if (!(m_ptr = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
-	{
-		std::cout << SDL_GetError() << std::endl;
-		throw (std::bad_alloc());
-	}
+		throw (VRA_Exception("SDL_CreateTextureFromSurface"));
 }
 
 
@@ -69,7 +64,7 @@ VRA_Texture::VRA_Texture(const VRA_Renderer &rend, Uint32 format, int access, in
 {
 	m_ptr = SDL_CreateTexture(rend.getPtr(), format,access, w, h);
 	if (!m_ptr)
-		throw (std::bad_alloc());
+		throw (VRA_Exception("SDL_CreateTexture"));
 }
 
 VRA_Texture::~VRA_Texture()

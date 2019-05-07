@@ -20,12 +20,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+#include <VRA_Exception.h>
 #include "VRA_Window.h"
 
 VRA_Window::VRA_Window(const std::string &title, int x, int y, int w, int h, Uint32 sdl_flags) : m_rend(nullptr)
 {
 	if ((m_ptr = SDL_CreateWindow(title.c_str(), x, y, w, h, sdl_flags)) == nullptr)
-			throw std::bad_alloc();
+		throw (VRA_Exception("SDL_CreateWindow"));
 }
 
 VRA_Window::~VRA_Window()
