@@ -20,40 +20,66 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef VIK_WRAP_VRA_EXCEPTION_H
-#define VIK_WRAP_VRA_EXCEPTION_H
+#ifndef VIK_WRAP_WINDOW_H
+#define VIK_WRAP_WINDOW_H
 
+#include <SDL_video.h>
 #include <string>
-#include <stdexcept>
 
-class VRA_Exception : public std::runtime_error
-{
-private:
-	std::string m_function;
-	std::string m_error;
+class Renderer;
 
-public:
+namespace vra {
 
-	/**
-	 *
-	 * @param function which cause the error
-	 */
-	explicit VRA_Exception(const std::string &function);
+	class Window {
 
-	/**
-	 *
-	 * @return the function which cause the error
-	 */
-	const std::string &getFunction() const;
+	public:
+		explicit Window(const std::string &title, int x, int y, int w, int h, Uint32 sdl_flags);
 
-	/**
-	 *
-	 * @return the sdl's error
-	 */
-	const std::string &getError() const;
+		Window(Window &&win) noexcept;
 
-	~VRA_Exception() noexcept override;
-};
+		Window &operator=(Window &&win) noexcept;
 
+		Window(const Window &win) = delete;
 
-#endif //VIK_WRAP_VRA_EXCEPTION_H
+		Window &operator=(const Window &win) = delete;
+
+		virtual     ~Window();
+
+		SDL_Window *getPtr() const;
+
+		void setRend(Renderer *rend);
+
+		Renderer *getRend() const;
+
+		void setOpacity(const float &opacity);
+
+		float getOpacity() const;
+
+		void setBrightness(const float &brightness);
+
+		float getBrightness() const;
+
+		void setSize(int width, int height);
+
+		void getSize(int *width, int *height) const;
+
+		void setBordered(const bool &bordered);
+
+		void setFullscreen(const Uint32 &flags);
+
+		void setResizable(const bool &resizable);
+
+		void show();
+
+		void hide();
+
+		void raise();
+
+	private:
+		SDL_Window *m_ptr;
+		Renderer *m_rend;
+	};
+
+}
+
+#endif //VIK_WRAP_WINDOW_H

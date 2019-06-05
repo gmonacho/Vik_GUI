@@ -20,41 +20,46 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef VIK_WRAP_VRA_LINE_H
-#define VIK_WRAP_VRA_LINE_H
+#ifndef VIK_WRAP_EXCEPTION_H
+#define VIK_WRAP_EXCEPTION_H
+
+#include <string>
+#include <stdexcept>
 
 
-#include "VRA_Point.h"
+namespace vra {
 
-class VRA_Line
-{
-public:
-	VRA_Line();
+	class Exception : public std::runtime_error {
+	private:
+		std::string m_function;
+		std::string m_error;
 
-	VRA_Line(int x1, int y1, int x2, int y2);
+	public:
 
-	VRA_Line(const VRA_Point &p1, const VRA_Point &p2);
+		/**
+		 *
+		 * @param function which cause the error
+		 */
+		explicit Exception(const std::string &function);
 
-	VRA_Line    &operator+=(const VRA_Point &point);
-	VRA_Line    &operator-=(const VRA_Point &point);
+		/**
+		 *
+		 * @return the function which cause the error
+		 */
+		const std::string &getFunction() const;
 
-	VRA_Point   getP1() const;
-	void        setP1(const int &x, const int &y);
+		/**
+		 *
+		 * @return the sdl's error
+		 */
+		const std::string &getError() const;
 
-	VRA_Point   getP2() const;
-	void        setP2(const int &x, const int &y);
+		/**
+		 * default destrutor
+		 */
+		~Exception() noexcept override;
+	};
 
-	const int   &getX1() const;
-	const int   &getY1() const;
-	const int   &getX2() const;
-	const int   &getY2() const;
+}
 
-private:
-	int     m_x1;
-	int     m_y1;
-	int     m_x2;
-	int     m_y2;
-};
-
-
-#endif //VIK_WRAP_VRA_LINE_H
+#endif //VIK_WRAP_EXCEPTION_H

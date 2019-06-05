@@ -20,36 +20,30 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef VIK_WRAP_VRA_POINT_H
-#define VIK_WRAP_VRA_POINT_H
+#include <stdexcept>
+#include <string>
+#include <SDL2/SDL_quit.h>
+#include "Exception.h"
+
+using namespace std;
 
 
-#include <SDL_rect.h>
+namespace vra {
 
-class VRA_Point
-{
-public:
-	explicit    VRA_Point(int x = 0, int y = 0);
+	Exception::Exception(const string &function) : runtime_error("Error in " + function + " : " + SDL_GetError()),
+	                                               m_function(function),
+	                                               m_error(SDL_GetError()) {
+	}
 
-	VRA_Point   &operator+=(VRA_Point   &point);
-	VRA_Point   &operator-=(VRA_Point   &point);
+	Exception::~Exception() noexcept {
+	}
 
-	const SDL_Point &getSdlPoint() const;
+	const string &Exception::getFunction() const {
+		return m_function;
+	}
 
-	const int   &getX() const;
-	void        setX(const int &x);
+	const string &Exception::getError() const {
+		return m_error;
+	}
 
-	const int   &getY() const;
-	void        setY(const int &y);
-
-	virtual     ~VRA_Point();
-
-private:
-	SDL_Point   m_sdlPoint;
-};
-
-bool        operator==(const VRA_Point &firstPoint, const VRA_Point &secondPoint);
-VRA_Point   operator+(const VRA_Point &firstPoint, const VRA_Point &secondPoint);
-VRA_Point   operator-(const VRA_Point &firstPoint, const VRA_Point &secondPoint);
-
-#endif //VIK_WRAP_VRA_POINT_H
+}

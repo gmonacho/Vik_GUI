@@ -20,36 +20,49 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include "VRA_Init.h"
-#include <SDL_image.h>
-#include <SDL_ttf.h>
-#include <VRA_Exception.h>
-#include "SDL2/SDL.h"
+#ifndef VIK_WRAP_LINE_H
+#define VIK_WRAP_LINE_H
 
-/**
- * Init the SDL(SDL, SDL_image, SDL_ttf)
- * @param flags :
- *                  SDL_INIT_TIMER
- *                  SDL_INIT_AUDIO
- *                  SDL_INIT_VIDEO
- *                  SDL_INIT_JOYSTICK
- *                  SDL_INIT_HAPTIC
- *                  SDL_INIT_GAMECONTROLLER
- *                  SDL_INIT_EVENTS
- *                  SDL_INIT_EVERYTHING
- *                  SDL_INIT_NOPARACHUTE
- * @param imgFlags :
- *                  IMG_INIT_JPG
- *                  IMG_INIT_PNG
- *                  IMG_INIT_TIF
- * @return
- */
-void VRA_Init(Uint32 flags, int imgFlags)
-{
-    if (SDL_Init(flags) < 0)
-        throw (VRA_Exception("SDL_Init"));
-    if (imgFlags != IMG_Init(imgFlags))
-	    throw (VRA_Exception("IMG_Init"));
-	if (TTF_Init() < 0)
-		throw (VRA_Exception("TTF_Init"));
+#include "Point.h"
+
+
+namespace vra {
+
+	class Line {
+	public:
+		Line();
+
+		Line(int x1, int y1, int x2, int y2);
+
+		Line(const Point &p1, const Point &p2);
+
+		Line &operator+=(const Point &point);
+
+		Line &operator-=(const Point &point);
+
+		Point getP1() const;
+
+		void setP1(const int &x, const int &y);
+
+		Point getP2() const;
+
+		void setP2(const int &x, const int &y);
+
+		const int &getX1() const;
+
+		const int &getY1() const;
+
+		const int &getX2() const;
+
+		const int &getY2() const;
+
+	private:
+		int m_x1;
+		int m_y1;
+		int m_x2;
+		int m_y2;
+	};
+
 }
+
+#endif //VIK_WRAP_LINE_H

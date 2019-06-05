@@ -23,37 +23,37 @@ find_package(SDL2_ttf REQUIRED)
 
 include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/SDL2/include)
 #add_library(${PROJECT_NAME} SHARED
-#        src/VRA_Init.cpp
-#        src/VRA_Window.cpp
-#        src/VRA_Renderer.cpp
-#        src/VRA_Event.cpp
-#        src/VRA_Rect.cpp
-#        src/VRA_Point.cpp
-#        src/VRA_Line.cpp
-#        src/VRA_Font.cpp
-#        include/VRA_Window.h
-#        include/VRA_Renderer.h
-#        include/VRA_Event.h
-#        include/VRA_Rect.h src/VRA_Texture.cpp
-#        include/VRA_Texture.h
-#        include/VRA_Point.h
-#        include/VRA_Line.h
-#        include/VRA_Font.h)
+#        src/Init.cpp
+#        src/Window.cpp
+#        src/Renderer.cpp
+#        src/Event.cpp
+#        src/Rect.cpp
+#        src/Point.cpp
+#        src/Line.cpp
+#        src/Font.cpp
+#        include/Window.h
+#        include/Renderer.h
+#        include/Event.h
+#        include/Rect.h src/Texture.cpp
+#        include/Texture.h
+#        include/Point.h
+#        include/Line.h
+#        include/Font.h)
 add_executable(${PROJECT_NAME}  main.cpp
-                                src/VRA_Init.cpp
-                                src/VRA_Window.cpp
-                                src/VRA_Renderer.cpp
-                                src/VRA_Event.cpp
-                                src/VRA_Rect.cpp
-                                src/VRA_Point.cpp
-                                src/VRA_Line.cpp
-                                src/VRA_Font.cpp
-                                include/VRA_Window.h
-                                include/VRA_Renderer.h
-                                include/VRA_Event.h
-                                include/VRA_Rect.h src/VRA_Texture.cpp
-                                include/VRA_Texture.h
-                                include/VRA_Point.h
-                                include/VRA_Line.h
-                                include/VRA_Font.h src/VRA_Exception.cpp include/VRA_Exception.h)
+        src/Init.cpp
+        src/Window.cpp
+        src/Renderer.cpp
+        src/Event.cpp
+        src/Rect.cpp
+        src/Point.cpp
+        src/Line.cpp
+        src/Font.cpp
+        include/Window.h
+        include/Renderer.h
+        include/Event.h
+        include/Rect.h src/Texture.cpp
+        include/Texture.h
+        include/Point.h
+        include/Line.h
+        include/Font.h src/Exception.cpp include/Exception.h)
 target_link_libraries(${PROJECT_NAME} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf)

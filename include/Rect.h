@@ -20,42 +20,63 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include "VRA_Thread.h"
+#ifndef VIK_WRAP_RECT_H
+#define VIK_WRAP_RECT_H
 
-VRA_Thread::VRA_Thread(SDL_ThreadFunction function, const std::string &name, void *data)
-{
-	if (!(m_ptr = SDL_CreateThread(function, name.c_str(), data)))
-		throw(std::bad_alloc());
+
+#include <SDL_rect.h>
+#include "Point.h"
+
+
+namespace vra {
+
+	class Rect {
+	public:
+		explicit Rect(int x = 0, int y = 0, int w = 0, int h = 0);
+
+		virtual         ~Rect();
+
+		Rect &operator+=(const Point &point);
+
+		Rect &operator-=(const Point &point);
+
+		const SDL_Rect &getSdlRect() const;
+
+		void setSdlRect(const SDL_Rect &rect);
+
+		const int &getLeft() const;
+
+		int getRight() const;
+
+		const int &getTop() const;
+
+		int getBot() const;
+
+		const int &getX() const;
+
+		const int &getY() const;
+
+		const int &getW() const;
+
+		const int &getH() const;
+
+		bool hasRectIntersection(const Rect &rect);
+
+	private:
+		SDL_Rect m_sdlRect;
+	};
+
+	bool operator==(const Rect &firstRect, const Rect &secondRect);
+
+	Rect operator+(const Rect &firstRect, const Rect &secondRect);
+
+	Rect operator-(const Rect &firstRect, const Rect &secondRect);
+
+
+	Rect operator+(const Rect &rect, const Point &point);
+
+	Rect operator-(const Rect &rect, const Point &point);
+
 }
 
-VRA_Thread::~VRA_Thread() = default;
-
-void VRA_Thread::detach()
-{
-	SDL_DetachThread(m_ptr);
-}
-
-std::string VRA_Thread::getName() const
-{
-	return (SDL_GetThreadName(m_ptr));
-}
-
-SDL_threadID VRA_Thread::getID() const
-{
-	return (SDL_GetThreadID(m_ptr));
-}
-
-void VRA_Thread::setPriority(SDL_ThreadPriority priority)
-{
-	SDL_SetThreadPriority(priority);
-}
-
-void VRA_Thread::wait(int &status)
-{
-	SDL_WaitThread(m_ptr, &status);
-}
-
-SDL_threadID VRA_ThreadID()
-{
-	return (SDL_ThreadID());
-}
+#endif //VIK_WRAP_RECT_H

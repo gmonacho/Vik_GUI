@@ -20,27 +20,37 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include <stdexcept>
-#include <string>
-#include <SDL2/SDL_quit.h>
-#include "VRA_Exception.h"
+#ifndef VIK_WRAP_INIT_H
+#define VIK_WRAP_INIT_H
 
-using namespace std;
+#include <SDL_image.h>
+#include <SDL_ttf.h>
+#include <SDL.h>
 
-VRA_Exception::VRA_Exception(const string &function) :   runtime_error("Error in " + function + " : " + SDL_GetError()),
-														m_function(function),
-														m_error(SDL_GetError()) {
-}
 
-VRA_Exception::~VRA_Exception() noexcept {
-}
-
-const string &VRA_Exception::getFunction() const
+namespace vra
 {
-	return m_function;
+
+	/**
+	 * Init the SDL(SDL, SDL_image, SDL_ttf)
+	 * @param flags :
+	 *                  SDL_INIT_TIMER
+	 *                  SDL_INIT_AUDIO
+	 *                  SDL_INIT_VIDEO
+	 *                  SDL_INIT_JOYSTICK
+	 *                  SDL_INIT_HAPTIC
+	 *                  SDL_INIT_GAMECONTROLLER
+	 *                  SDL_INIT_EVENTS
+	 *                  SDL_INIT_EVERYTHING
+	 *                  SDL_INIT_NOPARACHUTE
+	 * @param imgFlags :
+	 *                  IMG_INIT_JPG
+	 *                  IMG_INIT_PNG
+	 *                  IMG_INIT_TIF
+	 * @return
+	 */
+	void Init(Uint32 flags, int imgFlags);
+
 }
 
-const string &VRA_Exception::getError() const
-{
-	return m_error;
-}
+#endif //VIK_WRAP_INIT_H

@@ -20,30 +20,44 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef VIK_WRAP_VRA_THREAD_H
-#define VIK_WRAP_VRA_THREAD_H
+#ifndef VIK_WRAP_POINT_H
+#define VIK_WRAP_POINT_H
 
 
-#include <string>
-#include <SDL_thread.h>
+#include <SDL_rect.h>
 
-class VRA_Thread
-{
-public:
-	explicit        VRA_Thread(SDL_ThreadFunction function, const std::string &name, void *data);
-	virtual         ~VRA_Thread();
+namespace vra {
 
-	void            detach();
-	void            wait(int &status);
-	std::string     getName() const;
-	SDL_threadID    getID() const;
-	void setPriority(SDL_ThreadPriority priority);
+	class Point {
+	public:
+		explicit Point(int x = 0, int y = 0);
 
-private:
-	SDL_Thread  *m_ptr;
-};
+		Point &operator+=(Point &point);
 
-SDL_threadID VRA_ThreadID();
+		Point &operator-=(Point &point);
 
+		const SDL_Point &getSdlPoint() const;
 
-#endif //VIK_WRAP_VRA_THREAD_H
+		const int &getX() const;
+
+		void setX(const int &x);
+
+		const int &getY() const;
+
+		void setY(const int &y);
+
+		virtual     ~Point();
+
+	private:
+		SDL_Point m_sdlPoint;
+	};
+
+	bool operator==(const Point &firstPoint, const Point &secondPoint);
+
+	Point operator+(const Point &firstPoint, const Point &secondPoint);
+
+	Point operator-(const Point &firstPoint, const Point &secondPoint);
+
+}
+
+#endif //VIK_WRAP_POINT_H
