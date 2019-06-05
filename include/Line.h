@@ -30,30 +30,90 @@ namespace vra {
 
 	class Line {
 	public:
+
+		/**
+		 * Construct an set all the value (x1, x2, y1, y2) to 0.
+		 */
 		Line();
 
+		/**
+		 * Construct from given values
+		 * @param x1
+		 * @param y1
+		 * @param x2
+		 * @param y2
+		 */
 		Line(int x1, int y1, int x2, int y2);
 
+		/**
+		 * Construct from given points
+		 * @param p1
+		 * @param p2
+		 */
 		Line(const Point &p1, const Point &p2);
 
+		/**
+		 * add the point values to the line's points values
+		 * @param point
+		 * @return The addition result
+		 */
 		Line &operator+=(const Point &point);
 
+		/**
+		 * subs the point values to the line's points values
+		 * @param point
+		 * @return The substraction result
+		 */
 		Line &operator-=(const Point &point);
 
+		/**
+		 * get the line's first point (x1, y1).
+		 * @return P1 (x1, y1)
+		 */
 		Point getP1() const;
 
+		/**
+		 * set the line's first point (x1, y1) value
+		 * @param x
+		 * @param y
+		 */
 		void setP1(const int &x, const int &y);
 
+		/**
+		 * get the line's second point (x2, y12).
+		 * @return P2 (x2, y2)
+		 */
 		Point getP2() const;
 
+		/**
+		 * set the line's second point (x2, y2) value
+		 * @param x
+		 * @param y
+		 */
 		void setP2(const int &x, const int &y);
 
+		/**
+		 *
+		 * @return x1
+		 */
 		const int &getX1() const;
 
+		/**
+		 *
+		 * @return y1
+		 */
 		const int &getY1() const;
 
+		/**
+		 *
+		 * @return x2
+		 */
 		const int &getX2() const;
 
+		/**
+		 *
+		 * @return y2
+		 */
 		const int &getY2() const;
 
 	private:
