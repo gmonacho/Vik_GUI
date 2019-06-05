@@ -30,20 +30,46 @@ namespace vra {
 
 	class Point {
 	public:
+
+		/**
+		 * construct the given values, x = 0 and y = 0 if no values are given
+		 * @param x
+		 * @param y
+		 */
 		explicit Point(int x = 0, int y = 0);
 
 		Point &operator+=(Point &point);
 
 		Point &operator-=(Point &point);
 
+		/**
+		 * get the point's sdl structure
+		 * @return point's sdl structure
+		 */
 		const SDL_Point &getSdlPoint() const;
 
+		/**
+		 * get the point's x value
+		 * @return point's x value
+		 */
 		const int &getX() const;
 
+		/**
+		 * set the point's x value
+		 * @param x value
+		 */
 		void setX(const int &x);
 
+		/**
+		 * get the point's y value
+		 * @return point's y value
+		 */
 		const int &getY() const;
 
+		/**
+		 * set the point's y value
+		 * @param point's y value
+		 */
 		void setY(const int &y);
 
 		virtual     ~Point();
