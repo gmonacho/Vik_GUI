@@ -57,33 +57,9 @@ include CMakeFiles/Vik_Wrap.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Vik_Wrap.dir/flags.make
 
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o: CMakeFiles/Vik_Wrap.dir/flags.make
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o: src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vik_Wrap.dir/src/main.cpp.o -c /home/gal/101/Vik_Wrap/src/main.cpp
-
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vik_Wrap.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gal/101/Vik_Wrap/src/main.cpp > CMakeFiles/Vik_Wrap.dir/src/main.cpp.i
-
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vik_Wrap.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gal/101/Vik_Wrap/src/main.cpp -o CMakeFiles/Vik_Wrap.dir/src/main.cpp.s
-
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o.requires:
-
-.PHONY : CMakeFiles/Vik_Wrap.dir/src/main.cpp.o.requires
-
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o.provides: CMakeFiles/Vik_Wrap.dir/src/main.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vik_Wrap.dir/build.make CMakeFiles/Vik_Wrap.dir/src/main.cpp.o.provides.build
-.PHONY : CMakeFiles/Vik_Wrap.dir/src/main.cpp.o.provides
-
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o.provides.build: CMakeFiles/Vik_Wrap.dir/src/main.cpp.o
-
-
 CMakeFiles/Vik_Wrap.dir/src/Init.cpp.o: CMakeFiles/Vik_Wrap.dir/flags.make
 CMakeFiles/Vik_Wrap.dir/src/Init.cpp.o: src/Init.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Init.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Init.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vik_Wrap.dir/src/Init.cpp.o -c /home/gal/101/Vik_Wrap/src/Init.cpp
 
 CMakeFiles/Vik_Wrap.dir/src/Init.cpp.i: cmake_force
@@ -107,7 +83,7 @@ CMakeFiles/Vik_Wrap.dir/src/Init.cpp.o.provides.build: CMakeFiles/Vik_Wrap.dir/s
 
 CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o: CMakeFiles/Vik_Wrap.dir/flags.make
 CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o: src/Window.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o -c /home/gal/101/Vik_Wrap/src/Window.cpp
 
 CMakeFiles/Vik_Wrap.dir/src/Window.cpp.i: cmake_force
@@ -131,7 +107,7 @@ CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o.provides.build: CMakeFiles/Vik_Wrap.dir
 
 CMakeFiles/Vik_Wrap.dir/src/Renderer.cpp.o: CMakeFiles/Vik_Wrap.dir/flags.make
 CMakeFiles/Vik_Wrap.dir/src/Renderer.cpp.o: src/Renderer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Renderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Renderer.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vik_Wrap.dir/src/Renderer.cpp.o -c /home/gal/101/Vik_Wrap/src/Renderer.cpp
 
 CMakeFiles/Vik_Wrap.dir/src/Renderer.cpp.i: cmake_force
@@ -155,7 +131,7 @@ CMakeFiles/Vik_Wrap.dir/src/Renderer.cpp.o.provides.build: CMakeFiles/Vik_Wrap.d
 
 CMakeFiles/Vik_Wrap.dir/src/Event.cpp.o: CMakeFiles/Vik_Wrap.dir/flags.make
 CMakeFiles/Vik_Wrap.dir/src/Event.cpp.o: src/Event.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Event.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Event.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vik_Wrap.dir/src/Event.cpp.o -c /home/gal/101/Vik_Wrap/src/Event.cpp
 
 CMakeFiles/Vik_Wrap.dir/src/Event.cpp.i: cmake_force
@@ -179,7 +155,7 @@ CMakeFiles/Vik_Wrap.dir/src/Event.cpp.o.provides.build: CMakeFiles/Vik_Wrap.dir/
 
 CMakeFiles/Vik_Wrap.dir/src/Rect.cpp.o: CMakeFiles/Vik_Wrap.dir/flags.make
 CMakeFiles/Vik_Wrap.dir/src/Rect.cpp.o: src/Rect.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Rect.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Rect.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vik_Wrap.dir/src/Rect.cpp.o -c /home/gal/101/Vik_Wrap/src/Rect.cpp
 
 CMakeFiles/Vik_Wrap.dir/src/Rect.cpp.i: cmake_force
@@ -203,7 +179,7 @@ CMakeFiles/Vik_Wrap.dir/src/Rect.cpp.o.provides.build: CMakeFiles/Vik_Wrap.dir/s
 
 CMakeFiles/Vik_Wrap.dir/src/Point.cpp.o: CMakeFiles/Vik_Wrap.dir/flags.make
 CMakeFiles/Vik_Wrap.dir/src/Point.cpp.o: src/Point.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Point.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Point.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vik_Wrap.dir/src/Point.cpp.o -c /home/gal/101/Vik_Wrap/src/Point.cpp
 
 CMakeFiles/Vik_Wrap.dir/src/Point.cpp.i: cmake_force
@@ -227,7 +203,7 @@ CMakeFiles/Vik_Wrap.dir/src/Point.cpp.o.provides.build: CMakeFiles/Vik_Wrap.dir/
 
 CMakeFiles/Vik_Wrap.dir/src/Line.cpp.o: CMakeFiles/Vik_Wrap.dir/flags.make
 CMakeFiles/Vik_Wrap.dir/src/Line.cpp.o: src/Line.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Line.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Line.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vik_Wrap.dir/src/Line.cpp.o -c /home/gal/101/Vik_Wrap/src/Line.cpp
 
 CMakeFiles/Vik_Wrap.dir/src/Line.cpp.i: cmake_force
@@ -251,7 +227,7 @@ CMakeFiles/Vik_Wrap.dir/src/Line.cpp.o.provides.build: CMakeFiles/Vik_Wrap.dir/s
 
 CMakeFiles/Vik_Wrap.dir/src/Font.cpp.o: CMakeFiles/Vik_Wrap.dir/flags.make
 CMakeFiles/Vik_Wrap.dir/src/Font.cpp.o: src/Font.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Font.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Font.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vik_Wrap.dir/src/Font.cpp.o -c /home/gal/101/Vik_Wrap/src/Font.cpp
 
 CMakeFiles/Vik_Wrap.dir/src/Font.cpp.i: cmake_force
@@ -275,7 +251,7 @@ CMakeFiles/Vik_Wrap.dir/src/Font.cpp.o.provides.build: CMakeFiles/Vik_Wrap.dir/s
 
 CMakeFiles/Vik_Wrap.dir/src/Exception.cpp.o: CMakeFiles/Vik_Wrap.dir/flags.make
 CMakeFiles/Vik_Wrap.dir/src/Exception.cpp.o: src/Exception.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Exception.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Exception.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vik_Wrap.dir/src/Exception.cpp.o -c /home/gal/101/Vik_Wrap/src/Exception.cpp
 
 CMakeFiles/Vik_Wrap.dir/src/Exception.cpp.i: cmake_force
@@ -299,7 +275,7 @@ CMakeFiles/Vik_Wrap.dir/src/Exception.cpp.o.provides.build: CMakeFiles/Vik_Wrap.
 
 CMakeFiles/Vik_Wrap.dir/src/Texture.cpp.o: CMakeFiles/Vik_Wrap.dir/flags.make
 CMakeFiles/Vik_Wrap.dir/src/Texture.cpp.o: src/Texture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Texture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Vik_Wrap.dir/src/Texture.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vik_Wrap.dir/src/Texture.cpp.o -c /home/gal/101/Vik_Wrap/src/Texture.cpp
 
 CMakeFiles/Vik_Wrap.dir/src/Texture.cpp.i: cmake_force
@@ -323,7 +299,6 @@ CMakeFiles/Vik_Wrap.dir/src/Texture.cpp.o.provides.build: CMakeFiles/Vik_Wrap.di
 
 # Object files for target Vik_Wrap
 Vik_Wrap_OBJECTS = \
-"CMakeFiles/Vik_Wrap.dir/src/main.cpp.o" \
 "CMakeFiles/Vik_Wrap.dir/src/Init.cpp.o" \
 "CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o" \
 "CMakeFiles/Vik_Wrap.dir/src/Renderer.cpp.o" \
@@ -338,28 +313,26 @@ Vik_Wrap_OBJECTS = \
 # External object files for target Vik_Wrap
 Vik_Wrap_EXTERNAL_OBJECTS =
 
-Vik_Wrap: CMakeFiles/Vik_Wrap.dir/src/main.cpp.o
-Vik_Wrap: CMakeFiles/Vik_Wrap.dir/src/Init.cpp.o
-Vik_Wrap: CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o
-Vik_Wrap: CMakeFiles/Vik_Wrap.dir/src/Renderer.cpp.o
-Vik_Wrap: CMakeFiles/Vik_Wrap.dir/src/Event.cpp.o
-Vik_Wrap: CMakeFiles/Vik_Wrap.dir/src/Rect.cpp.o
-Vik_Wrap: CMakeFiles/Vik_Wrap.dir/src/Point.cpp.o
-Vik_Wrap: CMakeFiles/Vik_Wrap.dir/src/Line.cpp.o
-Vik_Wrap: CMakeFiles/Vik_Wrap.dir/src/Font.cpp.o
-Vik_Wrap: CMakeFiles/Vik_Wrap.dir/src/Exception.cpp.o
-Vik_Wrap: CMakeFiles/Vik_Wrap.dir/src/Texture.cpp.o
-Vik_Wrap: CMakeFiles/Vik_Wrap.dir/build.make
-Vik_Wrap: CMakeFiles/Vik_Wrap.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable Vik_Wrap"
+libVik_Wrap.so: CMakeFiles/Vik_Wrap.dir/src/Init.cpp.o
+libVik_Wrap.so: CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o
+libVik_Wrap.so: CMakeFiles/Vik_Wrap.dir/src/Renderer.cpp.o
+libVik_Wrap.so: CMakeFiles/Vik_Wrap.dir/src/Event.cpp.o
+libVik_Wrap.so: CMakeFiles/Vik_Wrap.dir/src/Rect.cpp.o
+libVik_Wrap.so: CMakeFiles/Vik_Wrap.dir/src/Point.cpp.o
+libVik_Wrap.so: CMakeFiles/Vik_Wrap.dir/src/Line.cpp.o
+libVik_Wrap.so: CMakeFiles/Vik_Wrap.dir/src/Font.cpp.o
+libVik_Wrap.so: CMakeFiles/Vik_Wrap.dir/src/Exception.cpp.o
+libVik_Wrap.so: CMakeFiles/Vik_Wrap.dir/src/Texture.cpp.o
+libVik_Wrap.so: CMakeFiles/Vik_Wrap.dir/build.make
+libVik_Wrap.so: CMakeFiles/Vik_Wrap.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gal/101/Vik_Wrap/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX shared module libVik_Wrap.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Vik_Wrap.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/Vik_Wrap.dir/build: Vik_Wrap
+CMakeFiles/Vik_Wrap.dir/build: libVik_Wrap.so
 
 .PHONY : CMakeFiles/Vik_Wrap.dir/build
 
-CMakeFiles/Vik_Wrap.dir/requires: CMakeFiles/Vik_Wrap.dir/src/main.cpp.o.requires
 CMakeFiles/Vik_Wrap.dir/requires: CMakeFiles/Vik_Wrap.dir/src/Init.cpp.o.requires
 CMakeFiles/Vik_Wrap.dir/requires: CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o.requires
 CMakeFiles/Vik_Wrap.dir/requires: CMakeFiles/Vik_Wrap.dir/src/Renderer.cpp.o.requires

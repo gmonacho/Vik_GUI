@@ -14,7 +14,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/gal/101/Vik_Wrap/src/Renderer.cpp" "/home/gal/101/Vik_Wrap/CMakeFiles/Vik_Wrap.dir/src/Renderer.cpp.o"
   "/home/gal/101/Vik_Wrap/src/Texture.cpp" "/home/gal/101/Vik_Wrap/CMakeFiles/Vik_Wrap.dir/src/Texture.cpp.o"
   "/home/gal/101/Vik_Wrap/src/Window.cpp" "/home/gal/101/Vik_Wrap/CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o"
-  "/home/gal/101/Vik_Wrap/src/main.cpp" "/home/gal/101/Vik_Wrap/CMakeFiles/Vik_Wrap.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

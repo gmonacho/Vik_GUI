@@ -205,6 +205,9 @@ SDL2_TTF_LIBRARY:STRING=/usr/local/lib/libSDL2_ttf.so
 //Value Computed by CMake
 Vik_Wrap_BINARY_DIR:STATIC=/home/gal/101/Vik_Wrap
 
+//Dependencies for the target
+Vik_Wrap_LIB_DEPENDS:STATIC=general;-lSDL2main;general;-lSDL2;general;-lSDL2_image;general;-lSDL2_ttf;
+
 //Value Computed by CMake
 Vik_Wrap_SOURCE_DIR:STATIC=/home/gal/101/Vik_Wrap
 
@@ -368,6 +371,6 @@ FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 SDL2_IMAGE_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SDL2_IMAGE_LIBRARY
 SDL2_IMAGE_LIBRARY-ADVANCED:INTERNAL=1
-SDL2_LIBRARY_TEMP:INTERNAL=/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2.so;-lpthread
+SDL2_LIBRARY_TEMP:INTERNAL=/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2.so;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread
 SDL2_TTF_LIBRARY_TEMP:INTERNAL=/usr/local/lib/libSDL2_ttf.so
 

@@ -55,15 +55,3 @@ CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o
  /home/gal/101/Vik_Wrap/src/Window.cpp
  include/Exception.h
  include/Window.h
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o
- /home/gal/101/Vik_Wrap/src/main.cpp
- include/Event.h
- include/Exception.h
- include/Font.h
- include/Init.h
- include/Line.h
- include/Point.h
- include/Rect.h
- include/Renderer.h
- include/Texture.h
- include/Window.h

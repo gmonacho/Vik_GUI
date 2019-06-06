@@ -55,15 +55,3 @@ CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o: src/Window.cpp
 CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o: include/Exception.h
 CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o: include/Window.h
 
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o: src/main.cpp
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o: include/Event.h
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o: include/Exception.h
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o: include/Font.h
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o: include/Init.h
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o: include/Line.h
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o: include/Point.h
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o: include/Rect.h
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o: include/Renderer.h
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o: include/Texture.h
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.o: include/Window.h
-

@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Vik_Wrap.dir/src/main.cpp.o"
   "CMakeFiles/Vik_Wrap.dir/src/Init.cpp.o"
   "CMakeFiles/Vik_Wrap.dir/src/Window.cpp.o"
   "CMakeFiles/Vik_Wrap.dir/src/Renderer.cpp.o"
@@ -10,8 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Vik_Wrap.dir/src/Font.cpp.o"
   "CMakeFiles/Vik_Wrap.dir/src/Exception.cpp.o"
   "CMakeFiles/Vik_Wrap.dir/src/Texture.cpp.o"
-  "Vik_Wrap.pdb"
-  "Vik_Wrap"
+  "libVik_Wrap.pdb"
+  "libVik_Wrap.so"
 )
 
 # Per-language clean rules from dependency scanning.

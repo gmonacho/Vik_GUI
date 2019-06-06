@@ -117,7 +117,7 @@ namespace vra {
 		SDL_RenderClear(m_ptr);
 	}
 
-	void Renderer::display() {
+	void Renderer::draw() {
 		SDL_RenderPresent(m_ptr);
 	}
 

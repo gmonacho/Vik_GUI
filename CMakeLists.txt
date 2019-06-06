@@ -11,47 +11,47 @@ find_package(SDL2_ttf REQUIRED)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-# add_library(${PROJECT_NAME} MODULE
-#        src/Init.cpp
-#        src/Window.cpp
-#        src/Renderer.cpp
-#        src/Event.cpp
-#        src/Rect.cpp
-#        src/Point.cpp
-#        src/Line.cpp
-#        src/Font.cpp
-#        src/Exception.cpp
-#        include/Init.h
-#        include/Window.h
-#        include/Renderer.h
-#        include/Event.h
-#        include/Rect.h src/Texture.cpp
-#        include/Texture.h
-#        include/Point.h
-#        include/Line.h
-#        include/Font.h
-#        include/Exception.h)
+add_library(${PROJECT_NAME} MODULE
+       src/Init.cpp
+       src/Window.cpp
+       src/Renderer.cpp
+       src/Event.cpp
+       src/Rect.cpp
+       src/Point.cpp
+       src/Line.cpp
+       src/Font.cpp
+       src/Exception.cpp
+       include/Init.h
+       include/Window.h
+       include/Renderer.h
+       include/Event.h
+       include/Rect.h src/Texture.cpp
+       include/Texture.h
+       include/Point.h
+       include/Line.h
+       include/Font.h
+       include/Exception.h)
 
-add_executable(${PROJECT_NAME} src/main.cpp
-        src/Init.cpp
-        src/Window.cpp
-        src/Renderer.cpp
-        src/Event.cpp
-        src/Rect.cpp
-        src/Point.cpp
-        src/Line.cpp
-        src/Font.cpp
-        src/Exception.cpp
-        include/Init.h
-        include/Window.h
-        include/Renderer.h
-        include/Event.h
-        include/Rect.h src/Texture.cpp
-        include/Texture.h
-        include/Point.h
-        include/Line.h
-        include/Font.h
-        include/Exception.h)
+# add_executable(${PROJECT_NAME} src/main.cpp
+#         src/Init.cpp
+#         src/Window.cpp
+#         src/Renderer.cpp
+#         src/Event.cpp
+#         src/Rect.cpp
+#         src/Point.cpp
+#         src/Line.cpp
+#         src/Font.cpp
+#         src/Exception.cpp
+#         include/Init.h
+#         include/Window.h
+#         include/Renderer.h
+#         include/Event.h
+#         include/Rect.h src/Texture.cpp
+#         include/Texture.h
+#         include/Point.h
+#         include/Line.h
+#         include/Font.h
+#         include/Exception.h)
 
 if (MINGW)
         set(LIBRARIES -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf)

@@ -72,7 +72,7 @@ namespace vra {
 
 		void clear();
 
-		void display();
+		void draw();
 
 		void drawTexture(const Texture &texture,
 		                 const std::optional<Rect> &srcRect,
