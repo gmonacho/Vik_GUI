@@ -26,12 +26,14 @@ SOFTWARE.
 
 namespace vra {
 
-	Window::Window(const std::string &title, int x, int y, int w, int h, Uint32 sdl_flags) : m_rend(nullptr) {
+	Window::Window(const std::string &title, int x, int y, int w, int h, Uint32 sdl_flags) : m_rend(nullptr)
+	{
 		if ((m_ptr = SDL_CreateWindow(title.c_str(), x, y, w, h, sdl_flags)) == nullptr)
 			throw (Exception("SDL_CreateWindow"));
 	}
 
-	Window::~Window() {
+	Window::~Window()
+	{
 		if (m_ptr)
 			SDL_DestroyWindow(m_ptr);
 	}
@@ -88,7 +90,8 @@ namespace vra {
 		SDL_SetWindowResizable(m_ptr, static_cast<SDL_bool>(resizable));
 	}
 
-	void Window::show() {
+	void Window::show()
+	{
 		SDL_ShowWindow(m_ptr);
 	}
 

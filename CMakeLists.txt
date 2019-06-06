@@ -22,24 +22,7 @@ find_package(SDL2_ttf REQUIRED)
 #${CMAKE_CURRENT_SOURCE_DIR}/SDL2/lib/x86/SDL2_image.lib")
 
 include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/SDL2/include)
-#add_library(${PROJECT_NAME} SHARED
-#        src/Init.cpp
-#        src/Window.cpp
-#        src/Renderer.cpp
-#        src/Event.cpp
-#        src/Rect.cpp
-#        src/Point.cpp
-#        src/Line.cpp
-#        src/Font.cpp
-#        include/Window.h
-#        include/Renderer.h
-#        include/Event.h
-#        include/Rect.h src/Texture.cpp
-#        include/Texture.h
-#        include/Point.h
-#        include/Line.h
-#        include/Font.h)
-add_executable(${PROJECT_NAME}  main.cpp
+add_library(${PROJECT_NAME} STATIC
         src/Init.cpp
         src/Window.cpp
         src/Renderer.cpp
@@ -48,6 +31,7 @@ add_executable(${PROJECT_NAME}  main.cpp
         src/Point.cpp
         src/Line.cpp
         src/Font.cpp
+        src/Exception.cpp
         include/Window.h
         include/Renderer.h
         include/Event.h
@@ -55,5 +39,25 @@ add_executable(${PROJECT_NAME}  main.cpp
         include/Texture.h
         include/Point.h
         include/Line.h
-        include/Font.h src/Exception.cpp include/Exception.h)
+        include/Font.h
+        include/Exception.h)
+#add_executable(${PROJECT_NAME}  main.cpp
+#        src/Init.cpp
+#        src/Window.cpp
+#        src/Renderer.cpp
+#        src/Event.cpp
+#        src/Rect.cpp
+#        src/Point.cpp
+#        src/Line.cpp
+#        src/Font.cpp
+#        src/Exception.cpp
+#        include/Window.h
+#        include/Renderer.h
+#        include/Event.h
+#        include/Rect.h src/Texture.cpp
+#        include/Texture.h
+#        include/Point.h
+#        include/Line.h
+#        include/Font.h
+#        include/Exception.h)
 target_link_libraries(${PROJECT_NAME} -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf)
