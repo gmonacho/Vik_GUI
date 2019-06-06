@@ -23,5 +23,3 @@ CMakeFiles/Vik_Wrap.dir/src/Window.cpp.obj: ../include/Exception.h
 CMakeFiles/Vik_Wrap.dir/src/Window.cpp.obj: ../include/Window.h
 CMakeFiles/Vik_Wrap.dir/src/Window.cpp.obj: ../src/Window.cpp
 
-CMakeFiles/Vik_Wrap.dir/src/main.cpp.obj: ../src/main.cpp
-
