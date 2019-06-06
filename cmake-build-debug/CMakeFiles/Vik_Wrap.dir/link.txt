@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\Vik_Wrap.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\Vik_Wrap.dir/objects.a @CMakeFiles\Vik_Wrap.dir\objects1.rsp
+C:\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\Vik_Wrap.dir/objects.a -Wl,--no-whole-archive  -o Vik_Wrap.exe -Wl,--out-implib,libVik_Wrap.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Vik_Wrap.dir\linklibs.rsp

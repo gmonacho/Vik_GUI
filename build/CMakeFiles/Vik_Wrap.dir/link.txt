@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\Vik_Wrap.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\Vik_Wrap.dir/objects.a @CMakeFiles\Vik_Wrap.dir\objects1.rsp
+C:\MinGW\bin\g++.exe  -g  -shared -o libVik_Wrap.dll -Wl,--major-image-version,0,--minor-image-version,0 -Wl,--whole-archive CMakeFiles\Vik_Wrap.dir/objects.a -Wl,--no-whole-archive @CMakeFiles\Vik_Wrap.dir\linklibs.rsp

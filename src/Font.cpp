@@ -21,7 +21,7 @@ SOFTWARE.
 */
 
 #include <iostream>
-#include <Exception.h>
+#include "Exception.h"
 #include "Font.h"
 #include "Renderer.h"
 

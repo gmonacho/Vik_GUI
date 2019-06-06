@@ -24,7 +24,7 @@ SOFTWARE.
 #include <SDL_image.h>
 #include <iostream>
 #include <cassert>
-#include <Exception.h>
+#include "Exception.h"
 #include "Texture.h"
 #include "Renderer.h"
 

@@ -1,0 +1,3 @@
+C:/Users/Shadow/Documents/ViKoDe/Vik_Wrap/build/CMakeFiles/Vik_Wrap.dir
+C:/Users/Shadow/Documents/ViKoDe/Vik_Wrap/build/CMakeFiles/edit_cache.dir
+C:/Users/Shadow/Documents/ViKoDe/Vik_Wrap/build/CMakeFiles/rebuild_cache.dir

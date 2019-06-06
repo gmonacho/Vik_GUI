@@ -21,9 +21,8 @@ SOFTWARE.
 */
 
 #include <SDL_keyboard.h>
-#include <new>
 #include <SDL_events.h>
-#include <Exception.h>
+#include "Exception.h"
 #include "Event.h"
 
 namespace vra {

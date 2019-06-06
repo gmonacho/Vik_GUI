@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Exception.h
+string
+-
+stdexcept
+-
+
+../include/Window.h
+SDL_video.h
+-
+string
+-
+
+C:/Users/Shadow/Documents/ViKoDe/Vik_Wrap/src/Window.cpp
+Exception.h
+C:/Users/Shadow/Documents/ViKoDe/Vik_Wrap/src/Exception.h
+Window.h
+C:/Users/Shadow/Documents/ViKoDe/Vik_Wrap/src/Window.h
+

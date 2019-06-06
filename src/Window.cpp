@@ -20,9 +20,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include <Exception.h>
+#include "Exception.h"
 #include "Window.h"
-
 
 namespace vra {
 

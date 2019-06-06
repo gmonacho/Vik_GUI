@@ -22,7 +22,7 @@ SOFTWARE.
 
 #include <iostream>
 #include <optional>
-#include <Exception.h>
+#include "Exception.h"
 #include "Window.h"
 #include "Renderer.h"
 #include "Texture.h"
