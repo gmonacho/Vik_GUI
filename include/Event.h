@@ -24,8 +24,8 @@ SOFTWARE.
 #define VIK_WRAP_EVENT_H
 
 
-#include <SDL_quit.h>
-#include <SDL_events.h>
+#include <SDL2/SDL_quit.h>
+#include <SDL2/SDL_events.h>
 #include <string>
 
 namespace vra {

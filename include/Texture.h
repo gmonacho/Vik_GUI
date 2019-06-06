@@ -24,7 +24,7 @@ SOFTWARE.
 #define VIK_WRAP_TEXTURE_H
 
 #include <optional>
-#include <SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 #include "Rect.h"
 #include "Point.h"
 

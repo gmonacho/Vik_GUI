@@ -4,7 +4,7 @@
 #include <Window.h>
 #include <Renderer.h>
 #include <Event.h>
-#include <SDL_image.h>
+#include <SDL2/SDL_image.h>
 #include <Texture.h>
 #include <Point.h>
 #include <Font.h>

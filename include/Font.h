@@ -24,7 +24,7 @@ SOFTWARE.
 #define VIK_WRAP_FONT_H
 
 #include <string>
-#include <SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 #include "Point.h"
 #include "Texture.h"
 

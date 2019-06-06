@@ -23,7 +23,7 @@ SOFTWARE.
 #ifndef VIK_WRAP_RENDERER_H
 #define VIK_WRAP_RENDERER_H
 
-#include <SDL_render.h>
+#include <SDL2/SDL_render.h>
 #include <optional>
 #include "Window.h"
 #include "Rect.h"
