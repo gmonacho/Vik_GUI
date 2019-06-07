@@ -37,20 +37,64 @@ namespace vra
 class Renderer
 {
  public:
+    /**
+     * @brief  
+     * @note   
+     * @param  &window:    
+     * @param  Choice:      if true the sdl will automatically
+     *                      choose accelerated renderer
+     *                      if it is available
+     * @param  sdl_flags:   SDL_RENDERER_SOFTWARE
+     *                      SDL_RENDERER_ACCELERATED
+     *                      SDL_RENDERER_PRESENTVSYNC
+     *                      SDL_RENDERER_TARGETTEXTURE
+     * @retval None
+     */
     explicit Renderer(const Window &window,
                         bool autoChoice,
                         Uint32 sdl_flags);
-
+    /**
+     * @brief  Movable
+     * @note   
+     * @param  &&rend: 
+     * @retval 
+     */
     Renderer(Renderer &&rend) noexcept;
 
+    /**
+     * @brief  Movable
+     * @note   
+     * @param  &&rend: 
+     * @retval 
+     */
     Renderer &operator=(Renderer &&rend) noexcept;
 
+    /**
+     * @brief  Destructor
+     * @note   
+     * @retval None
+     */
     virtual             ~Renderer();
 
+    /**
+     * @brief  get the SDL_Renderer ptr
+     * @note   
+     * @retval the SDL_Renderer ptr
+     */
     SDL_Renderer *getPtr() const;
 
+    /**
+     * @brief  get SDL_RendererInfo struct
+     * @note   
+     * @retval SDL_RednererInfo struct
+     */
     SDL_RendererInfo getInfo() const;
 
+    /**
+     * @brief  get renderer output size SDL_Rect(0, 0, width, height)
+     * @note   
+     * @retval renderer output size SDL_Rect(0, 0, width, height)
+     */
     SDL_Rect getSdlRect() const;
 
     void setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
