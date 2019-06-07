@@ -2,7 +2,7 @@
 
 ## Normated
 
-This wrapper respect the cpplint norm.
+This wrapper respect the cpplint norm. Except "-whitespace/braces", "-readability/braces", "-whitespace/newline".
 
 ## Else
 
