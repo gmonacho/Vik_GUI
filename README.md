@@ -3,7 +3,35 @@
 ## Normated
 
 This wrapper respect the cpplint norm. Except "-whitespace/braces", "-readability/braces", "-whitespace/newline".
+we favor :
+```cpp
+funcion()
+{
+  //  ...
+}
 
+if ()
+{
+  //  ...
+}
+else
+{
+  //  ...
+}
+```
+than :
+
+```cpp
+funcion() {
+  //  ...
+}
+
+if () {
+  //  ...
+} else {
+  //  ...
+}
+```
 ## Else
 
 - A C++ wrapper based on SDL2
