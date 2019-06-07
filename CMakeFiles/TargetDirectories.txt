@@ -1,3 +1,0 @@
-/home/gal/101/Vik_Wrap/CMakeFiles/rebuild_cache.dir
-/home/gal/101/Vik_Wrap/CMakeFiles/Vik_Wrap.dir
-/home/gal/101/Vik_Wrap/CMakeFiles/edit_cache.dir
