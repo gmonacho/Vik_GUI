@@ -3,7 +3,7 @@
 ## Normated
 
 This wrapper respect the cpplint norm. Except "-whitespace/braces", "-readability/braces", "-whitespace/newline".
-we favor :
+we favor (to improve readability <3):
 ```cpp
 funcion()
 {
