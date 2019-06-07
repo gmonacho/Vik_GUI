@@ -23,8 +23,7 @@ SOFTWARE.
 #ifndef VIK_WRAP_RENDERER_H
 #define VIK_WRAP_RENDERER_H
 
-#include <SDL2/SDL_render.h>
-#include <optional>
+#include <SDL_render.h>
 #include "Window.h"
 #include "Rect.h"
 #include "Point.h"
@@ -58,7 +57,7 @@ namespace vra {
 
 		SDL_Color getDrawColor();
 
-		void setTarget(const std::optional<Texture> &texture);
+		void setTarget(Texture *texture);
 
 		void setDrawBlendMode(SDL_BlendMode sdlBlendMode);
 
@@ -75,8 +74,8 @@ namespace vra {
 		void draw();
 
 		void drawTexture(const Texture &texture,
-		                 const std::optional<Rect> &srcRect,
-		                 const std::optional<Rect> &dstRect);
+		                 const Rect *srcRect,
+		                 const Rect *dstRect);
 
 		void drawPoint(const Point &point);
 

@@ -24,7 +24,7 @@ SOFTWARE.
 #define VIK_WRAP_RECT_H
 
 
-#include <SDL2/SDL_rect.h>
+#include <SDL_rect.h>
 #include "Point.h"
 
 

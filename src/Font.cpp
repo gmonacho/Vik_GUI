@@ -169,7 +169,8 @@ namespace vra {
 		return (size);
 	}
 
-	Texture Font::renderText(const Renderer &rend, const std::string &text, SDL_Color color) {
+	Texture Font::renderText(const Renderer &rend, const std::string &text, SDL_Color color)
+	{
 		SDL_Surface *tmp;
 		SDL_Texture *sdlTexture{nullptr};
 
@@ -180,7 +181,7 @@ namespace vra {
 				throw (Exception("SDL_CreateTextureFromSurface"));
 			SDL_FreeSurface(tmp);
 		}
-		return (Texture{sdlTexture});
+		return  (Texture{sdlTexture});
 	}
 
 	Texture Font::renderTextUTF8(const Renderer &rend, const std::string &text, SDL_Color color) {

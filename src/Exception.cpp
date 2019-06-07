@@ -22,7 +22,7 @@ SOFTWARE.
 
 #include <stdexcept>
 #include <string>
-#include <SDL2/SDL_quit.h>
+#include <SDL_quit.h>
 #include "Exception.h"
 
 using namespace std;

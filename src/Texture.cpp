@@ -21,7 +21,7 @@ SOFTWARE.
 */
 
 #include <string>
-#include <SDL2/SDL_image.h>
+#include <SDL_image.h>
 #include <iostream>
 #include <cassert>
 #include "Exception.h"
@@ -56,7 +56,13 @@ namespace vra {
 			throw (Exception("SDL_CreateTexture"));
 	}
 
-	Texture &Texture::operator=(Texture &&texture) noexcept {
+	Texture::Texture(Texture&& other) noexcept : m_ptr(other.m_ptr)
+	{
+		other.m_ptr = nullptr;
+	}
+
+	Texture &Texture::operator=(Texture &&texture) noexcept
+	{
 		if (&texture == this)
 			return (*this);
 		if (m_ptr)
@@ -72,7 +78,8 @@ namespace vra {
 			SDL_DestroyTexture(m_ptr);
 	}
 
-	Texture &Texture::update(const std::optional<Rect> &rect, const void *pixels, const int &pitch) {
+	Texture &Texture::update(const Rect *rect, const void *pixels, const int &pitch)
+	{
 		SDL_UpdateTexture(m_ptr, rect ? &rect->getSdlRect() : nullptr, pixels, pitch);
 		return (*this);
 	}

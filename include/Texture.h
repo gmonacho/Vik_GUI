@@ -23,8 +23,7 @@ SOFTWARE.
 #ifndef VIK_WRAP_TEXTURE_H
 #define VIK_WRAP_TEXTURE_H
 
-#include <optional>
-#include <SDL2/SDL_ttf.h>
+#include <SDL_ttf.h>
 #include "Rect.h"
 #include "Point.h"
 
@@ -46,14 +45,17 @@ namespace vra {
 
 		virtual                     ~Texture();
 
+		Texture(Texture&& other) noexcept;
+		
 		Texture &operator=(Texture &&texture) noexcept;
 
-//	Texture(const Texture& other) = delete;
-		Texture &operator=(const Texture &texture) = delete;
+		//	Texture(const Texture& other) = delete;
+		//	Texture(const Texture& other) = delete;
+		//	Texture &operator=(const Texture &texture) = delete;
 
 
 
-		Texture &update(const std::optional<Rect> &rect, const void *pixels, const int &pitch);
+		Texture &update(const Rect *rect, const void *pixels, const int &pitch);
 
 		SDL_Texture *getPtr() const;
 

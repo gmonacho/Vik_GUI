@@ -1,7 +1,13 @@
 cmake_minimum_required(VERSION 3.10)
 project(Vik_Wrap)
 
-set(CMAKE_CXX_STANDARD 17)
+if (UNIX)
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+elseif (MSVC)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++14")
+elseif (WIN32)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+endif()
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/)
 
@@ -9,9 +15,9 @@ find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR})
 
-add_library(${PROJECT_NAME} MODULE
+add_library(${PROJECT_NAME} STATIC
        src/Init.cpp
        src/Window.cpp
        src/Renderer.cpp
@@ -56,7 +62,7 @@ add_library(${PROJECT_NAME} MODULE
 if (MINGW)
         set(LIBRARIES -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf)
 elseif (UNIX)
-        set(LIBRARIES -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf)
+        set(LIBRARIES ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY})
 endif()
 
 target_link_libraries(${PROJECT_NAME} ${LIBRARIES})

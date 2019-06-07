@@ -20,8 +20,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include <SDL2/SDL_keyboard.h>
-#include <SDL2/SDL_events.h>
+#include <SDL_keyboard.h>
+#include <SDL_events.h>
 #include "Exception.h"
 #include "Event.h"
 

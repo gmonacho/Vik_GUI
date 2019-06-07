@@ -21,7 +21,6 @@ SOFTWARE.
 */
 
 #include <iostream>
-#include <optional>
 #include "Exception.h"
 #include "Window.h"
 #include "Renderer.h"
@@ -85,7 +84,8 @@ namespace vra {
 		return (drawColor);
 	}
 
-	void Renderer::setTarget(const std::optional<Texture> &texture) {
+	void Renderer::setTarget(Texture *texture)
+	{
 		SDL_SetRenderTarget(m_ptr, texture ? texture->getPtr() : nullptr);
 	}
 
@@ -138,9 +138,9 @@ namespace vra {
 	}
 
 	void Renderer::drawTexture(const Texture &texture,
-	                           const std::optional<Rect> &srcRect,
-	                           const std::optional<Rect> &dstRect) {
-		//std::cout << "texture in fn ptr " << texture.getPtr() << std::endl;
+	                           const Rect *srcRect,
+	                           const Rect *dstRect)
+	{
 		if (texture.getFlip() == SDL_FLIP_NONE && texture.getAngle() == 0)
 			SDL_RenderCopy(m_ptr, texture.getPtr(),
 			               srcRect ? &srcRect->getSdlRect() : nullptr,
