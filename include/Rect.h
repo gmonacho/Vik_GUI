@@ -33,34 +33,83 @@ namespace vra
 class Rect
 {
  public:
+    /**
+     * @brief   Construct and initialize values to 0
+     */
     explicit Rect(int x = 0, int y = 0, int w = 0, int h = 0);
 
+    /**
+     * @brief   Destructor
+     */
     virtual         ~Rect();
 
+    /**
+     * @brief   addition between to Point object (x + x, y + y)=
+     */
     Rect &operator+=(const Point &point);
 
+    /**
+     * @brief   substraction between to Point object (x - x, y - y)=
+     */
     Rect &operator-=(const Point &point);
 
+    /**
+     * @brief   get the Rect's sdl struct
+     * @return  the SDL_Rect struct
+     */
     const SDL_Rect &getSdlRect() const;
 
+    /**
+     * @brief   set the Rect's sdl struct
+     * @param   rect : SDL_Rect struct
+     */
     void setSdlRect(const SDL_Rect &rect);
 
+    /**
+     * @brief   get the rect's left side x position
+     */
     const int &getLeft() const;
 
+    /**
+     * @brief   get the rect's right side x position
+     */
     int getRight() const;
 
+    /**
+     * @brief   get the rect's top side y position
+     */
     const int &getTop() const;
 
+    /**
+     * @brief   get the rect's left side y position
+     */
     int getBot() const;
 
+    /**
+     * @brief   get the rect's x position
+     */
     const int &getX() const;
 
+    /**
+     * @brief   get the rect's y position
+     */
     const int &getY() const;
 
+    /**
+     * @brief   get the rect's width
+     */
     const int &getW() const;
 
+    /**
+     * @brief   get the rect's height
+     */
     const int &getH() const;
 
+    /**
+     * @brief   test if the rect has an intersection with an other rect
+     * @param   other Rect
+     * @return  true or false
+     */
     bool hasRectIntersection(const Rect &rect);
 
  private:
