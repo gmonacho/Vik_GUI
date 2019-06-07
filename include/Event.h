@@ -23,9 +23,9 @@ SOFTWARE.
 #ifndef EVENT_H_
 #define EVENT_H_
 
+#include <string>
 #include <SDL_quit.h>
 #include <SDL_events.h>
-#include <string>
 
 namespace vra
 {
