@@ -27,6 +27,7 @@ add_library(${PROJECT_NAME} MODULE
        src/Line.cpp
        src/Font.cpp
        src/Exception.cpp
+       src/Time.h
        include/Init.h
        include/Window.h
        include/Renderer.h
@@ -36,7 +37,8 @@ add_library(${PROJECT_NAME} MODULE
        include/Point.h
        include/Line.h
        include/Font.h
-       include/Exception.h)
+       include/Exception.h
+       include/Time.h)
 
 # add_executable(${PROJECT_NAME} src/main.cpp
 #         src/Init.cpp
@@ -48,6 +50,7 @@ add_library(${PROJECT_NAME} MODULE
 #         src/Line.cpp
 #         src/Font.cpp
 #         src/Exception.cpp
+#         src/Time.cpp
 #         include/Init.h
 #         include/Window.h
 #         include/Renderer.h
@@ -57,7 +60,8 @@ add_library(${PROJECT_NAME} MODULE
 #         include/Point.h
 #         include/Line.h
 #         include/Font.h
-#         include/Exception.h)
+#         include/Exception.h
+#         include/Time.h)
 
 if (MINGW)
         set(LIBRARIES -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf)
