@@ -27,7 +27,7 @@ add_library(${PROJECT_NAME} MODULE
        src/Line.cpp
        src/Font.cpp
        src/Exception.cpp
-       src/Time.h
+       src/Time.cpp
        include/Init.h
        include/Window.h
        include/Renderer.h
