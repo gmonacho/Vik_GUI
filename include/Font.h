@@ -89,7 +89,7 @@ class Font
      * TTF_STYLE_UNDERLINE
      * TTF_STYLE_STRIKETHROUGH
      */
-    void setStyle(int style);
+    Font &setStyle(int style);
 
     /**
          * Get the current outline size of the loaded font.
@@ -101,7 +101,7 @@ class Font
      * set the current outline size of the font.
      * @param outline The loaded font to get the outline size of.
      */
-    void setOutline(int outline);
+    Font &setOutline(int outline);
 
     /**
      * Get the current hinting setting of the font.
@@ -122,7 +122,7 @@ class Font
      * TTF_HINTING_MONO
      * TTF_HINTING_NONE
          */
-    void setHinting(int hinting);
+    Font &setHinting(int hinting);
 
     /**
      * Get the current kerning setting of the font.
@@ -137,7 +137,7 @@ class Font
      * 0 to diable kerning.
      * non-zero to enable kerning. The default is 1, enabled.
      */
-    void setkerning(int allowed);
+    Font &setkerning(int allowed);
 
     /**
      * Get the maximum pixel height of all glyphs of the loaded font.

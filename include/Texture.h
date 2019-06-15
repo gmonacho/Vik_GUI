@@ -68,25 +68,25 @@ class Texture
 
     const SDL_RendererFlip &getFlip() const;
 
-    void setFlip(const SDL_RendererFlip &flip);
+    Texture &setFlip(const SDL_RendererFlip &flip);
 
-    const double &getAngle() const;
+    const float &getAngle() const;
 
-    void rotate(const double &angle);
+    Texture &rotate(const float &angle);
 
     const Point &getCenter() const;
 
-    void setCenter(const Point &center);
+    Texture &setCenter(const Point &center);
 
-    void setBlendMode(const SDL_BlendMode &blendMode);
+    Texture &setBlendMode(const SDL_BlendMode &blendMode);
 
     SDL_BlendMode getBlendMode() const;
 
-    void setColorMod(const Uint8 &r, const Uint8 &g, const Uint8 &b);
+    Texture &setColorMod(const Uint8 &r, const Uint8 &g, const Uint8 &b);
 
     SDL_Color getColorMod() const;
 
-    void setAlphaMod(const Uint8 &alpha);
+    Texture &setAlphaMod(const Uint8 &alpha);
 
     Uint8 GetAlphaMod() const;
 
@@ -94,7 +94,7 @@ class Texture
     SDL_Texture *m_ptr;
     SDL_RendererFlip m_flip;
     Point m_center;
-    double m_angle;
+    float m_angle;
 };
 }   //  namespace vra
 

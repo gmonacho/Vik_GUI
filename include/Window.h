@@ -25,6 +25,7 @@ SOFTWARE.
 
 #include <SDL_video.h>
 #include <string>
+#include "Point.h"
 
 class Renderer;
 
@@ -53,33 +54,33 @@ class Window
 
     SDL_Window *getPtr() const;
 
-    void setRend(Renderer *rend);
+    Window &setRend(Renderer *rend);
 
     Renderer *getRend() const;
 
-    void setOpacity(const float &opacity);
+    Window &setOpacity(const float &opacity);
 
     float getOpacity() const;
 
-    void setBrightness(const float &brightness);
+    Window &setBrightness(const float &brightness);
 
     float getBrightness() const;
 
-    void setSize(int width, int height);
+    Window &setSize(int width, int height);
 
-    void getSize(int *width, int *height) const;
+    Point getSize() const;
 
-    void setBordered(const bool &bordered);
+    Window &setBordered(const bool &bordered);
 
-    void setFullscreen(const Uint32 &flags);
+    Window &setFullscreen(const Uint32 &flags);
 
-    void setResizable(const bool &resizable);
+    Window &setResizable(const bool &resizable);
 
-    void show();
+    Window &show();
 
-    void hide();
+    Window &hide();
 
-    void raise();
+    Window &raise();
 
  private:
     SDL_Window *m_ptr;

@@ -63,7 +63,7 @@ class Rect
      * @brief   set the Rect's sdl struct
      * @param   rect : SDL_Rect struct
      */
-    void setSdlRect(const SDL_Rect &rect);
+    Rect &setSdlRect(const SDL_Rect &rect);
 
     /**
      * @brief   get the rect's left side x position

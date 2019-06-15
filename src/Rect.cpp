@@ -96,9 +96,10 @@ bool Rect::hasRectIntersection(const Rect &rect)
             rect.getBot() < m_sdlRect.y + m_sdlRect.h);
 }
 
-void Rect::setSdlRect(const SDL_Rect &rect)
+Rect &Rect::setSdlRect(const SDL_Rect &rect)
 {
     m_sdlRect = rect;
+    return (*this);
 }
 
 bool operator==(const Rect &firstRect, const Rect &secondRect)

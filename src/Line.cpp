@@ -61,10 +61,11 @@ Point Line::getP1() const
 }
 
 
-void Line::setP1(const int &x, const int &y)
+Line &Line::setP1(const int &x, const int &y)
 {
     m_x1 = x;
     m_y1 = y;
+    return (*this);
 }
 
 Point Line::getP2() const
@@ -73,10 +74,11 @@ Point Line::getP2() const
     return (newPoint);
 }
 
-void Line::setP2(const int &x, const int &y)
+Line &Line::setP2(const int &x, const int &y)
 {
     m_x2 = x;
     m_y2 = y;
+    return (*this);
 }
 
 const int &Line::getX1() const

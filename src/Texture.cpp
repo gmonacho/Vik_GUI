@@ -120,19 +120,21 @@ const SDL_RendererFlip &Texture::getFlip() const
     return (m_flip);
 }
 
-void Texture::setFlip(const SDL_RendererFlip &flip)
+Texture &Texture::setFlip(const SDL_RendererFlip &flip)
 {
     m_flip = flip;
+    return (*this);
 }
 
-const double &Texture::getAngle() const
+const float &Texture::getAngle() const
 {
     return (m_angle);
 }
 
-void Texture::rotate(const double &angle)
+Texture &Texture::rotate(const float &angle)
 {
     m_angle += angle;
+    return (*this);
 }
 
 const Point &Texture::getCenter() const
@@ -140,19 +142,22 @@ const Point &Texture::getCenter() const
     return (m_center);
 }
 
-void Texture::setCenter(const Point &center)
+Texture &Texture::setCenter(const Point &center)
 {
     m_center = center;
+    return (*this);
 }
 
-void Texture::setBlendMode(const SDL_BlendMode &blendMode)
+Texture &Texture::setBlendMode(const SDL_BlendMode &blendMode)
 {
     SDL_SetTextureBlendMode(m_ptr, blendMode);
+    return (*this);
 }
 
-void Texture::setColorMod(const Uint8 &r, const Uint8 &g, const Uint8 &b)
+Texture &Texture::setColorMod(const Uint8 &r, const Uint8 &g, const Uint8 &b)
 {
     SDL_SetTextureColorMod(m_ptr, r, g, b);
+    return (*this);
 }
 
 SDL_BlendMode Texture::getBlendMode() const
@@ -171,9 +176,10 @@ SDL_Color Texture::getColorMod() const
     return (colorMod);
 }
 
-void Texture::setAlphaMod(const Uint8 &alpha)
+Texture &Texture::setAlphaMod(const Uint8 &alpha)
 {
     SDL_SetTextureAlphaMod(m_ptr, alpha);
+    return (*this);
 }
 
 Uint8 Texture::GetAlphaMod() const

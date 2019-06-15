@@ -83,9 +83,10 @@ SDL_Rect Renderer::getSdlRect() const
     return ((SDL_Rect) {0, 0, w, h});
 }
 
-void Renderer::setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+Renderer &Renderer::setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 {
     SDL_SetRenderDrawColor(m_ptr, r, g, b, a);
+    return (*this);
 }
 
 SDL_Color Renderer::getDrawColor()
@@ -100,14 +101,16 @@ SDL_Color Renderer::getDrawColor()
     return (drawColor);
 }
 
-void Renderer::setTarget(Texture *texture)
+Renderer &Renderer::setTarget(Texture *texture)
 {
     SDL_SetRenderTarget(m_ptr, texture ? texture->getPtr() : nullptr);
+    return (*this);
 }
 
-void Renderer::setDrawBlendMode(SDL_BlendMode sdlBlendMode)
+Renderer &Renderer::setDrawBlendMode(SDL_BlendMode sdlBlendMode)
 {
     SDL_SetRenderDrawBlendMode(m_ptr, sdlBlendMode);
+    return (*this);
 }
 
 SDL_BlendMode Renderer::getDrawBlendMode()
@@ -118,9 +121,10 @@ SDL_BlendMode Renderer::getDrawBlendMode()
     return (sdlBlendMode);
 }
 
-void Renderer::setViewport(const Rect &rect)
+Renderer &Renderer::setViewport(const Rect &rect)
 {
     SDL_RenderSetViewport(m_ptr, &rect.getSdlRect());
+    return (*this);
 }
 
 Rect Renderer::getViewport() const
@@ -133,41 +137,47 @@ Rect Renderer::getViewport() const
     return (rect);
 }
 
-void Renderer::clear()
+Renderer &Renderer::clear()
 {
     SDL_RenderClear(m_ptr);
+    return (*this);
 }
 
-void Renderer::draw()
+Renderer &Renderer::draw()
 {
     SDL_RenderPresent(m_ptr);
+    return (*this);
 }
 
-void Renderer::drawPoint(const Point &point)
+Renderer &Renderer::drawPoint(const Point &point)
 {
     SDL_RenderDrawPoint(m_ptr, point.getX(), point.getY());
+    return (*this);
 }
 
-void Renderer::drawLine(const Line &line)
+Renderer &Renderer::drawLine(const Line &line)
 {
     SDL_RenderDrawLine(m_ptr,
                         line.getX1(),
                         line.getY1(),
                         line.getX2(),
                         line.getY2());
+    return (*this);
 }
 
-void Renderer::drawRect(const Rect &rect)
+Renderer &Renderer::drawRect(const Rect &rect)
 {
     SDL_RenderDrawRect(m_ptr, &rect.getSdlRect());
+    return (*this);
 }
 
-void Renderer::fillRect(const Rect &rect)
+Renderer &Renderer::fillRect(const Rect &rect)
 {
     SDL_RenderFillRect(m_ptr, &rect.getSdlRect());
+    return (*this);
 }
 
-void Renderer::drawTexture(const Texture &texture,
+Renderer &Renderer::drawTexture(const Texture &texture,
                             const Rect *srcRect,
                             const Rect *dstRect)
 {
@@ -187,6 +197,6 @@ void Renderer::drawTexture(const Texture &texture,
                             &texture.getCenter().getSdlPoint(),
                             texture.getFlip());
     }
-    std::cout << SDL_GetError() << std::endl;
+    return (*this);
 }
 }   //  namespace vra

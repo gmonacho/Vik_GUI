@@ -78,7 +78,7 @@ class Line
      * @param x
      * @param y
      */
-    void setP1(const int &x, const int &y);
+    Line &setP1(const int &x, const int &y);
 
     /**
      * get the line's second point (x2, y12).
@@ -91,7 +91,7 @@ class Line
      * @param x
      * @param y
      */
-    void setP2(const int &x, const int &y);
+    Line &setP2(const int &x, const int &y);
 
     /**
      *

@@ -17,7 +17,7 @@ find_package(SDL2_ttf REQUIRED)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR})
 
-add_library(${PROJECT_NAME} STATIC
+add_library(${PROJECT_NAME} MODULE
        src/Init.cpp
        src/Window.cpp
        src/Renderer.cpp

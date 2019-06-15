@@ -22,6 +22,7 @@ SOFTWARE.
 
 #include "Exception.h"
 #include "Window.h"
+#include "Point.h"
 
 namespace vra
 {
@@ -47,9 +48,10 @@ SDL_Window *Window::getPtr() const
     return m_ptr;
 }
 
-void Window::setRend(Renderer *rend)
+Window &Window::setRend(Renderer *rend)
 {
     m_rend = rend;
+    return (*this);
 }
 
 Renderer *Window::getRend() const
@@ -57,9 +59,10 @@ Renderer *Window::getRend() const
     return (m_rend);
 }
 
-void Window::setOpacity(const float &opacity)
+Window &Window::setOpacity(const float &opacity)
 {
     SDL_SetWindowOpacity(m_ptr, opacity);
+    return (*this);
 }
 
 float Window::getOpacity() const
@@ -70,9 +73,10 @@ float Window::getOpacity() const
     return (opacity);
 }
 
-void Window::setBrightness(const float &brightness)
+Window &Window::setBrightness(const float &brightness)
 {
     SDL_SetWindowBrightness(m_ptr, brightness);
+    return (*this);
 }
 
 float Window::getBrightness() const
@@ -80,45 +84,55 @@ float Window::getBrightness() const
     return (SDL_GetWindowBrightness(m_ptr));
 }
 
-void Window::setBordered(const bool &bordered)
+Window &Window::setBordered(const bool &bordered)
 {
     SDL_SetWindowBordered(m_ptr, static_cast<SDL_bool>(bordered));
+    return (*this);
 }
 
-void Window::setFullscreen(const Uint32 &flags)
+Window &Window::setFullscreen(const Uint32 &flags)
 {
     SDL_SetWindowFullscreen(m_ptr, flags);
+    return (*this);
 }
 
-void Window::setSize(int width, int height)
+Window &Window::setSize(int width, int height)
 {
     if (width > 0 && height > 0)
         SDL_SetWindowSize(m_ptr, width, height);
+    return (*this);
 }
 
-void Window::getSize(int *width, int *height) const
+Point Window::getSize() const
 {
-    SDL_GetWindowSize(m_ptr, width, height);
+    int     width, height;
+
+    SDL_GetWindowSize(m_ptr, &width, &height);
+    return (Point{width, height});
 }
 
-void Window::setResizable(const bool &resizable)
+Window &Window::setResizable(const bool &resizable)
 {
     SDL_SetWindowResizable(m_ptr, static_cast<SDL_bool>(resizable));
+    return (*this);
 }
 
-void Window::show()
+Window &Window::show()
 {
     SDL_ShowWindow(m_ptr);
+    return (*this);
 }
 
-void Window::hide()
+Window &Window::hide()
 {
     SDL_HideWindow(m_ptr);
+    return (*this);
 }
 
-void Window::raise()
+Window &Window::raise()
 {
     SDL_RaiseWindow(m_ptr);
+    return (*this);
 }
 
 Window::Window(Window &&win) noexcept : m_ptr(win.m_ptr), m_rend(win.m_rend)

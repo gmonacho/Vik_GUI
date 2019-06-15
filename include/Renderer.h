@@ -97,37 +97,37 @@ class Renderer
      */
     SDL_Rect getSdlRect() const;
 
-    void setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+    Renderer &setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
     SDL_Color getDrawColor();
 
-    void setTarget(Texture *texture);
+    Renderer &setTarget(Texture *texture);
 
-    void setDrawBlendMode(SDL_BlendMode sdlBlendMode);
+    Renderer &setDrawBlendMode(SDL_BlendMode sdlBlendMode);
 
     SDL_BlendMode getDrawBlendMode();
 
-    void setViewport(const Rect &rect);
+    Renderer &setViewport(const Rect &rect);
 
     Rect getViewport() const;
 
     // void *readPixels(const Rect &rect, Uint32 sdlFormat, const int &pitch);
 
-    void clear();
+    Renderer &clear();
 
-    void draw();
+    Renderer &draw();
 
-    void drawTexture(const Texture &texture,
+    Renderer &drawTexture(const Texture &texture,
                         const Rect *srcRect,
                         const Rect *dstRect);
 
-    void drawPoint(const Point &point);
+    Renderer &drawPoint(const Point &point);
 
-    void drawLine(const Line &line);
+    Renderer &drawLine(const Line &line);
 
-    void drawRect(const Rect &rect);
+    Renderer &drawRect(const Rect &rect);
 
-    void fillRect(const Rect &rect);
+    Renderer &fillRect(const Rect &rect);
 
  private:
     SDL_Renderer *m_ptr;

@@ -54,9 +54,10 @@ const int &Point::getX() const
     return (m_sdlPoint.x);
 }
 
-void Point::setX(const int &x)
+Point &Point::setX(const int &x)
 {
     m_sdlPoint.x = x;
+    return (*this);
 }
 
 const int &Point::getY() const
@@ -65,9 +66,10 @@ const int &Point::getY() const
 }
 
 
-void Point::setY(const int &y)
+Point &Point::setY(const int &y)
 {
     m_sdlPoint.y = y;
+    return (*this);
 }
 
 

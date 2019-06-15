@@ -66,10 +66,11 @@ namespace vra {
             return (0x00);
     }
 
-    void Font::setStyle(int style)
+    Font &Font::setStyle(int style)
     {
         if (m_font)
             TTF_SetFontStyle(m_font, style);
+        return (*this);
     }
 
     int Font::getOutline() const
@@ -80,10 +81,11 @@ namespace vra {
             return (0);
     }
 
-    void Font::setOutline(int outline)
+    Font &Font::setOutline(int outline)
     {
         if (m_font)
             TTF_SetFontOutline(m_font, outline);
+        return (*this);
     }
 
     int Font::getHinting() const
@@ -94,10 +96,11 @@ namespace vra {
             return (0);
     }
 
-    void Font::setHinting(int hinting)
+    Font &Font::setHinting(int hinting)
     {
         if (m_font)
             TTF_SetFontHinting(m_font, hinting);
+        return (*this);
     }
 
     int Font::getKerning() const
@@ -108,10 +111,11 @@ namespace vra {
             return (0);
     }
 
-    void Font::setkerning(int allowed)
+    Font &Font::setkerning(int allowed)
     {
         if (m_font)
             TTF_SetFontKerning(m_font, allowed);
+        return (*this);
     }
 
     int Font::getHeight() const

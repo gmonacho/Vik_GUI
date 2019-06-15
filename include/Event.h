@@ -35,12 +35,12 @@ class Event
  public:
         Event();
 
-        virtual             ~Event();
+        virtual ~Event();
 
         /**
          * 	update/refresh sdl's events and the Event object
          */
-        void                update();
+        Event &update();
 
         /**
          * get the sdl's structure SDL_Event
@@ -73,12 +73,12 @@ class Event
          * and start emitting SDL_TEXTINPUT and SDL_TEXTEDITING events.
          * Please use this function in pair with stopTextInput().
          */
-        void startTextInput();
+        Event &startTextInput();
 
         /**
          * stop text input reception
          */
-        void stopTextInput();
+        Event &stopTextInput();
 
         /**
          * get the last text input (text input reception must be started with startTextInput())

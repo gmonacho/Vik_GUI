@@ -59,7 +59,7 @@ class Point
      * set the point's x value
      * @param x value
      */
-    void setX(const int &x);
+    Point &setX(const int &x);
 
     /**
      * get the point's y value
@@ -71,7 +71,7 @@ class Point
      * set the point's y value
      * @param point's y value
      */
-    void setY(const int &y);
+    Point &setY(const int &y);
 
     virtual     ~Point();
 

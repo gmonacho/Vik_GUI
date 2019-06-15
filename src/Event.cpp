@@ -36,33 +36,42 @@ namespace vra {
 
     Event::~Event() = default;
 
-    void Event::update() {
+    Event &Event::update()
+    {
         SDL_PumpEvents();
         SDL_PollEvent(&m_event);
         SDL_GetMouseState(&m_mouseY, &m_mouseX);
+        return (*this);
     }
 
-    const SDL_Event &Event::getEvent() const {
+    const SDL_Event &Event::getEvent() const
+    {
         return (m_event);
     }
 
-    const SDL_Event &Event::waitEvent() {
+    const SDL_Event &Event::waitEvent()
+    {
         SDL_WaitEvent(&m_event);
         return (m_event);
     }
 
-    bool Event::isKeyPressed(int sdl_code) {
+    bool Event::isKeyPressed(int sdl_code)
+    {
         if (sdl_code >= m_keyboardSize)
             return (false);
         return (m_keyboard[sdl_code] != 0);
     }
 
-    void Event::startTextInput() {
+    Event &Event::startTextInput()
+    {
         SDL_StartTextInput();
+        return (*this);
     }
 
-    void Event::stopTextInput() {
+    Event &Event::stopTextInput()
+    {
         SDL_StopTextInput();
+        return (*this);
     }
 
     const std::string Event::getLastTextInput() const {
