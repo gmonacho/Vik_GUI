@@ -26,15 +26,23 @@ SOFTWARE.
 #include "Point.h"
 #include "Rect.h"
 #include "Circle.h"
+#include "Line.h"
+#include "Polygon.h"
 
 namespace vra
 {
 
-bool    collisionPointRect(const vra::Point &point,
-                           const vra::Rect &rect);
+bool    collisionPointRect(const Point &point,
+                           const Rect &rect);
 
-bool    collisionPointCircle(const vra::Point &point,
-                             const vra::Circle &circle);
+bool    collisionPointCircle(const Point &point,
+                             const Circle &circle);
+
+bool    collisionLineLine(const Line &l1, const Line &l2);
+
+// bool    collisionPointPolygon(const Point &point,
+//                               const Polygon &polygon);
+
 
 }   //  namespace vra
 

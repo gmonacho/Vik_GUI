@@ -24,6 +24,7 @@ int     main(int ac, char **av)
     vra::Rect           rect{200, 200, 200, 200};
     vra::Circle         circle{300, 300, 100};
     vra::Polygon        polygon;
+    vra::Line           l1{0, 100, 200, 100}, l2{150, 0, 150, 90};
 
     bool                loop{true};
 
@@ -44,8 +45,12 @@ int     main(int ac, char **av)
         {
             loop = false;
         }
+        if (collisionLineLine(l1, l2) == true)
+            std::cout << "collision\n";
+        else
+            std::cout << "pas collision\n";
         renderer.setDrawColor(200, 200, 200, 255);
-        renderer.drawPolygon(polygon);
+        renderer.drawLine(l1).drawLine(l2);
         renderer.draw();
     }
     return (1);
