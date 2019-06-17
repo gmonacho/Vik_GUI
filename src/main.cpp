@@ -38,19 +38,19 @@ int     main(int ac, char **av)
     {
         renderer.setDrawColor(50, 50, 50, 255);
         renderer.clear();
-        event.waitEvent();
+        // event.waitEvent();
         event.update();
         if (event.getEvent().type == SDL_QUIT ||
            event.isKeyPressed(SDL_SCANCODE_ESCAPE))
         {
             loop = false;
         }
-        if (collisionLineLine(l1, l2) == true)
+        if (collisionPointPolygon(event.getMousePosition(), polygon) == true)
             std::cout << "collision\n";
         else
             std::cout << "pas collision\n";
         renderer.setDrawColor(200, 200, 200, 255);
-        renderer.drawLine(l1).drawLine(l2);
+        renderer.drawPolygon(polygon);
         renderer.draw();
     }
     return (1);

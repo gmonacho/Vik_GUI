@@ -23,6 +23,7 @@ SOFTWARE.
 #include "collision.h"
 #include <cmath>
 #include <stdexcept>
+#include <iostream>
 #include "Point.h"
 #include "Rect.h"
 #include "Circle.h"
@@ -51,11 +52,11 @@ bool    collisionPointCircle(const vra::Point &point,
     return (dist <= circle.getRadius());
 }
 
-bool    collisionLineLine(const Line &l1, const Line &l2)
+int    collisionLineLine(const Line &l1, const Line &l2)
 {
     Point   D, E;
     double  denom;
-    int     t, u;
+    double  t, u;
 
     D.setX(l1.getX2() - l1.getX1());
     D.setY(l1.getY2() - l1.getY1());
@@ -64,22 +65,54 @@ bool    collisionLineLine(const Line &l1, const Line &l2)
     denom = D.getX() * E.getY() - D.getY() * E.getX();
 
     if (denom == 0)
-        throw(std::logic_error("echec calcul collision"));
+        return (-1);
     t = -(l1.getX1() * E.getY() - l2.getX1() * E.getY() - E.getX()
            * l1.getY1() + E.getX() * l2.getY1()) / denom;
     if (t < 0 || t >= 1)
-        return (false);
+        return (0);
     u = -(-D.getX() * l1.getY1() + D.getX() * l2.getY1() +
            D.getY() * l1.getX1() - D.getY() * l2.getX1()) / denom;
     if (u < 0 || u >= 1)
-        return (false);
-    return (true);
+        return (0);
+    return (1);
 }
 
-// bool    collisionPointPolygon(const vra::Point &point,
-//                               const vra::Polygon &polygon)
-// {
+bool    collisionPointPolygon(const Point &point,
+                              const Polygon &polygon)
+{
+    Point               I;
+    Point               A;
+    Point               B;
+    std::vector<Point>  tabPoint{polygon.getTabPoint()};
+    int                 nbintersections{0};
+    int                 iseg;
 
-// }
+    I.setX(10000 + rand() % 100);
+    I.setY(10000 + rand() % 100);
+    for (int i{0}; i < tabPoint.size(); i++)
+    {
+        A = tabPoint[i];
+        if (i == tabPoint.size() - 1)
+            B = tabPoint[0];
+        else
+            B = tabPoint[i + 1];
+        iseg = collisionLineLine(Line{A, B}, Line{I, point});
+        if (iseg == -1)
+            return (collisionPointPolygon(point, Polygon{tabPoint}));
+        nbintersections += iseg;
+        if (iseg)
+        {
+            std::cout << "A.x = " << A.getX()
+                    << " A.y = " << A.getY() << std::endl;
+            std::cout << "B.x = " << B.getX()
+                    << " B.y = " << B.getY() << std::endl;
+        }
+    }
+    std::cout << "inter = " << nbintersections << std::endl;
+    if (nbintersections % 2 == 1)
+        return (true);
+    else
+        return (false);
+}
 
 }   //  namespace vra

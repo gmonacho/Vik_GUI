@@ -38,10 +38,10 @@ bool    collisionPointRect(const Point &point,
 bool    collisionPointCircle(const Point &point,
                              const Circle &circle);
 
-bool    collisionLineLine(const Line &l1, const Line &l2);
+int    collisionLineLine(const Line &l1, const Line &l2);
 
-// bool    collisionPointPolygon(const Point &point,
-//                               const Polygon &polygon);
+bool    collisionPointPolygon(const Point &point,
+                              const Polygon &polygon);
 
 
 }   //  namespace vra
