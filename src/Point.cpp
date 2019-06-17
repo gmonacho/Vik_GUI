@@ -73,6 +73,12 @@ Point &Point::setY(const int &y)
 }
 
 
+bool operator!=(const Point &firstPoint, const Point &secondPoint)
+{
+    return (firstPoint.getX() != secondPoint.getX() ||
+            firstPoint.getY() != secondPoint.getY());
+}
+
 bool operator==(const Point &firstPoint, const Point &secondPoint)
 {
     return (firstPoint.getX() == secondPoint.getX() &&

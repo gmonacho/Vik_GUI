@@ -24,6 +24,7 @@ SOFTWARE.
 #include <SDL_events.h>
 #include "Exception.h"
 #include "Event.h"
+#include "Point.h"
 
 namespace vra {
 
@@ -93,12 +94,9 @@ namespace vra {
         return (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(sdl_button));
     }
 
-    int Event::getMouseX() const {
-        return m_mouseX;
-    }
-
-    int Event::getMouseY() const {
-        return m_mouseY;
+    Point Event::getMousePosition() const
+    {
+        return (Point{m_mouseX, m_mouseY});
     }
 
 }   //  namespace vra

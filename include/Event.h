@@ -26,6 +26,7 @@ SOFTWARE.
 #include <string>
 #include <SDL_quit.h>
 #include <SDL_events.h>
+#include "Point.h"
 
 namespace vra
 {
@@ -100,17 +101,12 @@ class Event
         //  setTextInputRect();
         //  Edition de texte
 
-        /**
+         /**
          *
-         * @return the mouse's x position
+         * @return the mouse's position
          */
-        int getMouseX() const;
 
-        /**
-         *
-         * @return the mouse's y position
-         */
-        int getMouseY() const;
+        Point getMousePosition() const;
 
  private:
         const Uint8 *m_keyboard;

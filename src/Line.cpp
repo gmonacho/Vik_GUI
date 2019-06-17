@@ -88,7 +88,7 @@ const int &Line::getX1() const
 
 const int &Line::getY1() const
 {
-    return (m_x1);
+    return (m_y1);
 }
 
 const int &Line::getX2() const

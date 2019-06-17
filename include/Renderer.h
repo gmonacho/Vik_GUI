@@ -25,9 +25,11 @@ SOFTWARE.
 
 #include <SDL_render.h>
 #include "Window.h"
-#include "Rect.h"
 #include "Point.h"
 #include "Line.h"
+#include "Rect.h"
+#include "Circle.h"
+#include "Polygon.h"
 #include "Texture.h"
 
 class Window;
@@ -128,6 +130,10 @@ class Renderer
     Renderer &drawRect(const Rect &rect);
 
     Renderer &fillRect(const Rect &rect);
+
+    Renderer &drawCircle(const Circle &circle);
+
+    Renderer &drawPolygon(const Polygon &polygon);
 
  private:
     SDL_Renderer *m_ptr;

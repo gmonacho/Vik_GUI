@@ -25,6 +25,8 @@ SOFTWARE.
 #include "Window.h"
 #include "Renderer.h"
 #include "Texture.h"
+#include "Circle.h"
+#include "Polygon.h"
 
 namespace vra
 {
@@ -181,15 +183,17 @@ Renderer &Renderer::drawTexture(const Texture &texture,
                             const Rect *srcRect,
                             const Rect *dstRect)
 {
+    int     ret{0};
+
     if (texture.getFlip() == SDL_FLIP_NONE && texture.getAngle() == 0)
     {
-        SDL_RenderCopy(m_ptr, texture.getPtr(),
+        ret = SDL_RenderCopy(m_ptr, texture.getPtr(),
                         srcRect ? &srcRect->getSdlRect() : nullptr,
                         dstRect ? &dstRect->getSdlRect() : nullptr);
     }
     else
     {
-        SDL_RenderCopyEx(m_ptr,
+        ret = SDL_RenderCopyEx(m_ptr,
                             texture.getPtr(),
                             srcRect ? &srcRect->getSdlRect() : nullptr,
                             dstRect ? &dstRect->getSdlRect() : nullptr,
@@ -197,6 +201,58 @@ Renderer &Renderer::drawTexture(const Texture &texture,
                             &texture.getCenter().getSdlPoint(),
                             texture.getFlip());
     }
+    if (ret < 0)
+        throw(Exception{"drawTexture"});
     return (*this);
 }
+
+Renderer &Renderer::drawCircle(const Circle &circle)
+{
+    int     x{0},
+            y{circle.getRadius()},
+            m{5 - 4 - circle.getRadius()};
+    while (x <= y)
+    {
+        drawPoint(Point{x + circle.getPosition().getX(),
+                        y + circle.getPosition().getY()});
+        drawPoint(Point{y + circle.getPosition().getX(),
+                        x + circle.getPosition().getY()});
+        drawPoint(Point{-x + circle.getPosition().getX(),
+                        y + circle.getPosition().getY()});
+        drawPoint(Point{-y + circle.getPosition().getX(),
+                        x + circle.getPosition().getY()});
+        drawPoint(Point{x + circle.getPosition().getX(),
+                        -y + circle.getPosition().getY()});
+        drawPoint(Point{y + circle.getPosition().getX(),
+                        -x + circle.getPosition().getY()});
+        drawPoint(Point{-x + circle.getPosition().getX(),
+                        -y + circle.getPosition().getY()});
+        drawPoint(Point{-y + circle.getPosition().getX(),
+                        -x + circle.getPosition().getY()});
+        if (m > 0)
+        {
+            y--;
+            m -= 8 * y;
+        }
+        x++;
+        m += 8 * x + 4;
+    }
+    return (*this);
+}
+
+
+Renderer &Renderer::drawPolygon(const Polygon &polygon)
+{
+    std::vector<Point>  tabPoint{polygon.getTabPoint()};
+    Point               previousPoint{tabPoint[0]};
+
+    drawLine(Line{tabPoint[tabPoint.size() - 1], previousPoint});
+    for (int i{1}; i < tabPoint.size(); i++)
+    {
+        drawLine(Line{previousPoint, tabPoint[i]});
+        previousPoint = tabPoint[i];
+    }
+    return (*this);
+}
+
 }   //  namespace vra

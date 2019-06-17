@@ -110,7 +110,7 @@ SDL_Rect Texture::getSdlRect() const
     int w;
     int h;
 
-    SDL_QueryTexture(nullptr, nullptr, nullptr, &w, &h);
+    SDL_QueryTexture(m_ptr, nullptr, nullptr, &w, &h);
     return ((SDL_Rect) {0, 0, w, h});
 }
 

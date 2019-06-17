@@ -81,6 +81,8 @@ class Point
 
 bool operator==(const Point &firstPoint, const Point &secondPoint);
 
+bool operator!=(const Point &firstPoint, const Point &secondPoint);
+
 Point operator+(const Point &firstPoint, const Point &secondPoint);
 
 Point operator-(const Point &firstPoint, const Point &secondPoint);
