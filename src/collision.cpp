@@ -63,7 +63,6 @@ int    collisionLineLine(const Line &l1, const Line &l2)
     E.setX(l2.getX2() - l2.getX1());
     E.setY(l2.getY2() - l2.getY1());
     denom = D.getX() * E.getY() - D.getY() * E.getX();
-
     if (denom == 0)
         return (-1);
     t = -(l1.getX1() * E.getY() - l2.getX1() * E.getY() - E.getX()
@@ -100,15 +99,7 @@ bool    collisionPointPolygon(const Point &point,
         if (iseg == -1)
             return (collisionPointPolygon(point, Polygon{tabPoint}));
         nbintersections += iseg;
-        if (iseg)
-        {
-            std::cout << "A.x = " << A.getX()
-                    << " A.y = " << A.getY() << std::endl;
-            std::cout << "B.x = " << B.getX()
-                    << " B.y = " << B.getY() << std::endl;
-        }
     }
-    std::cout << "inter = " << nbintersections << std::endl;
     if (nbintersections % 2 == 1)
         return (true);
     else

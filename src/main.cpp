@@ -24,15 +24,14 @@ int     main(int ac, char **av)
     vra::Rect           rect{200, 200, 200, 200};
     vra::Circle         circle{300, 300, 100};
     vra::Polygon        polygon;
-    vra::Line           l1{0, 100, 200, 100}, l2{150, 0, 150, 90};
 
     bool                loop{true};
 
-    polygon.addPoint(vra::Point{100, 100});
-    polygon.addPoint(vra::Point{200, 100});
-    polygon.addPoint(vra::Point{50, 200});
-    polygon.addPoint(vra::Point{20, 150});
-    polygon.addPoint(vra::Point{80, 60});
+    polygon.addPoint(vra::Point{200, 200});
+    polygon.addPoint(vra::Point{400, 200});
+    polygon.addPoint(vra::Point{100, 400});
+    polygon.addPoint(vra::Point{40, 300});
+    polygon.addPoint(vra::Point{160, 120});
     // polygon.addPoint(vra::Point{50, 150});
     while (loop)
     {

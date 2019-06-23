@@ -41,7 +41,7 @@ namespace vra {
     {
         SDL_PumpEvents();
         SDL_PollEvent(&m_event);
-        SDL_GetMouseState(&m_mouseY, &m_mouseX);
+        SDL_GetMouseState(&m_mouseX, &m_mouseY);
         return (*this);
     }
 
