@@ -43,6 +43,14 @@ Rect &Rect::operator-=(const Point &point)
     return (*this);
 }
 
+
+Rect &Rect::move(const int &dx, const int &dy)
+{
+    m_sdlRect.x += dx;
+    m_sdlRect.y += dy;
+    return (*this);
+}
+
 const SDL_Rect &Rect::getSdlRect() const
 {
     return (m_sdlRect);

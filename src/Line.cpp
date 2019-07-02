@@ -54,6 +54,16 @@ Line &Line::operator-=(const Point &point)
     return (*this);
 }
 
+
+Line &Line::move(const int &dx, const int &dy)
+{
+    m_x1 += dx;
+    m_y1 += dy;
+    m_x2 += dx;
+    m_y2 += dy;
+    return (*this);
+}
+
 Point Line::getP1() const
 {
     Point newPoint{m_x1, m_y1};

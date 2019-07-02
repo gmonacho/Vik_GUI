@@ -25,12 +25,13 @@ SOFTWARE.
 
 
 #include <SDL_rect.h>
+#include "GeometricObject.h"
 #include "Point.h"
 
 
 namespace vra
 {
-class Rect
+class Rect : public GeometricObject
 {
  public:
     /**
@@ -46,12 +47,14 @@ class Rect
     /**
      * @brief   addition between to Point object (x + x, y + y)=
      */
-    Rect &operator+=(const Point &point);
+    Rect &operator+=(const Point &point) override;
 
     /**
      * @brief   substraction between to Point object (x - x, y - y)=
      */
-    Rect &operator-=(const Point &point);
+    Rect &operator-=(const Point &point) override;
+
+    Rect &move(const int &dx, const int &dy) override;
 
     /**
      * @brief   get the Rect's sdl struct

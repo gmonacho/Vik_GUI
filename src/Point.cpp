@@ -44,6 +44,13 @@ Point &Point::operator-=(const Point &point)
     return (*this);
 }
 
+Point &Point::move(const int &dx, const int &dy)
+{
+    m_sdlPoint.x += dx;
+    m_sdlPoint.y += dy;
+    return (*this);
+}
+
 const SDL_Point &Point::getSdlPoint() const
 {
     return (m_sdlPoint);

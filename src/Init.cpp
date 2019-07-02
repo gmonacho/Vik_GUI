@@ -35,7 +35,7 @@ void Init(Uint32 flags, int imgFlags)
 {
     if (SDL_Init(flags) < 0)
         throw(Exception("SDL_Init"));
-    if (imgFlags != IMG_Init(imgFlags))
+    if (imgFlags != IMG_Init(imgFlags) & imgFlags)
         throw(Exception("IMG_Init"));
     if (TTF_Init() < 0)
         throw(Exception("TTF_Init"));

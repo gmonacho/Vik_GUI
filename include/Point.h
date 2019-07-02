@@ -25,11 +25,12 @@ SOFTWARE.
 
 
 #include <SDL_rect.h>
+#include "GeometricObject.h"
 
 namespace vra
 {
 
-class Point
+class Point : public GeometricObject
 {
  public:
     /**
@@ -39,9 +40,11 @@ class Point
      */
     explicit Point(int x = 0, int y = 0);
 
-    Point &operator+=(const Point &point);
+    Point &operator+=(const Point &point) override;
 
-    Point &operator-=(const Point &point);
+    Point &operator-=(const Point &point) override;
+
+    Point &move(const int &dx, const int &dy) override;
 
     /**
      * get the point's sdl structure

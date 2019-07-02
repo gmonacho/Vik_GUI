@@ -2,12 +2,13 @@
 #define POLYGON_H_
 
 #include <vector>
+#include "GeometricObject.h"
 #include "Point.h"
 
 namespace vra
 {
 
-class Polygon
+class Polygon : public GeometricObject
 {
  private:
     std::vector<Point>  m_tabPoint;
@@ -16,9 +17,11 @@ class Polygon
     Polygon();
     explicit Polygon(const std::vector<Point> tabPoint);
 
-    Polygon &operator+=(const Point &point);
+    Polygon &operator+=(const Point &point) override;
 
-    Polygon &operator-=(const Point &point);
+    Polygon &operator-=(const Point &point) override;
+
+    Polygon &move(const int &dx, const int &dy) override;
 
     ~Polygon() = default;
 

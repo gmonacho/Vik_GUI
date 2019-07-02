@@ -13,12 +13,21 @@ Polygon &Polygon::operator+=(const Point &point)
 {
     for (Point &p : m_tabPoint)
         p += point;
+    return (*this);
 }
 
 Polygon &Polygon::operator-=(const Point &point)
 {
     for (Point &p : m_tabPoint)
         p -= point;
+    return (*this);
+}
+
+Polygon &Polygon::move(const int &dx, const int &dy)
+{
+    for (Point &p : m_tabPoint)
+        p.move(dx, dy);
+    return (*this);
 }
 
 Polygon &Polygon::addPoint(const Point &point)

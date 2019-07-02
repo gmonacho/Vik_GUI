@@ -23,13 +23,14 @@ SOFTWARE.
 #ifndef LINE_H_
 #define LINE_H_
 
+#include "GeometricObject.h"
 #include "Point.h"
 
 
 namespace vra
 {
 
-class Line
+class Line : public GeometricObject
 {
  public:
     /**
@@ -58,14 +59,16 @@ class Line
      * @param point
      * @return The addition result
      */
-    Line &operator+=(const Point &point);
+    Line &operator+=(const Point &point) override;
 
     /**
      * subs the point values to the line's points values
      * @param point
      * @return The substraction result
      */
-    Line &operator-=(const Point &point);
+    Line &operator-=(const Point &point) override;
+
+    Line &move(const int &dx, const int &dy) override;
 
     /**
      * get the line's first point (x1, y1).

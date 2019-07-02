@@ -35,12 +35,20 @@ Circle &Circle::operator+=(const Point &point)
 {
     Circle::setPosition(Circle::getPosition().getX() + point.getX(),
                         Circle::getPosition().getY() + point.getY());
+    return (*this);
 }
 
 Circle &Circle::operator-=(const Point &point)
 {
     Circle::setPosition(Circle::getPosition().getX() - point.getX(),
                         Circle::getPosition().getY() - point.getY());
+    return (*this);
+}
+
+Circle &Circle::move(const int &dx, const int &dy)
+{
+    m_position.move(dx, dy);
+    return (*this);
 }
 
 Circle &Circle::setPosition(const int &x, const int &y)

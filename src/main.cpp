@@ -1,17 +1,24 @@
-#include "SDL.h"
-#include "Init.h"
-#include <iostream>
+
 #include <vector>
-#include <Window.h>
-#include <Renderer.h>
-#include <Event.h>
+#include <iostream>
+#include <SDL.h>
 #include <SDL_image.h>
-#include <Texture.h>
-#include <Point.h>
-#include <Font.h>
-#include <Exception.h>
+#include "Init.h"
+#include "GeometricObject.h"
+#include "Window.h"
+#include "Renderer.h"
+#include "Event.h"
+#include "Texture.h"
+#include "Point.h"
+#include "Font.h"
+#include "Exception.h"
 #include "collision.h"
 #include "Polygon.h"
+
+static void test(const vra::GeometricObject &object)
+{
+    std::cout << "test\n";
+}
 
 int     main(int ac, char **av)
 {
@@ -33,6 +40,7 @@ int     main(int ac, char **av)
     polygon.addPoint(vra::Point{40, 300});
     polygon.addPoint(vra::Point{160, 120});
     // polygon.addPoint(vra::Point{50, 150});
+    test(circle);
     while (loop)
     {
         renderer.setDrawColor(50, 50, 50, 255);

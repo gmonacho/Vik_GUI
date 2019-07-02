@@ -42,28 +42,33 @@ Texture::Texture(SDL_Texture *sdlTexture) :
             m_center(Point{}),
             m_angle(0) {}
 
-Texture::Texture(const Renderer &rend, const std::string &file) :
-            m_flip(SDL_FLIP_NONE), m_center(Point{}), m_angle(0)
+Texture::Texture(Renderer *rend,
+                 const std::string &file) :
+                 m_flip(SDL_FLIP_NONE),
+                 m_center(Point{}),
+                 m_angle(0)
 {
     SDL_Surface *tmp;
-    const char *tmpStr;
+    const char  *tmpStr;
+
     tmpStr = file.c_str();
     tmp = IMG_Load(tmpStr);
     if (!tmp)
         throw(Exception("IMG_Load"));
-    if (!(m_ptr = SDL_CreateTextureFromSurface(rend.getPtr(), tmp)))
+    if (!(m_ptr = SDL_CreateTextureFromSurface(rend->getPtr(), tmp)))
         throw(Exception("SDL_CreateTextureFromSurface"));
 }
 
-Texture::Texture(const Renderer &rend,
-                    Uint32 format,
-                    int access,
-                    int w,
-                    int h) : m_flip(SDL_FLIP_NONE),
-                                m_center(Point{w / 2, h / 2}),
-                                m_angle(0)
+Texture::Texture(Renderer *rend,
+                 Uint32 format,
+                 int access,
+                 int w,
+                 int h) :
+                 m_flip(SDL_FLIP_NONE),
+                 m_center(Point{w / 2, h / 2}),
+                 m_angle(0)
 {
-    m_ptr = SDL_CreateTexture(rend.getPtr(), format, access, w, h);
+    m_ptr = SDL_CreateTexture(rend->getPtr(), format, access, w, h);
     if (!m_ptr)
         throw(Exception("SDL_CreateTexture"));
 }
@@ -142,9 +147,9 @@ const Point &Texture::getCenter() const
     return (m_center);
 }
 
-Texture &Texture::setCenter(const Point &center)
+Texture &Texture::setCenter(const int &x, const int &y)
 {
-    m_center = center;
+    m_center.setX(x).setY(y);
     return (*this);
 }
 

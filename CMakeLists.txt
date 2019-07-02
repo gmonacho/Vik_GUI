@@ -17,57 +17,63 @@ find_package(SDL2_ttf REQUIRED)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR})
 
-# add_library(${PROJECT_NAME} SHARED
-#        src/Init.cpp
-#        src/Window.cpp
-#        src/Renderer.cpp
-#        src/Event.cpp
-#        src/Rect.cpp
-#        src/Point.cpp
-#        src/Line.cpp
-#        src/Font.cpp
-#        src/Exception.cpp
-#        src/Time.cpp
-#        include/Init.h
-#        include/Window.h
-#        include/Renderer.h
-#        include/Event.h
-#        include/Rect.h src/Texture.cpp
-#        include/Texture.h
-#        include/Point.h
-#        include/Line.h
-#        include/Font.h
-#        include/Exception.h
-#        include/Time.h)
+add_library(${PROJECT_NAME} SHARED
+       src/Init.cpp
+       src/Window.cpp
+       src/Renderer.cpp
+       src/GeometricObject.cpp
+       src/Event.cpp
+       src/Rect.cpp
+       src/Point.cpp
+       src/Line.cpp
+       src/Font.cpp
+       src/Exception.cpp
+       src/collision.cpp
+       src/Circle.cpp
+       src/Polygon.cpp
+       include/Init.h
+       include/Window.h
+       include/Renderer.h
+       include/GeometricObject.h
+       include/Event.h
+       include/Rect.h src/Texture.cpp
+       include/Texture.h
+       include/Point.h
+       include/Line.h
+       include/Font.h
+       include/Exception.h
+       include/collision.h
+       include/Circle.h
+       include/Polygon.h)
 
-add_executable(${PROJECT_NAME} src/main.cpp
-        src/Init.cpp
-        src/Window.cpp
-        src/Renderer.cpp
-        src/Event.cpp
-        src/Rect.cpp
-        src/Point.cpp
-        src/Line.cpp
-        src/Font.cpp
-        src/Exception.cpp
-        src/Time.cpp
-        src/collision.cpp
-        src/Circle.cpp
-        src/Polygon.cpp
-        include/Init.h
-        include/Window.h
-        include/Renderer.h
-        include/Event.h
-        include/Rect.h src/Texture.cpp
-        include/Texture.h
-        include/Point.h
-        include/Line.h
-        include/Font.h
-        include/Exception.h
-        include/Time.h
-        include/collision.h
-        include/Circle.h
-        include/Polygon.h)
+# add_executable(${PROJECT_NAME} src/main.cpp
+#         src/Init.cpp
+#         src/Window.cpp
+#         src/Renderer.cpp
+#         src/Event.cpp
+#         src/GeometricObject.cpp
+#         src/Rect.cpp
+#         src/Point.cpp
+#         src/Line.cpp
+#         src/Font.cpp
+#         src/Exception.cpp
+#         src/collision.cpp
+#         src/Circle.cpp
+#         src/Polygon.cpp
+#         include/Init.h
+#         include/Window.h
+#         include/Renderer.h
+#         include/Event.h
+#         include/Rect.h src/Texture.cpp
+#         include/Texture.h
+#         include/GeometricObject.h
+#         include/Point.h
+#         include/Line.h
+#         include/Font.h
+#         include/Exception.h
+#         include/collision.h
+#         include/Circle.h
+#         include/Polygon.h)
 
 if (MINGW)
         set(LIBRARIES -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf)

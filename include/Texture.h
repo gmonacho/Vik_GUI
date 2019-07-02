@@ -42,13 +42,13 @@ class Texture
 
     explicit Texture(SDL_Texture *sdlTexture);
 
-    explicit Texture(const Renderer &rend, const std::string &file);
+    Texture(Renderer *rend, const std::string &file);
 
-    explicit Texture(const Renderer &rend,
-                     Uint32 format,
-                     int access,
-                     int w,
-                     int h);
+    Texture(Renderer *rend,
+            Uint32 format,
+            int access,
+            int w,
+            int h);
 
     virtual                     ~Texture();
 
@@ -76,7 +76,7 @@ class Texture
 
     const Point &getCenter() const;
 
-    Texture &setCenter(const Point &center);
+    Texture &setCenter(const int &x, const int &y);
 
     Texture &setBlendMode(const SDL_BlendMode &blendMode);
 

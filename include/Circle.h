@@ -23,12 +23,13 @@ SOFTWARE.
 #ifndef CIRCLE_H_
 #define CIRCLE_H_
 
+#include "GeometricObject.h"
 #include "Point.h"
 
 namespace vra
 {
 
-class Circle
+class Circle : public GeometricObject
 {
  private:
     vra::Point  m_position;
@@ -39,9 +40,11 @@ class Circle
 
     ~Circle() = default;
 
-    Circle &operator+=(const Point &point);
+    Circle &operator+=(const Point &point) override;
 
-    Circle &operator-=(const Point &point);
+    Circle &operator-=(const Point &point) override;
+
+    Circle &move(const int &dx, const int &dy) override;
 
     Circle &setPosition(const int &x, const int &y);
 
